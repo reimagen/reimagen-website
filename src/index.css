@@ -1,0 +1,92 @@
+/* stylelint-disable at-rule-no-unknown */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Basic global styling */
+body {
+  @apply bg-black text-white min-h-screen font-nexa;
+  margin: 0;
+}
+
+/* Apply Nexa to all elements */
+* {
+  font-family: 'Nexa', sans-serif;
+}
+
+@layer components {
+  .brand-card {
+    @apply relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-xl flex flex-col gap-3 p-6 shadow-[0_8px_32px_rgba(0,0,0,0.35)];
+  }
+
+  .brand-card-compact {
+    @apply relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-xl flex flex-col gap-2 p-4 min-w-[260px] max-w-sm shadow-[0_8px_32px_rgba(0,0,0,0.35)];
+  }
+
+  .brand-scroll-row {
+    @apply products-scroll flex gap-4 overflow-x-auto pb-2;
+  }
+
+  .brand-section-kicker {
+    @apply text-sm uppercase tracking-[0.25em];
+  }
+
+  .brand-section-subhead {
+    @apply text-sm uppercase tracking-[0.1em];
+  }
+
+  .brand-cta {
+    @apply px-4 py-2 rounded-full tracking-[0.08em] uppercase;
+  }
+
+  .brand-cta-sm {
+    @apply inline-flex items-center justify-center px-3 py-2 rounded-full text-sm uppercase;
+  }
+
+  .brand-pill-inactive {
+    @apply bg-gray-800 text-gray-200 border-gray-700 hover:bg-gray-700;
+  }
+
+  .brand-pill {
+    @apply px-3 py-1 rounded-full text-sm uppercase border transition;
+  }
+
+  .brand-social-icon {
+    @apply w-6 h-6 text-white transform transition-transform duration-200 ease-out hover:scale-150;
+  }
+
+  .brand-hero-chip {
+    @apply text-sm uppercase tracking-[0.15em] text-center mb-4;
+  }
+}
+
+/* Subtle dark scrollbar for horizontal carousels */
+  .products-scroll {
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: theme('colors.brand-slate') theme('colors.brand-midnight');
+  }
+
+.products-scroll::-webkit-scrollbar {
+  height: 6px; /* horizontal scrollbar height */
+}
+
+.products-scroll::-webkit-scrollbar-track {
+  background: theme('colors.brand-midnight');
+}
+
+.products-scroll::-webkit-scrollbar-thumb {
+  background-color: color-mix(in srgb, theme('colors.brand-slate') 40%, transparent);
+  border-radius: 9999px;
+}
+
+  .scrollbar-lavender {
+    scrollbar-color: color-mix(in srgb, theme('colors.brand-lavender') 50%, transparent) theme('colors.brand-midnight');
+  }
+
+  .scrollbar-lavender::-webkit-scrollbar-track {
+    background: theme('colors.brand-midnight');
+  }
+
+  .scrollbar-lavender::-webkit-scrollbar-thumb {
+    background-color: color-mix(in srgb, theme('colors.brand-lavender') 50%, transparent);
+  }
