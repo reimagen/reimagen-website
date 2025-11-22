@@ -36,7 +36,7 @@ export default function Products() {
       {
         title: "reImagen Website",
         description: "This site. Built in a few days with generous help from Codex and Antigravity Agents.",
-        link: "/",
+        link: "https://github.com/reimagen/reimagen-website",
         tools: ["Cursor", "Codex", "Antigravity", "Sora"],
         stack: ["Vite + React", "Tailwind CSS", "Notion API", "Vercel"],
       },
@@ -178,14 +178,20 @@ export default function Products() {
               className="brand-card min-w-[260px] max-w-xs text-white snap-center flex-shrink-0"
             >
               <div className="p-4 flex flex-col flex-grow">
-                <p
-                  className={`text-xs uppercase tracking-wide mb-1 ${categoryStyles[product.category]?.text || 'text-gray-400'}`}
-                >
-                  {product.category}
-                </p>
-                <h4 className={`text-lg font-semibold mb-2 ${categoryStyles[product.category]?.text || 'text-white'}`}>
+                <h4 className={`text-lg font-semibold ${categoryStyles[product.category]?.text || 'text-white'}`}>
                   {product.title}
                 </h4>
+                <p
+                  className={`text-xs uppercase tracking-wide mb-2 ${categoryStyles[product.category]?.text || 'text-gray-400'}`}
+                >
+                  {product.category === 'Apps'
+                    ? 'App'
+                    : product.category === 'Agents'
+                      ? 'Agent'
+                      : product.category === 'GPTs'
+                        ? 'GPT'
+                        : product.category}
+                </p>
                 <p className="text-sm text-gray-300 mb-4 flex-grow">
                   {product.description}
                 </p>
@@ -240,7 +246,7 @@ export default function Products() {
       </div>
       <section className="space-y-3">
         <h3 className="text-3xl mb-1 tracking-[0.15em] uppercase text-center">Custom GPTs</h3>
-        <p className="brand-section-subhead text-brand-lavender text-sm text-center">Our favorite conversation partners, made with ChatGPT.</p>
+        <p className="brand-section-subhead text-brand-lavender text-sm text-center">Our favorite conversation partners, made with ChatGPT.<br></br>[Note: Requires ChatGPT account]</p>
         <div className="overflow-x-auto pb-8 pt-2 products-scroll scrollbar-lavender">
           <div className="flex gap-4 snap-x snap-mandatory">
             {gptProducts.map((product, index) => (

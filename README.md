@@ -1,13 +1,13 @@
-# Reimagen
+# Reimagen Website
 
-Reimagen is a personal AI playground and portfolio site. It showcases the AI products, experiments, and tools I’m building, and serves as a hub for all my work across the web.
+The official Reimagen site highlights the company’s AI services, tools, and experiments. It centralizes our product stack, portfolio, and contact flows in a single experience.
 
-## What this site is
+## What the site includes
 
-- **AI product showcase** – A living portfolio of apps, prototypes, and experiments built with modern AI models.
-- **Generative media gallery** – Curated collections of AI‑generated images, video, text, and interactive pieces.
-- **Developer toolkit** – Utilities, prompts, workflows, and small tools I use to build with AI.
-- **Social hub** – Central place to link out to my socials, newsletters, and other projects.
+- **Solutions overview** – Current applications, agents, and custom GPT offerings.
+- **Gallery** – Curated AI-generated imagery and video produced by the team.
+- **Toolkit** – Recommended IDEs, CLIs, orchestration platforms, and workflows for different builders.
+- **Contact hub** – Direct path to reach the Reimagen team across social channels or via the form.
 
 ## Tech stack
 
@@ -34,13 +34,10 @@ npm run preview
 
 This generates an optimized production bundle in `dist/`.
 
-## Roadmap
+## Deployment
 
-- Add more AI product case studies and live demos
-- Expand the generative media gallery with themed collections
-- Publish reusable prompt libraries and starter templates
-- Integrate richer analytics and contact/social flows
+The site builds as a static bundle via Vite. Hosting targets Netlify, Vercel, or any static host that can serve the `dist/` directory. Configure environment variables (if any) through your hosting provider’s dashboard.
 
 ## Notes
 
-This project was originally bootstrapped with the React + Vite template. For advanced configuration or deeper Vite usage, see the official docs: https://vitejs.dev/guide/
+Bootstrapped with the React + Vite template. Refer to the Vite docs for advanced configuration: https://vitejs.dev/guide/

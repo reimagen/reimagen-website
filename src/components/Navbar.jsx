@@ -13,7 +13,7 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 flex justify-between items-center py-4 px-12 bg-black/40 backdrop-blur text-white shadow border-b border-white/10 z-50">
       <Link to="/">
-        <h1 className="text-3xl tracking-[0.12em] text-brand-lavender">reimagen</h1>
+        <h1 className="text-2xl tracking-[0.12em] text-brand-lavender">reimagen</h1>
       </Link>
       <ul className="flex gap-6 text-md tracking-[0.12em]">
         {NAV_LINKS.map(({ to, label }) => {

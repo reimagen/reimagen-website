@@ -136,7 +136,7 @@ export default function Footer() {
           </svg>
         </a>
       </div>
-  <p className="mt-4 text-sm text-brand-lavender">© 2025 reImagen, Inc. All rights reserved.</p>
+  <p className="mt-4 text-sm text-brand-lavender">© 2025 reimagen, Inc. All rights reserved.</p>
 
     </footer>
   );
