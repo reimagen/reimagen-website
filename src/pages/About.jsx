@@ -28,11 +28,10 @@ export default function About() {
             <div className="space-y-4">
               <h2 className="brand-section-kicker text-brand-lavender text-md">Who we are</h2>
               <p className="text-gray-300 max-w-2xl">
-                We're full-stack developers turned AI experts. We create with AI the way others dream,
-                creating delightful experiences that amplify what you can imagine and express.
-                We live in the space between the technical and the magical: hyper-personal experiences,
-                new forms of interaction, and interfaces that feel like they’re listening.
-                Chat drove the first big wave of mass consumer AI adoption, and we're betting voice is next.
+                We're full-stack developers turned AI builders focused on creating experiences
+                that feel intuitive and personal. We live in the space between the technical and the magical,
+                making hyper-personalized experiences, new ways of communication, and interfaces that feel alive. 
+                Chat powered the first big wave of consumer AI, and we're betting voice is next.
               </p>
             </div>
 
@@ -40,16 +39,18 @@ export default function About() {
               <div className="space-y-3">
                 <h2 className="brand-section-kicker text-brand-lavender text-md">What we do</h2>
                 <p className="text-gray-300">
-                  We create AI art, build LLM-powered apps, and automate workflows with AI agents.
-                  Our work blends product amplification, interaction design, and frontier AI capabilities.
+                  We build LLM-powered apps, generate AI media, and automate workflows, 
+                  all grounded with context engineering. We rethink what's possible with product design, 
+                  interaction patterns, and frontier AI capabilities.
                 </p>
               </div>
 
               <div className="space-y-3">
                 <h2 className="brand-section-kicker text-brand-lavender text-md">How we work</h2>
                 <p className="text-gray-300">
-                  Becoming 10-X or 100-X is the way to win. Lean into AI to target time-drains,
-                  human error, and orchestration-heavy workflows. The human in the loop ensures quality and alignment.
+                  AI helps us operate 10X-100X faster by taking time-drains, human error, 
+                  and orchestration-heavy workflows off our plate. Human judgment remains critical, 
+                  it’s what guides strategy, quality, and intent.
                 </p>
               </div>
             </div>
