@@ -1,6 +1,6 @@
 import CategoryGrid from './CategoryGrid';
 
-export default function VibeSection({ cardBase, sectionKicker, smallCtaBase, vibeStack, vibeTips, vibeQuestions }) {
+export default function VibeSection({ sectionKicker, vibeStack, vibeTips, vibeQuestions }) {
   return (
     <section id="vibe" className="space-y-6 scroll-mt-24">
       <div className="space-y-3 text-center md:text-left">

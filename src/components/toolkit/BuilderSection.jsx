@@ -1,7 +1,6 @@
 import CategoryGrid from './CategoryGrid';
 
 export default function BuilderSection({
-  cardBase,
   ctaBase,
   sectionKicker,
   builderCategories,

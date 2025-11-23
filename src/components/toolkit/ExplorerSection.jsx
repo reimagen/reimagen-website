@@ -58,7 +58,7 @@ const explorerUseCases = [
   }
 ];
 
-export default function ExplorerSection({ cardBase, sectionKicker, explorerTips }) {
+export default function ExplorerSection({ sectionKicker, explorerTips }) {
   return (
     <section id="explorer" className="space-y-6 scroll-mt-24">
       <div className="space-y-3 text-center md:text-left">

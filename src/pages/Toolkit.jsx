@@ -6,7 +6,6 @@ import BuilderSection from '../components/toolkit/BuilderSection';
 import {
   builderCategories,
   builderRunnersUp,
-  explorerStarter,
   explorerTips,
   vibeQuestions,
   vibeStack,
@@ -14,10 +13,8 @@ import {
 } from '../data/toolkitData';
 
 export default function Toolkit() {
-  const cardBase = 'brand-card';
   const sectionKicker = 'brand-section-kicker';
   const ctaBase = 'brand-cta';
-  const smallCtaBase = 'brand-cta-sm';
 
   const [showBackToTop, setShowBackToTop] = useState(false);
 
@@ -65,22 +62,18 @@ export default function Toolkit() {
         </header>
 
         <ExplorerSection
-          cardBase={cardBase}
           sectionKicker={sectionKicker}
           explorerTips={explorerTips}
         />
 
         <VibeSection
-          cardBase={cardBase}
           sectionKicker={sectionKicker}
-          smallCtaBase={smallCtaBase}
           vibeStack={vibeStack}
           vibeTips={vibeTips}
           vibeQuestions={vibeQuestions}
         />
 
         <BuilderSection
-          cardBase={cardBase}
           sectionKicker={sectionKicker}
           ctaBase={ctaBase}
           builderCategories={builderCategories}
