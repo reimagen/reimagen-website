@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import CategoryGrid from './CategoryGrid';
 
 export default function VibeSection({ sectionKicker, vibeStack, vibeTips, vibeQuestions }) {
@@ -52,12 +53,12 @@ export default function VibeSection({ sectionKicker, vibeStack, vibeTips, vibeQu
       </div>
 
       <div className="text-center">
-        <a
-          href="/contact"
+        <Link
+          to="/contact"
           className="brand-cta bg-brand-pink hover:bg-brand-pink-dark text-black inline-flex items-center gap-1"
         >
           Get a Consult →
-        </a>
+        </Link>
       </div>
     </section>
   );

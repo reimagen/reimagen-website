@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import CategoryGrid from './CategoryGrid';
 
 const explorerUseCases = [
@@ -112,12 +113,12 @@ export default function ExplorerSection({ sectionKicker, explorerTips }) {
       </div>
 
       <div className="text-center">
-        <a
-          href="/contact"
+        <Link
+          to="/contact"
           className="brand-cta bg-brand-lavender hover:bg-brand-lavender-dark text-black inline-flex items-center gap-1"
         >
           Get in Touch →
-        </a>
+        </Link>
       </div>
     </section>
   );

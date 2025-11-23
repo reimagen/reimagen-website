@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import CategoryGrid from './CategoryGrid';
 
 export default function BuilderSection({
@@ -40,12 +41,12 @@ export default function BuilderSection({
       </div>
 
       <div className="text-center">
-        <a
-          href="/contact"
+        <Link
+          to="/contact"
           className={`${ctaBase} bg-brand-peach hover:bg-brand-peach-dark text-black inline-flex items-center gap-1`}
         >
           Talk shop with us →
-        </a>
+        </Link>
       </div>
     </section>
   );
