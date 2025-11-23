@@ -58,7 +58,7 @@ export default function Products() {
         link: "https://chatgpt.com/g/g-681683c622688191b4ef22413c711047-focus-group-simulator",
       },
       {
-        title: "FitnessAI Companion Coach",
+        title: "FitnessAI Companion GPT",
         description: "Pairs with FitnessAI. Upload InBody Scan pictures and dive into your stats. Learn about techniques, proper form, recovery, and nutrition.",
         link: "https://chatgpt.com/g/g-68b5eaa588208191b9482111e885291e-fitnessai-companion-coach",
       },
@@ -80,7 +80,7 @@ export default function Products() {
     ...products.agents.map((p) => ({ ...p, category: 'Agents' })),
     ...products.other.map((p) => ({ ...p, category: 'Other' })),
   ];
-  const gptProducts = products.gpts.map((p) => ({ ...p, category: 'GPTs' }));
+  const gptProducts = products.gpts;
 
   const [selectedCategories, setSelectedCategories] = useState([]);
 
@@ -96,11 +96,6 @@ export default function Products() {
       pill: 'bg-brand-pink hover:bg-brand-pink-dark text-black border-brand-pink',
       link: 'bg-brand-pink hover:bg-brand-pink-dark text-black',
       text: 'text-brand-pink'
-    },
-    GPTs: {
-      pill: 'bg-brand-lavender hover:bg-brand-lavender-dark text-black border-brand-lavender',
-      link: 'bg-brand-lavender hover:bg-brand-lavender-dark text-black',
-      text: 'text-brand-lavender'
     },
     Other: {
       pill: 'bg-brand-peach hover:bg-brand-peach-dark text-black border-brand-peach',
@@ -188,9 +183,7 @@ export default function Products() {
                     ? 'App'
                     : product.category === 'Agents'
                       ? 'Agent'
-                      : product.category === 'GPTs'
-                        ? 'GPT'
-                        : product.category}
+                      : product.category}
                 </p>
                 <p className="text-sm text-gray-300 mb-4 flex-grow">
                   {product.description}
@@ -229,13 +222,11 @@ export default function Products() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      {product.category === 'GPTs'
-                        ? 'Start Chat →'
-                        : product.title === 'FitnessAI'
-                          ? 'Sign Up →'
-                          : product.category === 'Other'
-                            ? 'GitHub Repo →'
-                            : 'Try Product →'}
+                  {product.title === 'FitnessAI'
+                    ? 'Sign Up →'
+                    : product.category === 'Other'
+                      ? 'GitHub Repo →'
+                      : 'Try Product →'}
                     </a>
                   )}
                 </div>
@@ -246,7 +237,10 @@ export default function Products() {
       </div>
       <section className="space-y-3">
         <h3 className="text-3xl mb-1 tracking-[0.15em] uppercase text-center">Custom GPTs</h3>
-        <p className="brand-section-subhead text-brand-lavender text-sm text-center">Our favorite conversation partners, made with ChatGPT.<br></br>[Note: Requires ChatGPT account]</p>
+        <p className="brand-section-subhead text-brand-lavender text-sm text-center">
+          Our favorite conversation partners, made with ChatGPT.<br />
+          [Note: Requires ChatGPT account]
+        </p>
         <div className="overflow-x-auto pb-8 pt-2 products-scroll scrollbar-lavender">
           <div className="flex gap-4 snap-x snap-mandatory">
             {gptProducts.map((product, index) => (
@@ -255,10 +249,7 @@ export default function Products() {
                 className="brand-card min-w-[260px] max-w-xs text-white snap-center flex-shrink-0"
               >
                 <div className="p-4 flex flex-col flex-grow">
-                  <p className={`text-xs uppercase tracking-wide mb-1 ${categoryStyles.GPTs.text}`}>
-                    GPT
-                  </p>
-                  <h4 className={`text-lg font-semibold mb-2 ${categoryStyles.GPTs.text}`}>{product.title}</h4>
+                  <h4 className="text-lg font-semibold mb-2 text-brand-lavender">{product.title}</h4>
                   <p className="text-sm text-gray-300 mb-4 flex-grow">
                     {product.description}
                   </p>

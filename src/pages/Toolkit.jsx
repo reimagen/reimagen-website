@@ -35,12 +35,21 @@ export default function Toolkit() {
   };
 
   return (
-    <section className="relative -mt-24 pt-24 pb-24">
-      <div className="px-4 py-16 md:px-10 lg:px-16 space-y-12">
+    <section className="relative -mt-24 pt-24 pb-24 overflow-hidden">
+      <video
+        src="/videos/monument-valley-aurora.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="fixed inset-0 w-full h-full object-cover brightness-90"
+      />
+      <div className="fixed inset-0 bg-black/70" aria-hidden="true" />
+      <div className="relative z-10 px-4 py-16 md:px-10 lg:px-16 space-y-12">
         <header className="text-center space-y-4 max-w-3xl mx-auto">
           <p className="text-3xl mb-4 tracking-[0.15em] uppercase text-center">Toolkit</p>
           <p className="brand-section-subhead text-brand-lavender text-center">
-            We've tried every AI product so you don't have to. <br></br>Pick your starting point, and get to building.
+            We try every AI product so you don't have to. These are the top picks.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a href="#explorer" className={`${ctaBase} bg-brand-lavender hover:bg-brand-lavender-dark text-black`}>
@@ -58,8 +67,6 @@ export default function Toolkit() {
         <ExplorerSection
           cardBase={cardBase}
           sectionKicker={sectionKicker}
-          smallCtaBase={smallCtaBase}
-          explorerStarter={explorerStarter}
           explorerTips={explorerTips}
         />
 

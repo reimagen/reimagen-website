@@ -1,3 +1,5 @@
+import CategoryGrid from './CategoryGrid';
+
 export default function VibeSection({ cardBase, sectionKicker, smallCtaBase, vibeStack, vibeTips, vibeQuestions }) {
   return (
     <section id="vibe" className="space-y-6 scroll-mt-24">
@@ -5,29 +7,19 @@ export default function VibeSection({ cardBase, sectionKicker, smallCtaBase, vib
         <p className={`${sectionKicker} text-brand-pink`}>Vibe coders</p>
         <h2 className="text-2xl font-semibold">Tools for expressive builds and playful shipping</h2>
         <p className="text-gray-300">
-          When you want to sketch interactives, remix UI, and stay in flow. These helpers keep code optional.
+          When you want to sketch interactives, remix UI, and get in flow. These tools keep code optional.
         </p>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-3">
-        {vibeStack.map((tool) => (
-          <div key={tool.name} className={cardBase}>
-            <h3 className="text-xl font-semibold">{tool.name}</h3>
-            <p className="text-sm text-gray-300 flex-grow">{tool.description}</p>
-            <a
-              href={tool.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${smallCtaBase} bg-brand-pink hover:bg-brand-pink-dark text-black`}
-            >
-              Dive in →
-            </a>
-          </div>
-        ))}
-      </div>
+      <CategoryGrid
+        columns={vibeStack}
+        accent="text-brand-pink"
+        linkColor="text-brand-pink"
+        defaultCta="Dive in →"
+      />
 
       <div className="brand-card space-y-4">
-        <h3 className="text-lg font-semibold text-brand-pink">Three Tips Before You Ship</h3>
+        <p className="text-sm uppercase tracking-[0.2em] text-brand-pink">Real talk</p>
         <ul className="space-y-3 text-left text-sm text-gray-300">
           {vibeTips.map((tip) => (
             <li key={tip.title}>
@@ -39,7 +31,7 @@ export default function VibeSection({ cardBase, sectionKicker, smallCtaBase, vib
       </div>
 
       <div className="brand-card space-y-4">
-        <h3 className="text-lg font-semibold text-brand-pink">Deploying Safely</h3>
+        <p className="text-sm uppercase tracking-[0.2em] text-brand-pink">Basic safety</p>
         <div className="space-y-3 text-left text-sm text-gray-300">
           {vibeQuestions.map((qa) => (
             <div key={qa.title}>
@@ -48,6 +40,24 @@ export default function VibeSection({ cardBase, sectionKicker, smallCtaBase, vib
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="brand-card space-y-2 text-left text-sm text-gray-300">
+        <p className="text-sm uppercase tracking-[0.2em] text-brand-pink">Feeling FOMO?</p>
+        <p>
+        If you're feeling overwhelmed with all these tools, you're not alone. New products and models drop every day, and this vibe-coder starter pack barely scratches the surface.
+        There are whole universes for voice, launch ops, motion graphics, and niche workflows we didn&apos;t cover.
+        If you're considering a tool, odds are we&apos;ve already stress-tested it and can give you the TLDR.
+        </p>
+      </div>
+
+      <div className="text-center">
+        <a
+          href="/contact"
+          className="brand-cta bg-brand-pink hover:bg-brand-pink-dark text-black inline-flex items-center gap-1"
+        >
+          Get a Consult →
+        </a>
       </div>
     </section>
   );

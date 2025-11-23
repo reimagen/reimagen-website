@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import GalleryCard from "../components/GalleryCard";
-import roboSelfie from '../assets/robo-selfie.png';
 import sandgrada from '../assets/sandgrada.png';
 import genZ from '../assets/genz-coco.png';
 
@@ -14,13 +13,6 @@ const modelStyles = {
 };
 
 const galleryItems = [
-  {
-    format: "Video",
-    src: "/videos/aurora-drone.mp4",
-    alt: "Drone Flying Through Auroras",
-    caption: "Night Flight Through the Auroras",
-    model: "Sora",
-  },
   {
     format: "Video",
     src: "/videos/floating-dream.mp4",
@@ -43,17 +35,24 @@ const galleryItems = [
     model: "Sora",
   },
   {
-    format: "Image",
-    src: roboSelfie, 
+    format: "Video",
+    src: "/videos/robo-selfie-video.mp4", 
     alt: "An All-Star Robot Selfie of Movie Characters",
     caption: "That Oscars Selfie, Robo Version",
-    model: "Sora",
+    model: "Seedance 1.0",
   },
   {
     format: "Video",
     src: "/videos/candy-basil.mp4",
     alt: "A Candy Version of St. Basil's Cathedral in Moscow",
     caption: "St. Basil's in Candyland",
+    model: "Sora",
+  },
+  {
+    format: "Video",
+    src: "/videos/aurora-drone.mp4",
+    alt: "Drone Flying Through Auroras",
+    caption: "Night Flight Through the Auroras",
     model: "Sora",
   },
   {
@@ -77,25 +76,34 @@ const galleryItems = [
     caption: "Same Thing We Do Every Night",
     model: "MiniMax Hailuo 02",
   },
+  {
+    format: "Video",
+    src: "/videos/yin-yang-cats.mp4",
+    alt: "A Black and a White curled up in the shape of a yin-yang sign",
+    caption: "Black Cat Energy",
+    model: "Sora 2",
+  },
 ];
 
 
 export default function Gallery() {
   const [selectedModel, setSelectedModel] = useState("All");
+  const matchesModel = (modelName, filter) =>
+    modelName?.toLowerCase().startsWith(filter.toLowerCase());
 
   const filteredItems =
     selectedModel === "All"
       ? galleryItems
       : selectedModel === "Others"
-        ? galleryItems.filter((item) => !MODELS.includes(item.model))
-        : galleryItems.filter((item) => item.model === selectedModel);
+        ? galleryItems.filter((item) => !MODELS.some((base) => matchesModel(item.model, base)))
+        : galleryItems.filter((item) => matchesModel(item.model, selectedModel));
 
   return (
     <section className="relative -mt-24 pt-24 pb-24">
       <div className="px-4 py-16 md:px-10 lg:px-16">
         <header className="mb-8 text-center flex flex-col items-center space-y-2">
           <h2 className="text-3xl mb-1 tracking-[0.15em] uppercase text-center">Gallery</h2>
-          <p className="brand-section-subhead text-brand-lavender text-center">A curated selection of GenAI media. Follow Socials for more.</p>
+          <p className="brand-section-subhead text-brand-lavender text-center">A curated selection of GenAI media</p>
         </header>
 
       {/* Model Filters */}

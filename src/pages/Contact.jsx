@@ -1,18 +1,20 @@
 import { useState } from "react";
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
+  const initialFormState = {
     firstName: "",
     lastName: "",
     company: "",
     linkedinUsername: "",
     email: "",
     message: "",
-  });
+  };
 
-
+  const [formData, setFormData] = useState(initialFormState);
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
 
   const validate = () => {
     const errs = {};
@@ -27,25 +29,52 @@ export default function Contact() {
     return errs;
   };
 
-const handleSubmit = (e) => {
+const handleSubmit = async (e) => {
   e.preventDefault();
+  setSubmitError(null);
 
   const errs = validate();
   if (Object.keys(errs).length > 0) {
     setErrors(errs);
     return;
   }
+  setErrors({});
 
-  // ✅ Combine LinkedIn prefix with the username
   const fullLinkedInURL = `https://www.linkedin.com/in/${formData.linkedinUsername}`;
 
   const finalFormData = {
     ...formData,
-    linkedinUsername: fullLinkedInURL, // replace 'linkedinUsername' with full URL
+    linkedinUsername: fullLinkedInURL,
   };
 
-  console.log("Form submitted:", finalFormData);
-  setSubmitted(true);
+  setIsSubmitting(true);
+
+  try {
+    const response = await fetch("https://formsubmit.co/ajax/a55d92a2101a8fdbd5d5f34dd1afd616", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        ...finalFormData,
+        _subject: "New inquiry from reimagen.ai",
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to send message");
+    }
+
+    await response.json();
+    setSubmitted(true);
+    setFormData(initialFormState);
+  } catch (err) {
+    console.error(err);
+    setSubmitError("We hit a snag sending your message. Please try again in a bit or email whereisgu22@gmail.com directly.");
+  } finally {
+    setIsSubmitting(false);
+  }
 };
 
   const handleChange = (e) => {
@@ -67,8 +96,17 @@ const handleSubmit = (e) => {
   }
 
   return (
-    <section className="relative -mt-24 pt-24 pb-24">
-      <div className="max-w-5xl mx-auto px-4 py-16 space-y-8">
+    <section className="relative -mt-24 pt-24 pb-24 overflow-hidden">
+      <video
+        src="/videos/monument-valley-aurora.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="fixed inset-0 w-full h-full object-cover brightness-80"
+      />
+      <div className="fixed inset-0 bg-black/70" aria-hidden="true" />
+      <div className="relative z-10 max-w-5xl mx-auto px-4 py-16 space-y-8">
         <header className="text-center space-y-2">
           <h2 className="text-3xl font-bold">Contact Us</h2>
           <p className="brand-section-kicker text-brand-lavender">Not into DMs? Fill out the form below.</p>
@@ -164,11 +202,16 @@ const handleSubmit = (e) => {
             {errors.message && <p className="text-xs text-brand-pink mt-1">{errors.message}</p>}
           </div>
 
+          {submitError && (
+            <p className="text-sm text-brand-pink">{submitError}</p>
+          )}
+
           <button
             type="submit"
-            className="brand-cta bg-brand-lavender hover:bg-brand-lavender-dark text-black"
+            className="brand-cta bg-brand-lavender hover:bg-brand-lavender-dark text-black disabled:opacity-60 disabled:cursor-not-allowed"
+            disabled={isSubmitting}
           >
-            Send
+            {isSubmitting ? "Sending…" : "Send"}
           </button>
         </form>
       </div>
