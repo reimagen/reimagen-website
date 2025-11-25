@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import GalleryCard from "../components/GalleryCard";
+import GalleryCarousel from "../components/GalleryCarousel";
 import sandgrada from '../assets/sandgrada.png';
 import genZ from '../assets/genz-coco.png';
 
@@ -13,6 +13,13 @@ const modelStyles = {
 };
 
 const galleryItems = [
+  {
+    format: "Video",
+    src: "/videos/creation-of-robot.mp4",
+    alt: "Creation of Adam but a Robot instead of a man",
+    caption: "Creation of Adam",
+    model: "Minimax Hailuo 2",
+  },
   {
     format: "Video",
     src: "/videos/floating-dream.mp4",
@@ -103,7 +110,7 @@ export default function Gallery() {
       <div className="px-4 py-16 md:px-10 lg:px-16">
         <header className="mb-8 text-center flex flex-col items-center space-y-2">
           <h2 className="text-3xl mb-1 tracking-[0.15em] uppercase text-center">Gallery</h2>
-          <p className="brand-section-subhead text-brand-lavender text-center">A curated selection of GenAI media</p>
+          <p className="brand-section-subhead text-brand-lavender text-center">Swipe to explore a curated selection of GenAI media</p>
         </header>
 
       {/* Model Filters */}
@@ -128,12 +135,7 @@ export default function Gallery() {
       </div>
 
 
-      {/* Gallery Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredItems.map((item) => (
-          <GalleryCard key={item.src} item={item} />
-        ))}
-      </div>
+      <GalleryCarousel items={filteredItems} />
       </div>
     </section>
   );

@@ -30,7 +30,7 @@ export default function About() {
               <p className="text-gray-300 max-w-2xl">
                 We're full-stack developers turned AI builders focused on creating experiences
                 that feel intuitive and personal. We live in the space between the technical and the magical,
-                making hyper-personalized experiences, new ways of communication, and interfaces that feel alive. 
+                creating hyper-personalized experiences, new forms of communication, and interfaces that feel alive. 
                 Chat powered the first big wave of consumer AI, and we're betting voice is next.
               </p>
             </div>
