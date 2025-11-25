@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import fitnessRecap from '../assets/fitness-recap.png';
 
@@ -83,6 +83,10 @@ export default function Products() {
   const gptProducts = products.gpts;
 
   const [selectedCategories, setSelectedCategories] = useState([]);
+  const productScrollRef = useRef(null);
+  const gptScrollRef = useRef(null);
+  const [activeProductIndex, setActiveProductIndex] = useState(0);
+  const [activeGptIndex, setActiveGptIndex] = useState(0);
 
   const categories = ['All', 'Apps', 'Agents', 'Other'];
   const filterButtonBase = 'brand-cta text-xs tracking-[0.2em] uppercase';
@@ -113,6 +117,122 @@ export default function Products() {
     selectedCategories.length === 0
       ? allProducts
       : allProducts.filter((product) => selectedCategories.includes(product.category));
+
+  useEffect(() => {
+    setActiveProductIndex(0);
+  }, [visibleProducts.length, selectedCategories]);
+
+  useEffect(() => {
+    const node = productScrollRef.current;
+    if (!node) return undefined;
+
+    let animationFrame;
+    const updateActiveCard = () => {
+      animationFrame = null;
+      const cards = node.querySelectorAll('[data-product-card]');
+      if (!cards.length) return;
+      const containerRect = node.getBoundingClientRect();
+      const containerCenter = containerRect.left + containerRect.width / 2;
+      let closestIndex = 0;
+      let minDelta = Infinity;
+      cards.forEach((card, index) => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.left + rect.width / 2;
+        const delta = Math.abs(cardCenter - containerCenter);
+        if (delta < minDelta) {
+          minDelta = delta;
+          closestIndex = index;
+        }
+      });
+      setActiveProductIndex(closestIndex);
+    };
+
+    const handleScroll = () => {
+      if (animationFrame) return;
+      animationFrame = window.requestAnimationFrame(updateActiveCard);
+    };
+
+    node.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', updateActiveCard);
+    updateActiveCard();
+
+    return () => {
+      node.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', updateActiveCard);
+      if (animationFrame) window.cancelAnimationFrame(animationFrame);
+    };
+  }, [visibleProducts.length]);
+
+  useEffect(() => {
+    const node = gptScrollRef.current;
+    if (!node) return undefined;
+
+    let animationFrame;
+    const updateActiveCard = () => {
+      animationFrame = null;
+      const cards = node.querySelectorAll('[data-gpt-card]');
+      if (!cards.length) return;
+      const containerRect = node.getBoundingClientRect();
+      const containerCenter = containerRect.left + containerRect.width / 2;
+      let closestIndex = 0;
+      let minDelta = Infinity;
+      cards.forEach((card, index) => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.left + rect.width / 2;
+        const delta = Math.abs(cardCenter - containerCenter);
+        if (delta < minDelta) {
+          minDelta = delta;
+          closestIndex = index;
+        }
+      });
+      setActiveGptIndex(closestIndex);
+    };
+
+    const handleScroll = () => {
+      if (animationFrame) return;
+      animationFrame = window.requestAnimationFrame(updateActiveCard);
+    };
+
+    node.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', updateActiveCard);
+    updateActiveCard();
+
+    return () => {
+      node.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', updateActiveCard);
+      if (animationFrame) window.cancelAnimationFrame(animationFrame);
+    };
+  }, [gptProducts.length]);
+
+  const scrollToGptIndex = (index) => {
+    const node = gptScrollRef.current;
+    if (!node) return;
+    const cards = node.querySelectorAll('[data-gpt-card]');
+    const target = cards[index];
+    if (!target) return;
+    const containerRect = node.getBoundingClientRect();
+    const cardRect = target.getBoundingClientRect();
+    const delta = cardRect.left - containerRect.left;
+    node.scrollTo({
+      left: node.scrollLeft + delta,
+      behavior: 'smooth',
+    });
+  };
+
+  const scrollToProductIndex = (index) => {
+    const node = productScrollRef.current;
+    if (!node) return;
+    const cards = node.querySelectorAll('[data-product-card]');
+    const target = cards[index];
+    if (!target) return;
+    const containerRect = node.getBoundingClientRect();
+    const cardRect = target.getBoundingClientRect();
+    const delta = cardRect.left - containerRect.left;
+    node.scrollTo({
+      left: node.scrollLeft + delta,
+      behavior: 'smooth',
+    });
+  };
 
   return (
     <section className="relative overflow-hidden -mt-24 pt-24 pb-48">
@@ -166,12 +286,16 @@ export default function Products() {
       </div>
 
       {/* Horizontal carousel */}
-      <div className="overflow-x-auto pb-4 products-scroll scrollbar-lavender">
+      <div
+        className="overflow-x-auto pb-6 products-scroll scrollbar-lavender products-scroll-compact dot-scroll"
+        ref={productScrollRef}
+      >
         <div className="flex gap-4 snap-x snap-mandatory">
           {visibleProducts.map((product, index) => (
             <div
               key={`${product.title}-${index}`}
               className="brand-card min-w-[260px] max-w-xs text-white snap-center flex-shrink-0"
+              data-product-card
             >
               <div className="p-4 flex flex-col flex-grow">
                 <h4 className={`text-lg font-semibold ${categoryStyles[product.category]?.text || 'text-white'}`}>
@@ -226,7 +350,7 @@ export default function Products() {
                   {product.title === 'FitnessAI'
                     ? 'Sign Up →'
                     : product.category === 'Other'
-                      ? 'GitHub Repo →'
+                      ? 'Open Repo →'
                       : 'Try Product →'}
                     </a>
                   )}
@@ -236,18 +360,36 @@ export default function Products() {
           ))}
         </div>
       </div>
+      {visibleProducts.length > 1 && (
+        <div className="flex justify-center gap-2 mt-4">
+          {visibleProducts.map((_, index) => (
+            <button
+              key={`product-dot-${index}`}
+              type="button"
+              className={`h-2 rounded-full transition-all duration-300 ${
+                index === activeProductIndex ? 'w-8 bg-brand-lavender' : 'w-2 bg-white/30'
+              }`}
+              aria-label={`Go to product card ${index + 1}`}
+              onClick={() => scrollToProductIndex(index)}
+            />
+          ))}
+        </div>
+      )}
       <section className="space-y-3">
-        <h3 className="text-3xl mb-1 tracking-[0.15em] uppercase text-center">Custom GPTs</h3>
+        <h3 className="text-3xl mt-12 mb-1 tracking-[0.15em] uppercase text-center">Custom GPTs</h3>
         <p className="brand-section-subhead text-brand-lavender text-sm text-center">
-          Our favorite conversation partners, made with ChatGPT.<br />
           [Note: Requires ChatGPT account]
         </p>
-        <div className="overflow-x-auto pb-8 pt-2 products-scroll scrollbar-lavender">
+        <div
+          className="overflow-x-auto pb-4 pt-2 products-scroll scrollbar-lavender dot-scroll"
+          ref={gptScrollRef}
+        >
           <div className="flex gap-4 snap-x snap-mandatory">
             {gptProducts.map((product, index) => (
               <div
                 key={`gpt-${product.title}-${index}`}
                 className="brand-card min-w-[260px] max-w-xs text-white snap-center flex-shrink-0"
+                data-gpt-card
               >
                 <div className="p-4 flex flex-col flex-grow">
                   <h4 className="text-lg font-semibold mb-2 text-brand-lavender">{product.title}</h4>
@@ -266,6 +408,19 @@ export default function Products() {
               </div>
             ))}
           </div>
+        </div>
+        <div className="flex justify-center gap-2 mt-4">
+          {gptProducts.map((_, index) => (
+            <button
+              key={`gpt-dot-${index}`}
+              type="button"
+              className={`h-2 rounded-full transition-all duration-300 ${
+                index === activeGptIndex ? 'w-8 bg-brand-lavender' : 'w-2 bg-white/30'
+              }`}
+              aria-label={`Go to GPT card ${index + 1}`}
+              onClick={() => scrollToGptIndex(index)}
+            />
+          ))}
         </div>
       </section>
       <div className="h-16" aria-hidden="true" />

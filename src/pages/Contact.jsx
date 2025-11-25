@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../styles/contactFlip.css";
 
 export default function Contact() {
@@ -16,6 +16,7 @@ export default function Contact() {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(null);
+  const [isMounted, setIsMounted] = useState(false);
 
   const validate = () => {
     const errs = {};
@@ -93,8 +94,13 @@ const handleSubmit = async (e) => {
   const inputClasses =
     "w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white placeholder-gray-400 focus:border-brand-lavender focus:ring-0 transition";
 
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setIsMounted(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
+
   return (
-    <section className="relative -mt-24 pt-24 pb-24 overflow-hidden">
+    <section className="relative -mt-24 pt-24 pb-6 overflow-hidden">
       <video
         src="/videos/monument-valley-aurora.mp4"
         autoPlay
@@ -104,13 +110,14 @@ const handleSubmit = async (e) => {
         className="fixed inset-0 w-full h-full object-cover brightness-80"
       />
       <div className="fixed inset-0 bg-black/70" aria-hidden="true" />
-      <div className="relative z-10 max-w-5xl mx-auto px-4 py-16 space-y-8">
+      <div className="fixed bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-black to-transparent pointer-events-none" aria-hidden="true" />
+      <div className="relative z-10 max-w-5xl mx-auto px-4 pt-16 pb-8 space-y-8">
         <header className="text-center space-y-2">
           <h2 className="text-3xl font-bold">Contact Us</h2>
           <p className="brand-section-kicker text-brand-lavender">Not into DMs? Fill out the form below.</p>
         </header>
 
-        <div className="contact-flip-container">
+        <div className={`contact-flip-container slide-in-left ${isMounted ? "is-visible" : ""}`}>
           <div className={`contact-flip-inner ${submitted ? "is-flipped" : ""}`}>
             <div className="contact-flip-face contact-flip-front brand-card">
               <form onSubmit={handleSubmit} className="space-y-6">

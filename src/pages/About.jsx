@@ -1,9 +1,121 @@
+import { useEffect, useRef, useState } from "react";
+
+const REVEAL_OPTIONS = { threshold: 0.4, rootMargin: '0px 0px -25% 0px' };
+
 export default function About() {
+  const headerRef = useRef(null);
+  const whoWeAreRef = useRef(null);
+  const whatWeDoRef = useRef(null);
+  const howWeWorkRef = useRef(null);
+  const [isVideoReady, setIsVideoReady] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(false);
+  const [isWhoVisible, setIsWhoVisible] = useState(false);
+  const [isWhatVisible, setIsWhatVisible] = useState(false);
+  const [isHowVisible, setIsHowVisible] = useState(false);
+
+  useEffect(() => {
+    if (isVideoReady) return undefined;
+    const timeout = setTimeout(() => setIsVideoReady(true), 2000);
+    return () => clearTimeout(timeout);
+  }, [isVideoReady]);
+
+  useEffect(() => {
+    const target = headerRef.current;
+    if (!target) return undefined;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsHeaderVisible(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const target = whoWeAreRef.current;
+    if (!target) return undefined;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsWhoVisible(true);
+            observer.disconnect();
+          }
+        });
+      },
+      REVEAL_OPTIONS
+    );
+
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const target = whatWeDoRef.current;
+    if (!target) return undefined;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsWhatVisible(true);
+            observer.disconnect();
+          }
+        });
+      },
+      REVEAL_OPTIONS
+    );
+
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const target = howWeWorkRef.current;
+    if (!target) return undefined;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsHowVisible(true);
+            observer.disconnect();
+          }
+        });
+      },
+      REVEAL_OPTIONS
+    );
+
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="max-w-5xl mx-auto px-6 py-16">
-      <div className="grid gap-10 md:grid-cols-[1.1fr,1.4fr] items-start">
+    <section className="relative overflow-hidden">
+      <video
+        src="/videos/dorothy-skipping.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        onLoadedData={() => setIsVideoReady(true)}
+        className="md:hidden fixed inset-0 w-full h-full object-cover brightness-90"
+      />
+      <div className="md:hidden fixed inset-0 bg-black/70" aria-hidden="true" />
+      <div className="relative z-10 max-w-5xl mx-auto px-6 pt-8 pb-16 md:py-16">
+        <div className="grid gap-10 md:grid-cols-[1.1fr,1.4fr] items-start">
           {/* Left: video */}
-          <div className="relative w-full overflow-hidden rounded-xl border border-white/10">
+          <div className="relative w-full overflow-hidden rounded-xl border border-white/10 hidden md:block">
             <video
               src="/videos/dorothy-skipping.mp4"
               autoPlay
@@ -16,7 +128,12 @@ export default function About() {
 
           {/* Right: text content */}
           <div className="space-y-10">
-            <header className="space-y-4">
+            <header
+              ref={headerRef}
+              className={`space-y-4 slide-in-left ${
+                isVideoReady && isHeaderVisible ? "is-visible" : ""
+              }`}
+            >
               <p className="brand-section-kicker text-brand-lavender text-lg">
                 About reImagen
               </p>
@@ -25,7 +142,12 @@ export default function About() {
               </h1>
             </header>
 
-            <div className="space-y-4">
+            <div
+              ref={whoWeAreRef}
+              className={`space-y-4 slide-in-right ${
+                isVideoReady && isWhoVisible ? "is-visible" : ""
+              }`}
+            >
               <h2 className="brand-section-kicker text-brand-lavender text-md">Who we are</h2>
               <p className="text-gray-300 max-w-2xl">
                 We're full-stack developers turned AI builders focused on creating experiences
@@ -36,7 +158,12 @@ export default function About() {
             </div>
 
             <div className="grid gap-8 md:grid-cols-2">
-              <div className="space-y-3">
+              <div
+                ref={whatWeDoRef}
+                className={`space-y-3 slide-in-left ${
+                  isVideoReady && isWhatVisible ? "is-visible" : ""
+                }`}
+              >
                 <h2 className="brand-section-kicker text-brand-lavender text-md">What we do</h2>
                 <p className="text-gray-300">
                   We build LLM-powered apps, generate AI media, and automate workflows, 
@@ -45,7 +172,12 @@ export default function About() {
                 </p>
               </div>
 
-              <div className="space-y-3">
+              <div
+                ref={howWeWorkRef}
+                className={`space-y-3 slide-in-right ${
+                  isVideoReady && isHowVisible ? "is-visible" : ""
+                }`}
+              >
                 <h2 className="brand-section-kicker text-brand-lavender text-md">How we work</h2>
                 <p className="text-gray-300">
                   AI helps us operate 10X-100X faster by taking time-drains, human error, 
@@ -55,6 +187,7 @@ export default function About() {
               </div>
             </div>
           </div>
+        </div>
       </div>
     </section>
   );
