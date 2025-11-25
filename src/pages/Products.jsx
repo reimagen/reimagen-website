@@ -130,7 +130,7 @@ export default function Products() {
       <header className="mb-8 text-center flex flex-col items-center space-y-2">
         <h2 className="text-3xl mb-1 tracking-[0.15em] uppercase text-center">Products</h2>
         <p className="brand-section-subhead text-brand-lavender text-sm">
-          A roundup of Apps, Agents, and Custom GPTs.
+          A roundup of Apps, Agents, and Custom GPTs
         </p>
       </header>
 

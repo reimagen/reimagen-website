@@ -47,7 +47,7 @@
   background: #000;
 }
 
-.gallery-swiper .info {
+.gallery-swiper .gallery-swiper-info {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -56,11 +56,22 @@
   padding: 20px;
   box-sizing: border-box;
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   justify-content: flex-end;
   align-items: flex-end;
+  transform: translateY(75%);
+  opacity: 0;
+  transition: transform 0.35s ease, opacity 0.35s ease;
 }
 
-.gallery-swiper .gallery-swiper-model-pill {
+.gallery-swiper .swiper-slide-active .gallery-swiper-info,
+.gallery-swiper .swiper-slide-duplicate-active .gallery-swiper-info {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.gallery-swiper .gallery-swiper-pill {
   display: inline-flex;
   align-items: center;
   font-size: 0.75rem;
@@ -71,6 +82,7 @@
   padding: 0.4rem 0.9rem;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.25);
+  white-space: nowrap;
 }
 
 .gallery-swiper .swiper-pagination-bullet {

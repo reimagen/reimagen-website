@@ -1,10 +1,12 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import '../styles/galleryCarousel.css';
 
 const SWIPER_SCRIPT_ID = 'swiper-bundle-script';
 const SWIPER_STYLE_ID = 'swiper-bundle-style';
 const SWIPER_JS = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js';
 const SWIPER_CSS = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css';
+const detectOrientation = (width, height) =>
+  width >= height ? 'landscape' : 'portrait';
 
 const ensureStylesheet = () => {
   if (typeof document === 'undefined') return Promise.resolve();
@@ -37,12 +39,21 @@ const ensureScript = () => {
     document.body.appendChild(script);
   });
 };
+const ensureSwiperAssets = () => Promise.all([ensureStylesheet(), ensureScript()]);
 
 export default function GalleryCarousel({ items = [] }) {
   const swiperRef = useRef(null);
   const swiperInstanceRef = useRef(null);
   const [orientations, setOrientations] = useState({});
   const slidesKey = useMemo(() => items.map((item) => item.src).join('|'), [items]);
+  const setOrientationForSource = useCallback((src, width, height) => {
+    if (!src || !width || !height) return;
+    const nextOrientation = detectOrientation(width, height);
+    setOrientations((prev) => {
+      if (!nextOrientation || prev[src]) return prev;
+      return { ...prev, [src]: nextOrientation };
+    });
+  }, []);
 
   useEffect(() => {
     setOrientations((prev) => {
@@ -62,7 +73,7 @@ export default function GalleryCarousel({ items = [] }) {
     let cancelled = false;
 
     const initSwiper = async () => {
-      await Promise.all([ensureStylesheet(), ensureScript()]);
+      await ensureSwiperAssets();
       if (cancelled || !swiperRef.current || !window.Swiper) return;
 
       swiperInstanceRef.current = new window.Swiper(swiperRef.current, {
@@ -129,13 +140,7 @@ export default function GalleryCarousel({ items = [] }) {
                     preload="metadata"
                     onLoadedMetadata={(event) => {
                       const video = event.currentTarget;
-                      if (!video.videoWidth || !video.videoHeight) return;
-                      setOrientations((prev) => {
-                        if (prev[item.src]) return prev;
-                        const nextOrientation =
-                          video.videoWidth >= video.videoHeight ? 'landscape' : 'portrait';
-                        return { ...prev, [item.src]: nextOrientation };
-                      });
+                      setOrientationForSource(item.src, video.videoWidth, video.videoHeight);
                     }}
                   />
                 ) : (
@@ -145,19 +150,13 @@ export default function GalleryCarousel({ items = [] }) {
                     loading="lazy"
                     onLoad={(event) => {
                       const media = event.currentTarget;
-                      if (!media.naturalWidth || !media.naturalHeight) return;
-                      setOrientations((prev) => {
-                        if (prev[item.src]) return prev;
-                        const nextOrientation =
-                          media.naturalWidth >= media.naturalHeight ? 'landscape' : 'portrait';
-                        return { ...prev, [item.src]: nextOrientation };
-                      });
+                      setOrientationForSource(item.src, media.naturalWidth, media.naturalHeight);
                     }}
                   />
                 )}
               </div>
-              <div className="info">
-                <span className="gallery-swiper-model-pill" title="Model">
+              <div className="gallery-swiper-info">
+                <span className="gallery-swiper-pill" title="Model">
                   Model: {item.model || 'Custom'}
                 </span>
               </div>

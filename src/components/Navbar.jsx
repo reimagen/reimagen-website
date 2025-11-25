@@ -34,34 +34,36 @@ export default function Navbar() {
   );
 
   return (
-    <nav className="fixed top-0 left-0 right-0 py-4 px-6 md:px-12 bg-black/40 backdrop-blur text-white shadow border-b border-white/10 z-50">
-      <div className="flex items-center justify-between">
-        <Link to="/">
-          <h1 className="text-2xl tracking-[0.12em] text-brand-lavender">reimagen</h1>
-        </Link>
+    <nav className="fixed inset-x-0 top-4 px-4 md:px-8 z-50">
+      <div className="bg-black/50 backdrop-blur text-white shadow-lg border border-white/15 rounded-2xl px-4 md:px-6 py-3 md:py-4">
+        <div className="flex items-center justify-between">
+          <Link to="/">
+            <h1 className="text-2xl tracking-[0.12em] text-brand-lavender">reimagen</h1>
+          </Link>
 
-        <button
-          type="button"
-          className="md:hidden inline-flex flex-col gap-1.5 rounded border border-white/30 px-3 py-2"
-          onClick={() => setIsMenuOpen((prev) => !prev)}
-          aria-label="Toggle navigation menu"
-          aria-expanded={isMenuOpen}
-        >
-          <span className="block h-0.5 w-6 bg-white" />
-          <span className="block h-0.5 w-6 bg-white" />
-          <span className="block h-0.5 w-6 bg-white" />
-        </button>
+          <button
+            type="button"
+            className="md:hidden inline-flex flex-col gap-1.5 rounded border border-white/30 px-3 py-2"
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+            aria-label="Toggle navigation menu"
+            aria-expanded={isMenuOpen}
+          >
+            <span className="block h-0.5 w-6 bg-white" />
+            <span className="block h-0.5 w-6 bg-white" />
+            <span className="block h-0.5 w-6 bg-white" />
+          </button>
 
-        <ul className="hidden md:flex gap-6 text-md tracking-[0.12em]">
-          {renderLinks()}
-        </ul>
+          <ul className="hidden md:flex gap-6 text-md tracking-[0.12em]">
+            {renderLinks()}
+          </ul>
+        </div>
+
+        {isMenuOpen && (
+          <ul className="mt-4 flex flex-col gap-4 text-sm tracking-[0.2em] md:hidden border-t border-white/10 pt-4 text-right">
+            {renderLinks("block")}
+          </ul>
+        )}
       </div>
-
-      {isMenuOpen && (
-        <ul className="mt-4 flex flex-col gap-4 text-sm tracking-[0.2em] md:hidden border-t border-white/10 pt-4 text-right">
-          {renderLinks("block")}
-        </ul>
-      )}
     </nav>
   );
 }

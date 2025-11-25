@@ -1,8 +1,17 @@
 import { useEffect, useRef } from 'react';
 
-export default function GalleryCard({ item }) {
+const ASPECT_RATIO = 'aspect-[2/3]';
+
+export default function GalleryCard({ item = {} }) {
   const videoRef = useRef(null);
-  const isVideo = item.format === "Video";
+  const {
+    format = 'image',
+    src,
+    alt = '',
+    caption = '',
+    model = 'Custom',
+  } = item;
+  const isVideo = format.toLowerCase() === 'video';
 
   useEffect(() => {
     if (!isVideo || !videoRef.current) return undefined;
@@ -23,39 +32,39 @@ export default function GalleryCard({ item }) {
     );
 
     observer.observe(node);
-    return () => {
-      observer.disconnect();
-    };
+    return () => observer.disconnect();
   }, [isVideo]);
 
   return (
     <div className="brand-card overflow-hidden">
-      {item.format === "Image" ? (
-        <img 
-          src={item.src} 
-          alt={item.alt} 
-          className="w-full aspect-[2/3] object-cover" 
+      {!isVideo ? (
+        <img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          className={`w-full ${ASPECT_RATIO} object-cover`}
         />
       ) : (
-        <div className="relative w-full aspect-[2/3] bg-gray-700 flex items-center justify-center">
-          <video 
+        <div className={`relative w-full ${ASPECT_RATIO} bg-gray-700`}>
+          <video
             ref={videoRef}
-            controls 
+            controls
             autoPlay
             className="w-full h-full object-cover"
             preload="metadata"
             muted
             playsInline
+            loop
           >
-          <source src={item.src} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+            <source src={src} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
       )}
       <div className="p-4 space-y-1">
-        <p className="text-white text-sm">{item.caption}</p>
+        {caption && <p className="text-white text-sm">{caption}</p>}
         <p className="brand-section-subhead text-brand-lavender text-xs">
-          Model: <span className="font-medium text-white">{item.model}</span>
+          Model: <span className="font-medium text-white">{model}</span>
         </p>
       </div>
     </div>
