@@ -6,6 +6,7 @@ const NAV_LINKS = [
   { to: "/products", label: "Products" },
   { to: "/gallery", label: "Gallery" },
   { to: "/toolkit", label: "Toolkit" },
+  { to: "/contact", label: "Contact" },
 ];
 
 export default function Navbar() {
