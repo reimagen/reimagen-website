@@ -116,14 +116,14 @@ export default function Products() {
   return (
     <section className="relative overflow-hidden -mt-24 pt-24 pb-48">
       <video
-        src="/videos/monument-valley-aurora.mp4"
+        src="/videos/creation-of-robot.mp4"
         autoPlay
         loop
         muted
         playsInline
-        className="absolute left-0 right-0 top-[-10%] h-[120%] w-full object-cover brightness-100"
+        className="fixed inset-0 w-full h-full object-cover brightness-100"
       />
-      <div className="absolute inset-0 bg-black/70" aria-hidden="true" />
+      <div className="fixed inset-0 bg-black/70" aria-hidden="true" />
 
       <div className="relative z-10 flex flex-col gap-8 px-4 py-16 md:px-10 lg:px-16">
       <header className="mb-8 text-center flex flex-col items-center space-y-2">

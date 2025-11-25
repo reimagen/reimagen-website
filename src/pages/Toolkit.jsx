@@ -46,7 +46,7 @@ export default function Toolkit() {
         <header className="text-center space-y-4 max-w-3xl mx-auto">
           <p className="text-3xl mb-4 tracking-[0.15em] uppercase text-center">Toolkit</p>
           <p className="brand-section-subhead text-brand-lavender text-center">
-            We try every AI product so you don't have to. These are the top picks.
+            We try every AI product so you don't have to. These are our top picks.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a href="#explorer" className={`${ctaBase} bg-brand-lavender hover:bg-brand-lavender-dark text-black`}>

@@ -7,7 +7,7 @@ export default function Home() {
       {/* Hero */}
       <div className="relative w-full min-h-[calc(100vh+5rem)]">
         <video
-          src="/videos/creation-of-robot.mp4"
+          src="/videos/cosmic-surfer-kling2.5.mp4"
           autoPlay
           loop
           muted
@@ -19,7 +19,7 @@ export default function Home() {
         <div className="absolute inset-0">
           <div className="flex min-h-screen items-center justify-center px-4">
             <div className="bg-black/60 p-8 rounded-2xl text-center max-w-3xl w-full space-y-4">
-              <h1 className="text-4xl md:text-5xl font-bold">Bring Imagination to Life</h1>
+              <h1 className="text-4xl md:text-5xl font-bold">Let Wonder Lead the Way</h1>
               <p className="brand-hero-chip text-brand-lavender">
                 Building delightful AI experiences
               </p>
