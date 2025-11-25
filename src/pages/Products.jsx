@@ -85,6 +85,7 @@ export default function Products() {
   const [selectedCategories, setSelectedCategories] = useState([]);
 
   const categories = ['All', 'Apps', 'Agents', 'Other'];
+  const filterButtonBase = 'brand-cta text-xs tracking-[0.2em] uppercase';
 
   const categoryStyles = {
     Apps: {
@@ -125,7 +126,7 @@ export default function Products() {
       />
       <div className="fixed inset-0 bg-black/70" aria-hidden="true" />
 
-      <div className="relative z-10 flex flex-col gap-8 px-4 py-16 md:px-10 lg:px-16">
+      <div className="relative z-10 flex flex-col px-4 py-16 md:px-10 lg:px-16">
       <header className="mb-8 text-center flex flex-col items-center space-y-2">
         <h2 className="text-3xl mb-1 tracking-[0.15em] uppercase text-center">Products</h2>
         <p className="brand-section-subhead text-brand-lavender text-sm">
@@ -149,14 +150,14 @@ export default function Products() {
                   : [...prev, category]
               );
             }}
-            className={`brand-pill ${
+            className={`${filterButtonBase} ${
               category === 'All'
                 ? selectedCategories.length === 0
                   ? categoryStyles.default.pill
                   : 'bg-gray-800 text-gray-200 border-gray-700 hover:bg-gray-700'
                 : selectedCategories.includes(category)
                   ? (categoryStyles[category]?.pill || categoryStyles.default.pill)
-                  : 'bg-gray-800 text-gray-200 border-gray-700 hover:bg-gray-700'
+                  : 'bg-white/10 text-white hover:bg-white/20'
             }`}
           >
             {category}

@@ -6,11 +6,13 @@ import genZ from '../assets/genz-coco.png';
 // Models used / planned for the gallery
 const MODELS = ["Sora", "Veo"];
 const FILTER_OPTIONS = ["All", ...MODELS, "Others"];
-const modelStyles = {
-  Sora: 'bg-brand-lavender text-black hover:bg-brand-lavender-dark',
-  Veo: 'bg-brand-pink text-black hover:bg-brand-pink-dark',
-  Others: 'bg-brand-peach text-black hover:bg-brand-peach-dark'
-};
+  const modelStyles = {
+    Sora: 'bg-brand-lavender text-black hover:bg-brand-lavender-dark',
+    Veo: 'bg-brand-pink text-black hover:bg-brand-pink-dark',
+    Others: 'bg-brand-peach text-black hover:bg-brand-peach-dark'
+  };
+
+const filterButtonBase = 'brand-cta text-xs tracking-[0.2em] uppercase';
 
 const galleryItems = [
   {
@@ -120,12 +122,12 @@ export default function Gallery() {
             <button
               key={model}
               onClick={() => setSelectedModel(model)}
-              className={`brand-pill ${
-                selectedModel === model
-                  ? model === 'All'
-                    ? 'bg-gray-200 text-black'
+            className={`${filterButtonBase} ${
+              selectedModel === model
+                ? model === 'All'
+                  ? 'bg-gray-200 text-black'
                     : modelStyles[model] || 'bg-white/20 text-white'
-                  : 'brand-pill-inactive'
+                  : 'bg-white/10 text-white hover:bg-white/20'
               }`}
             >
               {model}
