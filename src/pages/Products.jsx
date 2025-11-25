@@ -242,7 +242,7 @@ export default function Products() {
         loop
         muted
         playsInline
-        className="fixed inset-0 w-full h-full object-cover brightness-100"
+        className="fixed inset-0 w-full h-full object-cover brightness-100 md:scale-100 scale-[1.05]"
       />
       <div className="fixed inset-0 bg-black/70" aria-hidden="true" />
 

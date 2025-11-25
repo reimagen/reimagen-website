@@ -101,6 +101,18 @@ export default function About() {
 
   return (
     <section className="relative overflow-hidden">
+      {/* Desktop background */}
+      <video
+        src="/videos/space-drift-kling2.5.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="hidden md:block fixed inset-0 w-full h-full object-cover brightness-[0.62]"
+      />
+      <div className="hidden md:block fixed inset-0 bg-black/75" aria-hidden="true" />
+
+      {/* Mobile background */}
       <video
         src="/videos/dorothy-skipping.mp4"
         autoPlay
@@ -111,7 +123,8 @@ export default function About() {
         onLoadedData={() => setIsVideoReady(true)}
         className="md:hidden fixed inset-0 w-full h-full object-cover brightness-90"
       />
-      <div className="md:hidden fixed inset-0 bg-black/70" aria-hidden="true" />
+      <div className="md:hidden fixed inset-0 bg-black/75" aria-hidden="true" />
+
       <div className="relative z-10 max-w-5xl mx-auto px-6 pt-8 pb-16 md:py-16">
         <div className="grid gap-10 md:grid-cols-[1.1fr,1.4fr] items-start">
           {/* Left: video */}
@@ -122,6 +135,7 @@ export default function About() {
               loop
               muted
               playsInline
+              onLoadedData={() => setIsVideoReady(true)}
               className="w-full h-full object-cover"
             />
           </div>
@@ -152,8 +166,8 @@ export default function About() {
               <p className="text-gray-300 max-w-2xl">
                 We're full-stack developers turned AI builders focused on creating experiences
                 that feel intuitive and personal. We live in the space between the technical and the magical,
-                creating hyper-personalized experiences, new forms of communication, and interfaces that feel alive. 
-                Chat powered the first big wave of consumer AI, and we're betting voice is next.
+                thinking abouts hyper-personalization, new forms of communication, and how to make interfaces that feel alive. 
+                Chat assistants powered the first big wave of consumer AI, and we're betting voice is next.
               </p>
             </div>
 

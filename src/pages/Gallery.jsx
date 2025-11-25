@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import GalleryCarousel from "../components/GalleryCarousel";
-import sandgrada from '../assets/sandgrada.png';
-import genZ from '../assets/genz-coco.png';
 
 // Models used / planned for the gallery
 const MODELS = ["Sora", "Veo"];
@@ -16,6 +14,7 @@ const filterButtonBase = 'brand-cta text-xs tracking-[0.2em] uppercase';
 
 const galleryItems = [
   {
+    order: 1,
     format: "Video",
     src: "/videos/creation-of-robot.mp4",
     alt: "Creation of Adam but a Robot instead of a man",
@@ -23,6 +22,7 @@ const galleryItems = [
     model: "Minimax Hailuo 2",
   },
   {
+    order: 2,
     format: "Video",
     src: "/videos/floating-dream.mp4",
     alt: "Floating by Futuristic Structures in Space",
@@ -30,13 +30,23 @@ const galleryItems = [
     model: "Sora",
   },
   {
-    format: "Image",
-    src: genZ, 
+    order: 3,
+    format: "Video",
+    src: "/videos/roco-genz-kling2.5.mp4", 
     alt: "A GenZ Girl Holding Cell Phone in Rococo Style",
     caption: "Rococo Goes 2025",
+    model: "Kling 2.5",
+  },
+  {
+    order: 4,
+    format: "Video",
+    src: "/videos/monument-valley-aurora.mp4",
+    alt: "Northern Lights Over Monument Valley",
+    caption: "Auroras in Monument Valley",
     model: "Sora",
   },
   {
+    order: 5,
     format: "Video",
     src: "/videos/cloud-dog.mp4",
     alt: "Cloud Morphs Into a Dog",
@@ -44,6 +54,7 @@ const galleryItems = [
     model: "Sora",
   },
   {
+    order: 6,
     format: "Video",
     src: "/videos/robo-selfie-video.mp4", 
     alt: "An All-Star Robot Selfie of Movie Characters",
@@ -51,6 +62,7 @@ const galleryItems = [
     model: "Seedance 1.0",
   },
   {
+    order: 7,
     format: "Video",
     src: "/videos/candy-basil.mp4",
     alt: "A Candy Version of St. Basil's Cathedral in Moscow",
@@ -58,6 +70,7 @@ const galleryItems = [
     model: "Sora",
   },
   {
+    order: 8,
     format: "Video",
     src: "/videos/aurora-drone.mp4",
     alt: "Drone Flying Through Auroras",
@@ -65,13 +78,7 @@ const galleryItems = [
     model: "Sora",
   },
   {
-    format: "Image",
-    src: sandgrada, 
-    alt: "The Sagrada Familia as a Sandcastle",
-    caption: "Sa(nd)grada Familia",
-    model: "Sora",
-  },
-  {
+    order: 9,
     format: "Video",
     src: "/videos/starry-night.mp4",
     alt: "Realistic Version of Starry Night Painting",
@@ -79,6 +86,15 @@ const galleryItems = [
     model: "Sora",
   },
   {
+    order: 10,
+    format: "Video",
+    src: "/videos/sandgrada-seedance1.0.mp4", 
+    alt: "The Sagrada Familia as a Sandcastle",
+    caption: "Sa(nd)grada Familia",
+    model: "Seedance 1.0",
+  },
+  {
+    order: 11,
     format: "Video",
     src: "/videos/pinky-brain.mp4",
     alt: "Pinky and the Brain style characters in an AI-generated scene",
@@ -86,6 +102,7 @@ const galleryItems = [
     model: "MiniMax Hailuo 02",
   },
   {
+    order: 12,
     format: "Video",
     src: "/videos/yin-yang-cats.mp4",
     alt: "A Black and a White curled up in the shape of a yin-yang sign",
@@ -97,19 +114,30 @@ const galleryItems = [
 
 export default function Gallery() {
   const [selectedModel, setSelectedModel] = useState("All");
+  const orderedItems = [...galleryItems].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
   const matchesModel = (modelName, filter) =>
     modelName?.toLowerCase().startsWith(filter.toLowerCase());
 
   const filteredItems =
     selectedModel === "All"
-      ? galleryItems
+      ? orderedItems
       : selectedModel === "Others"
-        ? galleryItems.filter((item) => !MODELS.some((base) => matchesModel(item.model, base)))
-        : galleryItems.filter((item) => matchesModel(item.model, selectedModel));
+        ? orderedItems.filter((item) => !MODELS.some((base) => matchesModel(item.model, base)))
+        : orderedItems.filter((item) => matchesModel(item.model, selectedModel));
 
   return (
-    <section className="relative -mt-24 pt-24 pb-24">
-      <div className="px-4 py-16 md:px-10 lg:px-16">
+    <section className="relative -mt-24 pt-24 pb-24 overflow-hidden">
+      <video
+        src="/videos/space-drift-kling2.5.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="fixed inset-0 w-full h-full object-cover brightness-75"
+      />
+      <div className="fixed inset-0 bg-black/70" aria-hidden="true" />
+
+      <div className="relative z-10 px-4 py-16 md:px-10 lg:px-16">
         <header className="mb-8 text-center flex flex-col items-center space-y-2">
           <h2 className="text-3xl mb-1 tracking-[0.15em] uppercase text-center">Gallery</h2>
           <p className="brand-section-subhead text-brand-lavender text-center">Swipe to explore a curated selection of GenAI media</p>
