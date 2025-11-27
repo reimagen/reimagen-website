@@ -1,4 +1,5 @@
 // src/pages/Toolkit.jsx
+import { createPortal } from 'react-dom';
 import { useEffect, useState } from 'react';
 import ExplorerSection from '../components/toolkit/ExplorerSection';
 import VibeSection from '../components/toolkit/VibeSection';
@@ -18,14 +19,35 @@ export default function Toolkit() {
   const ctaBase = 'brand-cta';
 
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [buttonOffset, setButtonOffset] = useState(40);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setShowBackToTop(window.scrollY > 400);
+      const footer = document.querySelector('footer');
+      if (footer) {
+        const footerRect = footer.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        if (footerRect.top < viewportHeight) {
+          const overlap = viewportHeight - footerRect.top;
+          setButtonOffset(Math.max(40, overlap + 16));
+          return;
+        }
+      }
+      setButtonOffset(40);
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll);
+    handleScroll();
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, []);
+  useEffect(() => {
+    setIsClient(true);
   }, []);
 
   const scrollToTop = () => {
@@ -33,7 +55,8 @@ export default function Toolkit() {
   };
 
   return (
-    <section className="relative -mt-24 pt-24 pb-24 overflow-hidden">
+    <>
+    <section className="relative -mt-24 pt-24 pb-24 overflow-visible">
       <video
         src="/videos/floating-dream.mp4"
         autoPlay
@@ -83,15 +106,20 @@ export default function Toolkit() {
           builderRunnersUp={builderRunnersUp}
         />
       </div>
-      {showBackToTop && (
-        <button
-          onClick={scrollToTop}
-          className="fixed bottom-48 right-8 z-[999] rounded-full bg-brand-lavender px-4 py-2 text-sm text-black shadow-xl transition hover:bg-brand-lavender-dark"
-          aria-label="Back to top"
-        >
-          Back to top ↑
-        </button>
-      )}
     </section>
+    {isClient && showBackToTop
+      ? createPortal(
+          <button
+            onClick={scrollToTop}
+            className="fixed right-6 md:right-10 z-[999] rounded-full bg-brand-lavender px-4 py-2 text-sm text-black shadow-xl transition hover:bg-brand-lavender-dark"
+            aria-label="Back to top"
+            style={{ bottom: `${buttonOffset}px` }}
+          >
+            Back to top ↑
+          </button>,
+          document.body
+        )
+      : null}
+    </>
   );
 }

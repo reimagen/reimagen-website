@@ -2,7 +2,7 @@ export const explorerStarter = [];
 
 export const builderCategories = [
   {
-    kicker: 'IDE stack',
+    kicker: 'IDE',
     items: [
       {
         name: 'Cursor',
@@ -84,7 +84,7 @@ export const builderRunnersUp = [
 
 export const vibeStack = [
   {
-    kicker: 'Low-code',
+    kicker: 'Low-code Development',
     items: [
       {
         name: 'Lovable',
@@ -104,7 +104,7 @@ export const vibeStack = [
     ],
   },
   {
-    kicker: 'Playground',
+    kicker: 'AI Playground',
     items: [
       {
         name: 'Google AI Studio',
@@ -119,7 +119,7 @@ export const vibeStack = [
     ],
   },
   {
-    kicker: 'Websites',
+    kicker: 'Website Design',
     items: [
       {
         name: 'Figma Make',

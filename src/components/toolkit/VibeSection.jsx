@@ -47,8 +47,8 @@ export default function VibeSection({ sectionKicker, vibeStack, vibeTips, vibeQu
         <p className="text-sm uppercase tracking-[0.2em] text-brand-pink">Feeling FOMO?</p>
         <p>
         If you're feeling overwhelmed with all these tools, you're not alone. New products and models drop every day, and this vibe-coder starter pack barely scratches the surface.
-        There are whole universes for voice, launch ops, motion graphics, and niche workflows we didn&apos;t cover.
-        If you're considering a tool, odds are we&apos;ve already stress-tested it and can give you the TLDR.
+        There are whole universes for voice, launch ops, motion graphics, and niche workflows that we didn&apos;t cover here.
+        If you're considering a tool, chances are we&apos;ve already stress-tested it and can give you the TLDR.
         </p>
       </div>
 
