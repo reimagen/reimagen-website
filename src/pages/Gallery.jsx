@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import GalleryCarousel from "../components/GalleryCarousel";
+import galaxyPoster from '../assets/galaxy.jpg';
 
 // Models used / planned for the gallery
 const MODELS = ["Sora", "Veo"];
@@ -113,6 +114,11 @@ const galleryItems = [
 
 
 export default function Gallery() {
+  const [isGridVisible, setIsGridVisible] = useState(false);
+  useEffect(() => {
+    const timeout = setTimeout(() => setIsGridVisible(true), 150);
+    return () => clearTimeout(timeout);
+  }, []);
   const [selectedModel, setSelectedModel] = useState("All");
   const orderedItems = [...galleryItems].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
   const matchesModel = (modelName, filter) =>
@@ -133,6 +139,7 @@ export default function Gallery() {
         loop
         muted
         playsInline
+        poster={galaxyPoster}
         className="fixed inset-0 w-full h-full object-cover brightness-75"
       />
       <div className="fixed inset-0 bg-black/70" aria-hidden="true" />
@@ -165,7 +172,9 @@ export default function Gallery() {
       </div>
 
 
-      <GalleryCarousel items={filteredItems} />
+      <div className={`gallery-stack-animate ${isGridVisible ? 'is-visible' : ''}`}>
+        <GalleryCarousel items={filteredItems} />
+      </div>
       </div>
     </section>
   );

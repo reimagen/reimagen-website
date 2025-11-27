@@ -1,8 +1,126 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import fitnessRecap from '../assets/fitness-recap.png';
+import creationRobotPoster from '../assets/creation-of-robot.jpg';
+
+function ProductCard({ product, index, categoryStyles, isDesktop }) {
+  const cardRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const node = cardRef.current;
+    if (!isDesktop) {
+      setIsVisible(true);
+      return undefined;
+    }
+    if (!node || isVisible) return undefined;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [isVisible, isDesktop]);
+
+  const textClass = categoryStyles[product.category]?.text || 'text-white';
+  const linkClass =
+    categoryStyles[product.category]?.link || categoryStyles.default.link;
+
+  return (
+    <div
+      ref={cardRef}
+      className={`brand-card min-w-[260px] max-w-xs text-white snap-center flex-shrink-0 ${
+        isDesktop ? 'slide-in-right' : 'card-enter'
+      } ${isVisible ? 'is-visible' : ''}`}
+      data-product-card
+      style={{
+        transitionDelay: isDesktop && isVisible ? `${index * 80}ms` : '0ms',
+      }}
+    >
+      <div className="p-4 flex flex-col flex-grow">
+        <h4 className={`text-lg font-semibold ${textClass}`}>
+          {product.title}
+        </h4>
+        <p
+          className={`text-xs uppercase tracking-wide mb-2 ${
+            categoryStyles[product.category]?.text || 'text-gray-400'
+          }`}
+        >
+          {product.category === 'Apps'
+            ? 'App'
+            : product.category === 'Agents'
+              ? 'Agent'
+              : product.category}
+        </p>
+        <p className="text-sm text-gray-300 mb-4 flex-grow">
+          {product.description}
+        </p>
+        {product.tools && (
+          <p className="brand-section-subhead text-brand-lavender text-xs mb-3">
+            AI Tools: <span className="text-white">{product.tools.join(', ')}</span>
+          </p>
+        )}
+        {product.stack && (
+          <p className="brand-section-subhead text-brand-peach text-xs mb-3">
+            Stack: <span className="text-white">{product.stack.join(', ')}</span>
+          </p>
+        )}
+        <div className="mt-auto flex flex-col gap-3">
+          {product.category === 'Apps' && product.image && (
+            <img
+              src={product.image}
+              alt={product.title}
+              className="w-full h-32 rounded-lg object-cover"
+            />
+          )}
+          {product.category === 'Agents' || product.comingSoon ? (
+            <Link to="/contact" className={`brand-cta-sm ${categoryStyles.Agents.link}`}>
+              Get Notified →
+            </Link>
+          ) : (
+            <a
+              href={product.link}
+              className={`brand-cta-sm ${linkClass}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {product.title === 'FitnessAI'
+                ? 'Sign Up →'
+                : product.category === 'Other'
+                  ? 'Open Repo →'
+                  : 'Try Product →'}
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Products() {
+  const [isDesktop, setIsDesktop] = useState(
+    typeof window !== 'undefined'
+      ? window.matchMedia('(min-width: 768px)').matches
+      : false
+  );
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    const handleChange = (event) => setIsDesktop(event.matches);
+    setIsDesktop(mediaQuery.matches);
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
+
   const products = {
     applications: [
       {
@@ -242,6 +360,7 @@ export default function Products() {
         loop
         muted
         playsInline
+        poster={creationRobotPoster}
         className="fixed inset-0 w-full h-full object-cover brightness-100 md:scale-100 scale-[1.05]"
       />
       <div className="fixed inset-0 bg-black/70" aria-hidden="true" />
@@ -292,71 +411,13 @@ export default function Products() {
       >
         <div className="flex gap-4 snap-x snap-mandatory">
           {visibleProducts.map((product, index) => (
-            <div
+            <ProductCard
               key={`${product.title}-${index}`}
-              className="brand-card min-w-[260px] max-w-xs text-white snap-center flex-shrink-0"
-              data-product-card
-            >
-              <div className="p-4 flex flex-col flex-grow">
-                <h4 className={`text-lg font-semibold ${categoryStyles[product.category]?.text || 'text-white'}`}>
-                  {product.title}
-                </h4>
-                <p
-                  className={`text-xs uppercase tracking-wide mb-2 ${categoryStyles[product.category]?.text || 'text-gray-400'}`}
-                >
-                  {product.category === 'Apps'
-                    ? 'App'
-                    : product.category === 'Agents'
-                      ? 'Agent'
-                      : product.category}
-                </p>
-                <p className="text-sm text-gray-300 mb-4 flex-grow">
-                  {product.description}
-                </p>
-                {product.tools && (
-                  <p className="brand-section-subhead text-brand-lavender text-xs mb-3">
-                    AI Tools: <span className="text-white">{product.tools.join(', ')}</span>
-                  </p>
-                )}
-                {product.stack && (
-                  <p className="brand-section-subhead text-brand-peach text-xs mb-3">
-                    Stack: <span className="text-white">{product.stack.join(', ')}</span>
-                  </p>
-                )}
-                <div className="mt-auto flex flex-col gap-3">
-                  {product.category === 'Apps' && product.image && (
-                    <img
-                      src={product.image}
-                      alt={product.title}
-                      className="w-full h-32 rounded-lg object-cover"
-                    />
-                  )}
-                  {product.category === 'Agents' || product.comingSoon ? (
-                    <Link
-                      to="/contact"
-                      className={`brand-cta-sm ${categoryStyles.Agents.link}`}
-                    >
-                      Get Notified →
-                    </Link>
-                  ) : (
-                    <a
-                      href={product.link}
-                      className={`brand-cta-sm ${
-                        categoryStyles[product.category]?.link || categoryStyles.default.link
-                      }`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                  {product.title === 'FitnessAI'
-                    ? 'Sign Up →'
-                    : product.category === 'Other'
-                      ? 'Open Repo →'
-                      : 'Try Product →'}
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
+              product={product}
+              index={index}
+              categoryStyles={categoryStyles}
+              isDesktop={isDesktop}
+            />
           ))}
         </div>
       </div>

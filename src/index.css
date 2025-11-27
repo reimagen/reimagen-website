@@ -16,7 +16,7 @@ body {
 
 @layer components {
   .brand-card {
-    @apply relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-xl flex flex-col gap-3 p-6 shadow-[0_8px_32px_rgba(0,0,0,0.35)];
+    @apply relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-xl flex flex-col gap-3 p-6 shadow-[0_8px_32px_rgba(0,0,0,0.35)] transition-transform duration-200 ease-out hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,0,0,0.45)];
   }
 
   .brand-card-compact {
@@ -53,6 +53,29 @@ body {
 
   .brand-social-icon {
     @apply w-6 h-6 text-white transform transition-transform duration-200 ease-out hover:scale-150;
+  }
+
+  .hero-flip-card {
+    opacity: 0;
+    transform: perspective(1200px) rotateX(18deg) translateY(32px);
+    transform-origin: bottom;
+    transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .hero-flip-card.is-visible {
+    opacity: 1;
+    transform: perspective(1200px) rotateX(0deg) translateY(0);
+  }
+
+  .card-enter {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+
+  .card-enter.is-visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .brand-hero-chip {

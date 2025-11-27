@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../styles/contactFlip.css";
+import monumentPoster from "../assets/monument-valley-aurora.jpg";
 
 export default function Contact() {
   const initialFormState = {
@@ -107,6 +108,7 @@ const handleSubmit = async (e) => {
         loop
         muted
         playsInline
+        poster={monumentPoster}
         className="fixed inset-0 w-full h-full object-cover brightness-80"
       />
       <div className="fixed inset-0 bg-black/70" aria-hidden="true" />

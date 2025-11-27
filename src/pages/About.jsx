@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import dorothyPosterFrame from "../assets/dorothy-poster-frame.jpeg";
+import galaxyPoster from "../assets/galaxy.jpg";
 
 const REVEAL_OPTIONS = { threshold: 0.4, rootMargin: '0px 0px -25% 0px' };
 
@@ -9,10 +10,21 @@ export default function About() {
   const whatWeDoRef = useRef(null);
   const howWeWorkRef = useRef(null);
   const [isVideoReady, setIsVideoReady] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(
+    typeof window !== 'undefined' ? window.matchMedia('(min-width: 768px)').matches : false
+  );
   const [isHeaderVisible, setIsHeaderVisible] = useState(false);
   const [isWhoVisible, setIsWhoVisible] = useState(false);
   const [isWhatVisible, setIsWhatVisible] = useState(false);
   const [isHowVisible, setIsHowVisible] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    const handleChange = (event) => setIsDesktop(event.matches);
+    setIsDesktop(mediaQuery.matches);
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
 
   useEffect(() => {
     if (isVideoReady) return undefined;
@@ -62,6 +74,10 @@ export default function About() {
 
   useEffect(() => {
     const target = whatWeDoRef.current;
+    if (isDesktop) {
+      setIsWhatVisible(true);
+      return undefined;
+    }
     if (!target) return undefined;
 
     const observer = new IntersectionObserver(
@@ -82,6 +98,10 @@ export default function About() {
 
   useEffect(() => {
     const target = howWeWorkRef.current;
+    if (isDesktop) {
+      setIsHowVisible(true);
+      return undefined;
+    }
     if (!target) return undefined;
 
     const observer = new IntersectionObserver(
@@ -100,6 +120,12 @@ export default function About() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (!isDesktop || !isWhoVisible) return;
+    setIsWhatVisible(true);
+    setIsHowVisible(true);
+  }, [isDesktop, isWhoVisible]);
+
   return (
     <section className="relative overflow-hidden">
       {/* Desktop background */}
@@ -109,6 +135,7 @@ export default function About() {
         loop
         muted
         playsInline
+        poster={galaxyPoster}
         className="hidden md:block fixed inset-0 w-full h-full object-cover brightness-[0.62]"
       />
       <div className="hidden md:block fixed inset-0 bg-black/75" aria-hidden="true" />

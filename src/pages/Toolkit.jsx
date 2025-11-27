@@ -11,6 +11,7 @@ import {
   vibeStack,
   vibeTips,
 } from '../data/toolkitData';
+import dreamscapePoster from '../assets/dreamscape.jpeg';
 
 export default function Toolkit() {
   const sectionKicker = 'brand-section-kicker';
@@ -39,6 +40,7 @@ export default function Toolkit() {
         loop
         muted
         playsInline
+        poster={dreamscapePoster}
         className="fixed inset-0 w-full h-full object-cover brightness-90"
       />
       <div className="fixed inset-0 bg-black/70" aria-hidden="true" />
@@ -60,6 +62,7 @@ export default function Toolkit() {
             </a>
           </div>
         </header>
+
 
         <ExplorerSection
           sectionKicker={sectionKicker}
