@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import dorothyPosterFrame from "../assets/dorothy-poster-frame.jpeg";
 
 const REVEAL_OPTIONS = { threshold: 0.4, rootMargin: '0px 0px -25% 0px' };
 
@@ -121,6 +122,7 @@ export default function About() {
         playsInline
         preload="auto"
         onLoadedData={() => setIsVideoReady(true)}
+        poster={dorothyPosterFrame}
         className="md:hidden fixed inset-0 w-full h-full object-cover brightness-90"
       />
       <div className="md:hidden fixed inset-0 bg-black/75" aria-hidden="true" />
@@ -136,6 +138,7 @@ export default function About() {
               muted
               playsInline
               onLoadedData={() => setIsVideoReady(true)}
+              poster={dorothyPosterFrame}
               className="w-full h-full object-cover"
             />
           </div>
