@@ -21,6 +21,7 @@ export default function Toolkit() {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [buttonOffset, setButtonOffset] = useState(40);
   const [isClient, setIsClient] = useState(false);
+  const [personaButtonsAnimated, setPersonaButtonsAnimated] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,10 +49,63 @@ export default function Toolkit() {
   }, []);
   useEffect(() => {
     setIsClient(true);
+    if (typeof window === 'undefined') {
+      setPersonaButtonsAnimated(true);
+      return;
+    }
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (prefersReducedMotion.matches) {
+      setPersonaButtonsAnimated(true);
+      return;
+    }
+    const timer = setTimeout(() => setPersonaButtonsAnimated(true), 150);
+    return () => clearTimeout(timer);
   }, []);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const getHighlightColor = (sectionId) => {
+    switch (sectionId) {
+      case 'explorer':
+        return '199, 164, 246'; // lavender
+      case 'vibe':
+        return '255, 115, 192'; // pink
+      case 'builder':
+        return '255, 191, 148'; // peach
+      default:
+        return '255, 255, 255';
+    }
+  };
+
+  const scrollToSection = (event, sectionId) => {
+    event.preventDefault();
+    const target = document.getElementById(sectionId);
+    if (!target) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const offset = 96;
+    const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
+    const glowColor = getHighlightColor(sectionId);
+
+    window.scrollTo({
+      top: Math.max(0, targetPosition),
+      behavior: prefersReducedMotion ? 'auto' : 'smooth',
+    });
+
+    if (!prefersReducedMotion && target.animate) {
+      setTimeout(() => {
+        target.animate(
+          [
+            { boxShadow: `0 0 0 rgba(${glowColor}, 0)`, transform: 'scale(1)' },
+            { boxShadow: `0 0 40px rgba(${glowColor}, 0.6)`, transform: 'scale(1.01)' },
+            { boxShadow: `0 0 0 rgba(${glowColor}, 0)`, transform: 'scale(1)' },
+          ],
+          { duration: 900, easing: 'ease-out' }
+        );
+      }, 250);
+    }
   };
 
   return (
@@ -71,16 +125,34 @@ export default function Toolkit() {
         <header className="text-center space-y-4 max-w-3xl mx-auto">
           <p className="text-3xl mb-4 tracking-[0.15em] uppercase text-center">Toolkit</p>
           <p className="brand-section-subhead text-brand-lavender text-center">
-            We try every AI product so you don't have to. These are our top picks.
+            We try every AI product so you don't have to. What best describes you?
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <a href="#explorer" className={`${ctaBase} bg-brand-lavender hover:bg-brand-lavender-dark text-black`}>
+          <div
+            className={`flex flex-wrap justify-center gap-4 transform transition-all duration-700 ease-out ${
+              personaButtonsAnimated
+                ? 'opacity-100 scale-100 md:translate-x-0'
+                : 'opacity-0 scale-95 md:-translate-x-16'
+            }`}
+          >
+            <a
+              href="#explorer"
+              onClick={(event) => scrollToSection(event, 'explorer')}
+              className={`${ctaBase} bg-brand-lavender hover:bg-brand-lavender-dark text-black`}
+            >
               I&apos;m new to AI
             </a>
-            <a href="#vibe" className={`${ctaBase} bg-brand-pink hover:bg-brand-pink-dark text-black`}>
+            <a
+              href="#vibe"
+              onClick={(event) => scrollToSection(event, 'vibe')}
+              className={`${ctaBase} bg-brand-pink hover:bg-brand-pink-dark text-black`}
+            >
               I want to vibe code
             </a>
-            <a href="#builder" className={`${ctaBase} bg-brand-peach hover:bg-brand-peach-dark text-black`}>
+            <a
+              href="#builder"
+              onClick={(event) => scrollToSection(event, 'builder')}
+              className={`${ctaBase} bg-brand-peach hover:bg-brand-peach-dark text-black`}
+            >
               I build with code
             </a>
           </div>

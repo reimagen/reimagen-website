@@ -40,7 +40,7 @@ export const builderCategories = [
       },
       {
         name: 'Gemini CLI',
-        description: 'Google’s free alternative, performance depends highly on your technical vocabulary.',
+        description: 'Google\'s free tool, performance depends highly on your technical vocabulary.',
         link: 'https://ai.google.dev/gemini-api/docs/gemini-cli',
       },
     ],
@@ -93,7 +93,7 @@ export const vibeStack = [
       },
       {
         name: 'v0',
-        description: 'Vercel powers websites for Apple, Nike, OpenAI, etc. Their solution, v0, is strongest on front-end vibe coding. Limited free tier.',
+        description: 'Vercel created Next.js and powers websites for Apple, Nike, OpenAI, etc. Their solution, v0, is strongest on front-end vibe coding. Limited free tier.',
         link: 'https://v0.app',
       },
       {
@@ -108,7 +108,7 @@ export const vibeStack = [
     items: [
       {
         name: 'Google AI Studio',
-        description: 'Playground and demo zone for all things Google: make content, create mini-apps, etc.',
+        description: 'Demo zone for Google products: make content, create mini-apps, etc.',
         link: 'https://aistudio.google.com/',
       },
       {
@@ -123,7 +123,7 @@ export const vibeStack = [
     items: [
       {
         name: 'Figma Make',
-        description: 'Generate multi-screen vibes in seconds, then polish inside Figma proper.',
+        description: 'Create pages in seconds, experiment with flows, then polish inside Figma proper.',
         link: 'https://www.figma.com/make/',
       },
       {
@@ -137,17 +137,17 @@ export const vibeStack = [
 
 export const explorerTips = [
   {
-    title: 'Learn how to communicate with AI.',
-    detail: 'Ask for help refining prompts and setting clear system instructions. Start separate threads and projects so context stays clean.',
+    title: 'Learn the basics of communicating with AI.',
+    detail: 'Prompt engineering is overkill at this stage. Ask AI for help refining your prompts and set clear system instructions. Create separate threads and project spaces so context stays clean.',
   },
   {
-    title: "AI can't read your mind.",
-    detail: 'Context matters. Share your goals, audience, and constraints upfront. Provide feedback and tell AI what preferences to save.',
+    title: "Context matters.",
+    detail: 'AI can\'t read your mind. Context engineering is a trendy term, but what really matters is sharing your goals, KPIs, target audience, and constraints upfront. Provide docs, examples, feedback, and tell AI what\'s important.',
   },
   {
     title: 'Start a new chat thread to avoid performance degradation over time.',
     detail:
-      "Chats are like threaded emails: the more you have to dig through, the longer it will take. If you notice a slowdown, start a new chat.",
+      "Chats are like threaded emails: the further back you have to go and the more you have to dig through, the longer it will take. If you notice a slowdown, start a new chat.",
   },
 ];
 
@@ -155,16 +155,16 @@ export const vibeTips = [
   {
     title: 'Have a plan before you vibe.',
     detail:
-      'Coding agents feel magical, but wandering can get expensive fast. First create a plan, then build. Your wallet (and your project) will thank you.',
+      'Coding agents feel magical, but wandering without a plan can get expensive fast. First chat with AI to create a Product Requirements Document, known as a PRD, then start building. Your wallet (and your project) will thank you.',
   },
   {
     title: 'Reality check: an app you can ship in minutes is probably AI slop.',
-    detail: 'Every day, a flashy tool drops with this promise. Quality comes from intention, not speed. Focus on building a great product and user experience.',
+    detail: 'Every day, another flashy tool drops peddling this promise. Quality comes from intention, not speed. Focus on building a great product and user experience.',
   },
   {
     title: 'Vibe coding ≠ vibe deploying.',
     detail:
-      'Coding is step one. Battle-tested infrastructure, security, and storage are necessary for products to reliably hold up in the real world.',
+      'Coding is just the first step. You need battle-tested infrastructure, security, and storage for products to reliably hold up in the real world.',
   },
 ];
 

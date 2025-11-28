@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import CategoryGrid from './CategoryGrid';
+import MobileCardCarousel from './MobileCardCarousel';
 
 const explorerUseCases = [
   {
@@ -17,7 +18,7 @@ const explorerUseCases = [
       },
       {
         name: 'Claude',
-        description: 'Pro-level guidance for strategy docs and nuance-heavy writing. Need a report? Use Claude.',
+        description: 'Pro-level performance for strategy docs and nuance-heavy writing. Need a report? Use Claude.',
         link: 'https://claude.ai/'
       }
     ]
@@ -42,12 +43,12 @@ const explorerUseCases = [
     items: [
       {
         name: 'NotebookLM',
-        description: 'Drop in up to 50 sources (websites, docs, PDFs, videos) and get instant briefs, presentations, infographics, even a podcast overview. Chat with your content to learn.',
+        description: 'Chat with your content. Drop in up to 50 sources (websites, docs, PDFs, videos) and get instant briefs, presentations, infographics, even a podcast overview.',
         link: 'https://notebooklm.google.com/'
       },
       {
         name: 'Perplexity',
-        description: 'Deep researcher that cites its sources. Ask for market scans, competitor comparisons, or customer research outlines.',
+        description: 'Deep researcher that verifies and cites its sources. Ask for market scans, competitor comparisons, or ideal customer profiles.',
         link: 'https://www.perplexity.ai/'
       },
       {
@@ -59,14 +60,32 @@ const explorerUseCases = [
   }
 ];
 
+const explorerQa = [
+  {
+    title: 'Should I start with ChatGPT or Gemini?',
+    detail:
+      "Either works. Gemini ties into your existing Google account with generous limits, and ChatGPT requires its own account. Pick what's easiest for you.",
+  },
+  {
+    title: 'Do I need to pay for any of these tools?',
+    detail:
+      "Not immediately. Start on the free tier, and switch among different providers' tools to spread the daily usage load. Upgrade when you have a favorite.",
+  },
+  {
+    title: 'What is hallucination?',
+    detail:
+      'When AI confidently gives you the wrong answer. Always sanity-check for critical tasks, you can even run the response by another model. If you spot an error, course-correct the conversation.',
+  },
+];
+
 export default function ExplorerSection({ sectionKicker, explorerTips }) {
   return (
-    <section id="explorer" className="space-y-6 scroll-mt-24">
+    <section id="explorer" className="space-y-6 scroll-mt-24 rounded-3xl px-6 py-10 md:px-10">
       <div className="space-y-3 text-center md:text-left">
         <p className={`${sectionKicker} text-brand-lavender`}>Non-technical explorers</p>
-        <h2 className="text-2xl font-semibold">Zero-code starter pack for curious operators new to AI</h2>
+        <h2 className="text-2xl font-semibold">A zero-code starter pack for curious operators who are new to AI</h2>
         <p className="text-gray-300">
-          Think in use cases and immediate wins. AI helps take time-heavy executions off your plate.
+          Think in use cases and immediate wins. Use AI to help take time-heavy executions off your plate.
         </p>
       </div>
 
@@ -84,7 +103,7 @@ export default function ExplorerSection({ sectionKicker, explorerTips }) {
 
       <div className="brand-card space-y-4">
         <p className="text-sm uppercase tracking-[0.2em] text-brand-lavender">Three tips for chatting</p>
-        <ul className="space-y-3 text-left text-sm text-gray-300">
+        <ul className="hidden space-y-3 text-left text-sm text-gray-300 md:block">
           {explorerTips.map((tip) => (
             <li key={tip.title}>
               <p className="font-semibold text-white">{tip.title}</p>
@@ -92,24 +111,28 @@ export default function ExplorerSection({ sectionKicker, explorerTips }) {
             </li>
           ))}
         </ul>
+        <MobileCardCarousel
+          items={explorerTips}
+          dotColorClass="bg-brand-lavender"
+          ariaLabelPrefix="Show tip"
+        />
       </div>
 
       <div className="brand-card space-y-4">
         <p className="text-sm uppercase tracking-[0.2em] text-brand-lavender">Basic Q&amp;A</p>
-        <div className="space-y-3 text-left text-sm text-gray-300">
-          <div>
-            <p className="font-semibold text-white">Should I start with ChatGPT or Gemini?</p>
-            <p>Either works. Gemini ties into your Google login with generous limits, while ChatGPT requires its own account. Pick what's easiest for you.</p>
-          </div>
-          <div>
-            <p className="font-semibold text-white">Do I need to pay for these tools?</p>
-            <p>Not immediately. Start on the free tier, and switch between tools to spread the load. Upgrade when you have a favorite.</p>
-          </div>
-          <div>
-            <p className="font-semibold text-white">What is hallucination?</p>
-            <p>When AI confidently gives the wrong answer. Always sanity-check for critical tasks and course-correct the conversation if you spot an error.</p>
-          </div>
+        <div className="hidden space-y-3 text-left text-sm text-gray-300 md:block">
+          {explorerQa.map((qa) => (
+            <div key={qa.title}>
+              <p className="font-semibold text-white">{qa.title}</p>
+              <p>{qa.detail}</p>
+            </div>
+          ))}
         </div>
+        <MobileCardCarousel
+          items={explorerQa}
+          dotColorClass="bg-brand-lavender"
+          ariaLabelPrefix="Show answer"
+        />
       </div>
 
       <div className="text-center">
@@ -117,7 +140,7 @@ export default function ExplorerSection({ sectionKicker, explorerTips }) {
           to="/contact"
           className="brand-cta bg-brand-lavender hover:bg-brand-lavender-dark text-black inline-flex items-center gap-1"
         >
-          Get in Touch →
+        Book a Consult →
         </Link>
       </div>
     </section>

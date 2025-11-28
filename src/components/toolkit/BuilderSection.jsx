@@ -8,7 +8,7 @@ export default function BuilderSection({
   builderRunnersUp,
 }) {
   return (
-    <section id="builder" className="space-y-6 scroll-mt-24">
+    <section id="builder" className="space-y-6 scroll-mt-24 rounded-3xl px-6 py-10 md:px-10">
       <div className="space-y-3 text-center md:text-left">
         <p className={`${sectionKicker} text-brand-peach`}>Technical builders</p>
         <h2 className="text-2xl font-semibold">The no-nonsense power stack</h2>

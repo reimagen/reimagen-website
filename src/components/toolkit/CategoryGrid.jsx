@@ -3,7 +3,7 @@ export default function CategoryGrid({ columns, accent = 'text-brand-peach', lin
     <div className="grid gap-4 md:grid-cols-3">
       {columns.map((column) => (
         <div key={column.kicker} className="brand-card flex flex-col">
-          <p className={`text-[11px] uppercase tracking-[0.2em] ${accent} mb-2`}>{column.kicker}</p>
+          <p className={`brand-section-kicker ${accent} mb-2`}>{column.kicker}</p>
           {column.title && <h3 className="text-xl font-semibold mb-3">{column.title}</h3>}
           {column.description && <p className="text-sm text-gray-300 mb-5">{column.description}</p>}
           <div className="space-y-3">
