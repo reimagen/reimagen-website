@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import fitnessRecap from '../assets/fitness-recap.png';
 import creationRobotPoster from '../assets/creation-of-robot.jpg';
+import HeroIntro from '../components/toolkit/HeroIntro';
 
 function ProductCard({ product, index, categoryStyles, isDesktop }) {
   const cardRef = useRef(null);
@@ -366,12 +367,15 @@ export default function Products() {
       <div className="fixed inset-0 bg-black/70" aria-hidden="true" />
 
       <div className="relative z-10 flex flex-col px-4 py-16 md:px-10 lg:px-16">
-      <header className="mb-8 text-center flex flex-col items-center space-y-2">
-        <h2 className="text-3xl mb-1 tracking-[0.15em] uppercase text-center">Products</h2>
-        <p className="brand-section-subhead text-brand-lavender text-sm">
-          A roundup of Apps, Agents, and Custom GPTs
-        </p>
-      </header>
+      <HeroIntro
+        title="Products"
+        subhead="A roundup of Apps, Agents, and Custom GPTs"
+        titleClass="text-3xl mb-1 tracking-[0.15em] uppercase text-center"
+        subheadClass="brand-section-subhead text-brand-lavender text-sm"
+        wrapperClass="mb-8 text-center flex flex-col items-center space-y-2"
+        titleAs="h2"
+        subheadAs="p"
+      />
 
       {/* Filters */}
       <div className="mb-6 flex flex-wrap gap-2">

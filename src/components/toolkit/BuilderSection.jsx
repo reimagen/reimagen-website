@@ -1,21 +1,24 @@
 import { Link } from 'react-router-dom';
 import CategoryGrid from './CategoryGrid';
+import ToolkitSection from './ToolkitSection';
+import ToolkitIntro from './ToolkitIntro';
+import CardSectionHeading from './CardSectionHeading';
+import BrandCard from './BrandCard';
+import ToolkitCTA from './ToolkitCTA';
 
 export default function BuilderSection({
-  ctaBase,
   sectionKicker,
   builderCategories,
   builderRunnersUp,
 }) {
   return (
-    <section id="builder" className="space-y-6 scroll-mt-24 rounded-3xl px-6 py-10 md:px-10">
-      <div className="space-y-3 text-center md:text-left">
-        <p className={`${sectionKicker} text-brand-peach`}>Technical builders</p>
-        <h2 className="text-2xl font-semibold">The no-nonsense power stack</h2>
-        <p className="text-gray-300">
-          Proven winners for AI product work vs. chasing every new release.
-        </p>
-      </div>
+    <ToolkitSection id="builder">
+      <ToolkitIntro
+        sectionKicker={`${sectionKicker} text-brand-peach`}
+        kickerText="Technical builders"
+        title="The no-nonsense dev's power stack"
+        description="Proven winners in AI development vs. chasing every new release."
+      />
 
       <CategoryGrid
         columns={builderCategories}
@@ -23,8 +26,8 @@ export default function BuilderSection({
         linkColor="text-brand-peach"
       />
 
-      <div className="brand-card space-y-3">
-        <p className="text-sm uppercase tracking-[0.2em] text-brand-peach">Honest mentions</p>
+      <BrandCard spacing="space-y-3">
+        <CardSectionHeading accentClass="text-brand-peach">Honest mentions</CardSectionHeading>
         <ul className="space-y-2 text-sm text-gray-300">
           {builderRunnersUp.map((tool) => (
             <li key={tool.name}>
@@ -38,16 +41,17 @@ export default function BuilderSection({
             </li>
           ))}
         </ul>
-      </div>
+      </BrandCard>
 
       <div className="text-center">
-        <Link
+        <ToolkitCTA
+          as={Link}
           to="/contact"
-          className={`${ctaBase} bg-brand-peach hover:bg-brand-peach-dark text-black inline-flex items-center gap-1`}
+          colorClass="bg-brand-peach hover:bg-brand-peach-dark text-black"
         >
           Talk shop with us →
-        </Link>
+        </ToolkitCTA>
       </div>
-    </section>
+    </ToolkitSection>
   );
 }

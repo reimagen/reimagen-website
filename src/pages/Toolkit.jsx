@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import ExplorerSection from '../components/toolkit/ExplorerSection';
 import VibeSection from '../components/toolkit/VibeSection';
 import BuilderSection from '../components/toolkit/BuilderSection';
+import ToolkitCTA from '../components/toolkit/ToolkitCTA';
+import HeroIntro from '../components/toolkit/HeroIntro';
 import {
   builderCategories,
   builderRunnersUp,
@@ -16,7 +18,23 @@ import dreamscapePoster from '../assets/dreamscape.jpeg';
 
 export default function Toolkit() {
   const sectionKicker = 'brand-section-kicker';
-  const ctaBase = 'brand-cta';
+  const personaCtas = [
+    {
+      id: 'explorer',
+      label: "I'm new to AI",
+      colorClass: 'bg-brand-lavender hover:bg-brand-lavender-dark text-black',
+    },
+    {
+      id: 'vibe',
+      label: 'I want to vibe code',
+      colorClass: 'bg-brand-pink hover:bg-brand-pink-dark text-black',
+    },
+    {
+      id: 'builder',
+      label: 'I build with code',
+      colorClass: 'bg-brand-peach hover:bg-brand-peach-dark text-black',
+    },
+  ];
 
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [buttonOffset, setButtonOffset] = useState(40);
@@ -122,41 +140,28 @@ export default function Toolkit() {
       />
       <div className="fixed inset-0 bg-black/70" aria-hidden="true" />
       <div className="relative z-10 px-4 py-16 md:px-10 lg:px-16 space-y-12">
-        <header className="text-center space-y-4 max-w-3xl mx-auto">
-          <p className="text-3xl mb-4 tracking-[0.15em] uppercase text-center">Toolkit</p>
-          <p className="brand-section-subhead text-brand-lavender text-center">
-            We try every AI product so you don't have to. What best describes you?
-          </p>
-          <div
-            className={`flex flex-wrap justify-center gap-4 transform transition-all duration-700 ease-out ${
-              personaButtonsAnimated
-                ? 'opacity-100 scale-100 md:translate-x-0'
-                : 'opacity-0 scale-95 md:-translate-x-16'
-            }`}
-          >
-            <a
-              href="#explorer"
-              onClick={(event) => scrollToSection(event, 'explorer')}
-              className={`${ctaBase} bg-brand-lavender hover:bg-brand-lavender-dark text-black`}
+        <HeroIntro
+          title="Toolkit"
+          subhead="We try every AI product so you don't have to. What best describes you?"
+        />
+        <div
+          className={`flex flex-wrap justify-center gap-4 transform transition-all duration-700 ease-out ${
+            personaButtonsAnimated
+              ? 'opacity-100 scale-100 md:translate-x-0'
+              : 'opacity-0 scale-95 md:-translate-x-16'
+          }`}
+        >
+          {personaCtas.map((cta) => (
+            <ToolkitCTA
+              key={cta.id}
+              href={`#${cta.id}`}
+              colorClass={cta.colorClass}
+              onClick={(event) => scrollToSection(event, cta.id)}
             >
-              I&apos;m new to AI
-            </a>
-            <a
-              href="#vibe"
-              onClick={(event) => scrollToSection(event, 'vibe')}
-              className={`${ctaBase} bg-brand-pink hover:bg-brand-pink-dark text-black`}
-            >
-              I want to vibe code
-            </a>
-            <a
-              href="#builder"
-              onClick={(event) => scrollToSection(event, 'builder')}
-              className={`${ctaBase} bg-brand-peach hover:bg-brand-peach-dark text-black`}
-            >
-              I build with code
-            </a>
-          </div>
-        </header>
+              {cta.label}
+            </ToolkitCTA>
+          ))}
+        </div>
 
 
         <ExplorerSection
@@ -173,7 +178,6 @@ export default function Toolkit() {
 
         <BuilderSection
           sectionKicker={sectionKicker}
-          ctaBase={ctaBase}
           builderCategories={builderCategories}
           builderRunnersUp={builderRunnersUp}
         />

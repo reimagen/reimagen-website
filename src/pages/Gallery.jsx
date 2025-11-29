@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import GalleryCarousel from "../components/GalleryCarousel";
+import HeroIntro from '../components/toolkit/HeroIntro';
 import galaxyPoster from '../assets/galaxy.jpg';
 
 // Models used / planned for the gallery
@@ -145,10 +146,15 @@ export default function Gallery() {
       <div className="fixed inset-0 bg-black/70" aria-hidden="true" />
 
       <div className="relative z-10 px-4 py-16 md:px-10 lg:px-16">
-        <header className="mb-8 text-center flex flex-col items-center space-y-2">
-          <h2 className="text-3xl mb-1 tracking-[0.15em] uppercase text-center">Gallery</h2>
-          <p className="brand-section-subhead text-brand-lavender text-center">Swipe to explore a curated selection of GenAI media</p>
-        </header>
+        <HeroIntro
+          title="Gallery"
+          subhead="Swipe to explore a curated selection of GenAI media"
+          titleClass="text-3xl mb-1 tracking-[0.15em] uppercase text-center"
+          subheadClass="brand-section-subhead text-brand-lavender text-center"
+          wrapperClass="mb-8 text-center flex flex-col items-center space-y-2"
+          titleAs="h2"
+          subheadAs="p"
+        />
 
       {/* Model Filters */}
       <div className="mb-6 flex flex-wrap gap-2">

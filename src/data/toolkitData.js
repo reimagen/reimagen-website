@@ -1,5 +1,3 @@
-export const explorerStarter = [];
-
 export const builderCategories = [
   {
     kicker: 'IDE',
@@ -23,7 +21,7 @@ export const builderCategories = [
     ],
   },
   {
-    kicker: 'CLI tools',
+    kicker: 'CLI',
     items: [
       {
         name: 'Claude Code',
@@ -74,7 +72,7 @@ export const builderRunnersUp = [
   },
   {
     name: 'ElevenLabs',
-    note: 'Beautiful output but astoundingly expensive, useful for commercial assets but not cost efficient for chat interaction.',
+    note: 'Beautiful output but astoundingly expensive, useful for evergreen assets but not cost efficient for chat interaction.',
   },
   {
     name: 'Gemini Live API',
@@ -178,5 +176,94 @@ export const vibeQuestions = [
     title: 'What is .gitignore?',
     detail:
       "A Git file that tells version control which files to ignore, like .env, so your API keys don't get compromised. Keeps your repo clean and safe.",
+  },
+];
+
+export const vibeCTACopy =
+  "If you're feeling overwhelmed with all these tools, you're not alone. New products and models drop every day, and this vibe-coder starter pack barely scratches the surface. If you're considering a tool, chances are we've already stress-tested it and can give you the TLDR.";
+
+export const explorerCTACopy =
+  "If your org needs an AI boost, we've got you covered. There are whole universes for voice, creative, motion graphics, and niche workflows we didn't cover here. We'll evaluate your org's needs, flag industry-specialized tools, and build your AI-transformation roadmap.";
+
+export const explorerUseCases = [
+  {
+    category: 'Chat',
+    items: [
+      {
+        name: 'ChatGPT',
+        description:
+          'Generalist teammate for brainstorms, planning, and drafting copy. Most useful for casual, conversational tone.',
+        link: 'https://chat.openai.com/',
+      },
+      {
+        name: 'Gemini',
+        description: "Google's generalist version of ChatGPT. Most generous free tier.",
+        link: 'https://gemini.google.com/',
+      },
+      {
+        name: 'Claude',
+        description:
+          'Pro-level performance for strategy docs and nuance-heavy writing. Need a report? Use Claude.',
+        link: 'https://claude.ai/',
+      },
+    ],
+  },
+  {
+    category: 'Marketing',
+    items: [
+      {
+        name: 'Pomelli (Google Labs)',
+        description:
+          'Stunningly simple. Drop in your URL and it will create your brand DNA. Spin up social media-ready assets in seconds.',
+        link: 'https://labs.google.com/pomelli/about/',
+      },
+      {
+        name: 'Jingle Maker (ElevenLabs)',
+        description:
+          'Hilarious and free. Drop in your URL and get a stylized commercial jingle. Share your results so we can laugh together.',
+        link: 'https://www.jinglemaker.ai/',
+      },
+    ],
+  },
+  {
+    category: 'Learning',
+    items: [
+      {
+        name: 'NotebookLM',
+        description:
+          'Chat with your content. Drop in up to 50 sources (websites, docs, PDFs, videos) and get instant briefs, presentations, infographics, even a podcast overview.',
+        link: 'https://notebooklm.google.com/',
+      },
+      {
+        name: 'Perplexity',
+        description:
+          'Deep researcher that verifies and cites its sources. Ask for market scans, competitor comparisons, or ideal customer profiles.',
+        link: 'https://www.perplexity.ai/',
+      },
+      {
+        name: 'Gemini Live',
+        description:
+          "Need tech support? Instead of digging through help manuals, share your screen and ask Gemini for help.",
+        link: 'https://aistudio.google.com/live',
+      },
+    ],
+  },
+];
+
+export const explorerQa = [
+  {
+    title: 'Should I start with ChatGPT or Gemini?',
+    detail:
+      "Either works. Gemini ties into your existing Google account with generous limits, and ChatGPT requires its own account. Pick what's easiest for you.",
+  },
+  {
+    title: 'Do I need to pay for any of these tools?',
+    detail:
+      "Not immediately. Start on the free tier, and switch among different providers' tools to spread the daily usage load. Upgrade when you have a favorite.",
+  },
+  {
+    title: 'What is hallucination?',
+    detail:
+      'When AI confidently gives you the wrong answer. Always sanity-check for critical tasks, you can even run the response by another model. If you spot an error, course-correct the conversation.',
   },
 ];

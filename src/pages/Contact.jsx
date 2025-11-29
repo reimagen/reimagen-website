@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "../styles/contactFlip.css";
 import monumentPoster from "../assets/monument-valley-aurora.jpg";
+import HeroIntro from '../components/toolkit/HeroIntro';
 
 export default function Contact() {
   const initialFormState = {
@@ -114,10 +115,15 @@ const handleSubmit = async (e) => {
       <div className="fixed inset-0 bg-black/70" aria-hidden="true" />
       <div className="fixed bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-black to-transparent pointer-events-none" aria-hidden="true" />
       <div className="relative z-10 max-w-5xl mx-auto px-4 pt-16 pb-8 space-y-8">
-        <header className="text-center space-y-2">
-          <h2 className="text-3xl font-bold">Contact Us</h2>
-          <p className="brand-section-kicker text-brand-lavender">Not into DMs? Fill out the form below.</p>
-        </header>
+        <HeroIntro
+          title="Contact Us"
+          subhead="Not into DMs? Fill out the form below."
+          titleClass="text-3xl font-bold"
+          subheadClass="brand-section-kicker text-brand-lavender"
+          wrapperClass="text-center space-y-2"
+          titleAs="h2"
+          subheadAs="p"
+        />
 
         <div className={`contact-flip-container slide-in-left ${isMounted ? "is-visible" : ""}`}>
           <div className={`contact-flip-inner ${submitted ? "is-flipped" : ""}`}>
@@ -218,7 +224,7 @@ const handleSubmit = async (e) => {
 
                 <button
                   type="submit"
-                  className="brand-cta bg-brand-lavender hover:bg-brand-lavender-dark text-black disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="brand-cta bg-brand-lavender hover:bg-brand-lavender-dark text-black transition-transform duration-200 hover:scale-105 disabled:opacity-60 disabled:cursor-not-allowed"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Sending…" : "Send"}
@@ -233,7 +239,7 @@ const handleSubmit = async (e) => {
               </p>
               <button
                 type="button"
-                className="brand-cta bg-white/10 text-white border border-white/30 hover:bg-white/20 transition"
+                className="brand-cta bg-white/10 text-white border border-white/30 hover:bg-white/20 transition-transform duration-200 hover:scale-105"
                 onClick={handleReset}
               >
                 Send another message

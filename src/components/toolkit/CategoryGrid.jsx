@@ -1,8 +1,10 @@
+import BrandCard from './BrandCard';
+
 export default function CategoryGrid({ columns, accent = 'text-brand-peach', linkColor = 'text-brand-peach', defaultCta = 'Explore →' }) {
   return (
     <div className="grid gap-4 md:grid-cols-3">
       {columns.map((column) => (
-        <div key={column.kicker} className="brand-card flex flex-col">
+        <BrandCard key={column.kicker} className="flex flex-col">
           <p className={`brand-section-kicker ${accent} mb-2`}>{column.kicker}</p>
           {column.title && <h3 className="text-xl font-semibold mb-3">{column.title}</h3>}
           {column.description && <p className="text-sm text-gray-300 mb-5">{column.description}</p>}
@@ -31,7 +33,7 @@ export default function CategoryGrid({ columns, accent = 'text-brand-peach', lin
               </div>
             ))}
           </div>
-        </div>
+        </BrandCard>
       ))}
     </div>
   );
