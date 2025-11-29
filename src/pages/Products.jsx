@@ -84,6 +84,7 @@ function ProductCard({ product, index, categoryStyles, isDesktop }) {
             />
           )}
           {product.title === 'Calibrate: Confidently Automate Your Workflows' && (
+            <>
             <a
               href="https://youtu.be/RDJ4sWbqu6g?si=Sn0qPdJeO_2BRy1L"
               className={`brand-cta-sm ${linkClass}`}
@@ -92,6 +93,15 @@ function ProductCard({ product, index, categoryStyles, isDesktop }) {
             >
               Watch Overview →
             </a>
+            <a
+              href="https://www.jinglemaker.ai/mikkcb3gsx251a6bseh"
+              className={`brand-cta-sm ${linkClass}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Rap Jingle →
+            </a>
+            </>
           )}
           {((product.category === 'Agents' && product.title !== 'Calibrate: Confidently Automate Your Workflows') || product.comingSoon) ? (
             <Link to="/contact" className={`brand-cta-sm ${linkClass}`}>
@@ -138,7 +148,7 @@ export default function Products() {
     applications: [
       {
         title: "FitnessAI",
-        description: "Set your goals and log workouts. Let AI analyze your progress and generate workout plans.",
+        description: "Set your goals and log workouts. Let AI analyze your progress and generate workout plans. In-depth charts for progressive overload, imbalance detection, and calorie burn. It's like having Tableau for your workout data.",
         link: "https://studio--fitnessai-tsi8w.us-central1.hosted.app/signin",
         image: fitnessRecap,
         tools: ["Gemini", "Genkit", "Firebase Studio"],
@@ -146,7 +156,7 @@ export default function Products() {
       },
       {
         title: "Macros Voice Tracker",
-        description: "Hands-free macros logging with live transcription. Speak your meals, get instant nutrition breakdowns.",
+        description: "WIP: Chat with the agent and she'll calculate your macros, log your meals, and give you live advice on how to hit your macro goals.",
         link: "#",
         comingSoon: true,
         tools: ["Google AI Studio", "Google Live Voice API"],
@@ -156,19 +166,19 @@ export default function Products() {
     agents: [
       {
         title: "Calibrate: Confidently Automate Your Workflows",
-        description: "Upload your workflow, then let AI analyze and score its automation compatibility. Create your agent org chart, A2A cards, and tool registries. Team submission for the Google Agents Intensive Capstone.",
+        description: "Upload your workflow, then let AI analyze and score its automation compatibility. Create your agent org chart, A2A cards, and tool registries. This was a team submission for the Google/Kaggle Agents Intensive Capstone plus a Rap Jingle from ElevenLabs.",
         link: "https://github.com/reimagen/agentarchitecture",
-        tools: ["Codex", "Claude", "Cursor", "Google ADK", "Gemini", "NotebookLM"],
+        tools: ["Codex", "Claude", "Cursor", "Google ADK", "Gemini", "NotebookLM", "ElevenLabs"],
         stack: ["Next.js (React)", "Python services (FastAPI)", "Firebase Auth + Firestore"],
       },
     ],
     other: [
       {
         title: "reimagen Website",
-        description: "This site was built in a few days with generous help from Codex and open-source animation components from Codepen. Video assets were generated using OpenArt, and it was fun to stress-test the international models: Kling, WAN, Seedance, Minimax Hailuo, PixVerse, Vidu, etc.",
+        description: "Rome wasn't built in a week, but this site sure was (with generous help from Codex). Video assets were generated using OpenArt and Sora, and it was fun to battle-test the models from the international labs: Kling, WAN, Seedance, Minimax Hailuo, PixVerse, Vidu, etc.",
         link: "https://github.com/reimagen/reimagen-website",
         tools: ["Cursor", "Codex", "Antigravity", "Sora", "OpenArt"],
-        stack: ["Vite + React", "Tailwind CSS", "Notion API", "Vercel"],
+        stack: ["Vite + React", "Tailwind", "Vercel"],
       },
     ],
     gpts: [
@@ -206,8 +216,8 @@ export default function Products() {
   };
 
   const allProducts = [
-    ...products.applications.map((p) => ({ ...p, category: 'Apps' })),
     ...products.agents.map((p) => ({ ...p, category: 'Agents' })),
+    ...products.applications.map((p) => ({ ...p, category: 'Apps' })),
     ...products.other.map((p) => ({ ...p, category: 'Other' })),
   ];
   const gptProducts = products.gpts;
