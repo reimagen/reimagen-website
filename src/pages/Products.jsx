@@ -83,8 +83,18 @@ function ProductCard({ product, index, categoryStyles, isDesktop }) {
               className="w-full h-32 rounded-lg object-cover"
             />
           )}
-          {product.category === 'Agents' || product.comingSoon ? (
-            <Link to="/contact" className={`brand-cta-sm ${categoryStyles.Agents.link}`}>
+          {product.title === 'Calibrate: Confidently Automate Your Workflows' && (
+            <a
+              href="https://youtu.be/RDJ4sWbqu6g?si=Sn0qPdJeO_2BRy1L"
+              className={`brand-cta-sm ${linkClass}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Watch Overview →
+            </a>
+          )}
+          {((product.category === 'Agents' && product.title !== 'Calibrate: Confidently Automate Your Workflows') || product.comingSoon) ? (
+            <Link to="/contact" className={`brand-cta-sm ${linkClass}`}>
               Get Notified →
             </Link>
           ) : (
@@ -96,9 +106,11 @@ function ProductCard({ product, index, categoryStyles, isDesktop }) {
             >
               {product.title === 'FitnessAI'
                 ? 'Sign Up →'
-                : product.category === 'Other'
+                : product.title === 'Calibrate: Confidently Automate Your Workflows'
                   ? 'Open Repo →'
-                  : 'Try Product →'}
+                  : product.category === 'Other'
+                    ? 'Open Repo →'
+                    : 'Try Product →'}
             </a>
           )}
         </div>
@@ -143,31 +155,30 @@ export default function Products() {
     ],
     agents: [
       {
-        title: "Agent Org Architecture",
-        description: "Coming in Dec: Upload your workflow. Let AI analyze and score automation compatibility. Create your agent org chart, A2A cards, and tool registries.",
-        link: "#",
-        comingSoon: true, // Add this flag to identify coming soon items
-        tools: ["Codex", "Claude", "Cursor", "Google ADK", "Gemini"],
-        stack: ["Next.js (React) frontend", "Python services (ADK)", "Firebase Auth + Firestore"],
+        title: "Calibrate: Confidently Automate Your Workflows",
+        description: "Upload your workflow, then let AI analyze and score its automation compatibility. Create your agent org chart, A2A cards, and tool registries. Team submission for the Google Agents Intensive Capstone.",
+        link: "https://github.com/reimagen/agentarchitecture",
+        tools: ["Codex", "Claude", "Cursor", "Google ADK", "Gemini", "NotebookLM"],
+        stack: ["Next.js (React)", "Python services (FastAPI)", "Firebase Auth + Firestore"],
       },
     ],
     other: [
       {
-        title: "reImagen Website",
-        description: "This site. Built in a few days with generous help from Codex and Antigravity Agents.",
+        title: "reimagen Website",
+        description: "This site was built in a few days with generous help from Codex and open-source animation components from Codepen. Video assets were generated using OpenArt, and it was fun to stress-test the international models: Kling, WAN, Seedance, Minimax Hailuo, PixVerse, Vidu, etc.",
         link: "https://github.com/reimagen/reimagen-website",
-        tools: ["Cursor", "Codex", "Antigravity", "Sora"],
+        tools: ["Cursor", "Codex", "Antigravity", "Sora", "OpenArt"],
         stack: ["Vite + React", "Tailwind CSS", "Notion API", "Vercel"],
       },
     ],
     gpts: [
       {
-        title: "YC Partners Office Hours",
+        title: "YC Office Hours",
         description: "YC partner board simulation giving direct, high-leverage startup feedback from Garry, Jessica, Michael, Dalton, Paul, Daniel, and Aaron.",
         link: "https://chatgpt.com/g/g-69050a13e2f081919fa4a1465e0cc273-yc-partners-office-hours",
       },
       {
-        title: "a16z Partners Office Hours",
+        title: "a16z Office Hours",
         description: "A16Z-style advisor giving direct partner takes and consensus startup feedback from Marc, Ben, Angela, Chris, Katherine, Connie, and Martin.",
         link: "https://chatgpt.com/g/g-6905072329f8819188ce714b9880984d-a16z-partners-office-hours",
       },
@@ -183,12 +194,12 @@ export default function Products() {
       },
       {
         title: "Instant Book Club",
-        description: "Chat with the author, pro critics like the NYT Book Review, and diverse voices across generations, ethnicity, and gender. Discuss key takeaways, current-world parallels, plot holes, etc.",
+        description: "Chat with the author, critics from the NYT Book Review, and diverse voices across generations, ethnicity, and gender. Discuss key takeaways, current-world parallels, plot holes, etc.",
         link: "https://chatgpt.com/g/g-68167d995f648191a78e68b930ee6d0f-book-club",
       },
       {
         title: "Photographer's Travel Planner",
-        description: "Discover the best photography spots and timing. Figure out if you really need to be up at 4am to snap that sunrise and the perfect spot to set up.",
+        description: "Discover the best photography spots and timing. Figure out if you really need to be up at 4am to snap that sunrise, and get a perfect setup.",
         link: "https://chatgpt.com/g/g-67f7f3490ffc8191954b00ee1712581e-travel-planner-for-photography",
       },
     ],

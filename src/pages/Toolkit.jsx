@@ -120,7 +120,7 @@ export default function Toolkit() {
             { boxShadow: `0 0 40px rgba(${glowColor}, 0.6)`, transform: 'scale(1.01)' },
             { boxShadow: `0 0 0 rgba(${glowColor}, 0)`, transform: 'scale(1)' },
           ],
-          { duration: 900, easing: 'ease-out' }
+          { duration: 1500, easing: 'ease-out' }
         );
       }, 250);
     }
