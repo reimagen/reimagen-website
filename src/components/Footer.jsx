@@ -9,6 +9,7 @@ export default function Footer() {
     linkedin: 'hover:text-linkedin',
     sora: 'hover:text-sora',
   };
+  const showLinkedIn = false;
 
   return (
   <footer className="w-full bg-black/40 backdrop-blur text-white text-center text-sm p-4 border-t border-white/10 sticky bottom-0 z-50">
@@ -154,21 +155,23 @@ export default function Footer() {
         </a>
 
         {/* LinkedIn */}
-        <a
-          href="https://www.linkedin.com/in/lisagu1/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="LinkedIn"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-            className={`brand-social-icon ${socialColors.linkedin}`}
+        {showLinkedIn && (
+          <a
+            href="https://www.linkedin.com/in/lisagu1/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
           >
-            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.024-3.037-1.852-3.037-1.853 0-2.136 1.446-2.136 2.938v5.669H9.354V9h3.414v1.561h.048c.476-.898 1.637-1.848 3.367-1.848 3.598 0 4.262 2.367 4.262 5.451v6.288zM5.337 7.433c-1.144 0-2.068-.926-2.068-2.067 0-1.143.924-2.068 2.068-2.068s2.067.925 2.067 2.068c0 1.141-.923 2.067-2.067 2.067zM6.814 20.452H3.861V9h2.953v11.452z" />
-          </svg>
-        </a>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              className={`brand-social-icon ${socialColors.linkedin}`}
+            >
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.024-3.037-1.852-3.037-1.853 0-2.136 1.446-2.136 2.938v5.669H9.354V9h3.414v1.561h.048c.476-.898 1.637-1.848 3.367-1.848 3.598 0 4.262 2.367 4.262 5.451v6.288zM5.337 7.433c-1.144 0-2.068-.926-2.068-2.067 0-1.143.924-2.068 2.068-2.068s2.067.925 2.067 2.068c0 1.141-.923 2.067-2.067 2.067zM6.814 20.452H3.861V9h2.953v11.452z" />
+            </svg>
+          </a>
+        )}
 
       </div>
   <p className="mt-4 text-sm text-brand-lavender">© 2025 reimagen, Inc. All rights reserved.</p>
