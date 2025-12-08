@@ -17,6 +17,7 @@ export default function VibeSection({ sectionKicker, vibeStack, vibeTips, vibeQu
         kickerText="Vibe coders"
         title="Tools for expressive builds and playful shipping"
         description="When you want to sketch interactives, explore UIs, and get in flow. These tools keep code optional."
+        kickerSizeClass="text-2xl"
       />
 
       <CategoryGrid

@@ -18,6 +18,7 @@ export default function BuilderSection({
         kickerText="Technical builders"
         title="The no-nonsense dev's power stack"
         description="Proven winners in AI development vs. chasing every new release."
+        kickerSizeClass="text-2xl"
       />
 
       <CategoryGrid

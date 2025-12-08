@@ -27,10 +27,9 @@ body {
     @apply products-scroll flex gap-4 overflow-x-auto pb-2;
   }
 
-.brand-section-kicker {
+  .brand-section-kicker {
     @apply text-sm uppercase tracking-[0.25em];
   }
-
   .brand-section-subhead {
     @apply text-sm uppercase tracking-[0.1em];
   }

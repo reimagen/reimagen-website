@@ -15,8 +15,9 @@ export default function ExplorerSection({ sectionKicker, explorerTips }) {
       <ToolkitIntro
         sectionKicker={`${sectionKicker} text-brand-lavender`}
         kickerText="Non-technical explorers"
-        title="A zero-code starter pack for curious operators who are new to AI"
+        title="A zero-code starter pack for people who are new to AI"
         description="Think in use cases and immediate wins. Use AI to help take time-heavy executions off your plate."
+        kickerSizeClass="text-2xl"
       />
 
       <div className="space-y-4">
