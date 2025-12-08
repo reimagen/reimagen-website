@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import fitnessRecap from '../assets/fitness-recap.png';
 import creationRobotPoster from '../assets/creation-of-robot.jpg';
 import HeroIntro from '../components/toolkit/HeroIntro';
+import CarouselNavigationButtons from '../components/CarouselNavigationButtons';
 
 function ProductCard({ product, index, categoryStyles, isDesktop }) {
   const cardRef = useRef(null);
@@ -374,6 +375,38 @@ export default function Products() {
     });
   };
 
+  const handlePrevGpt = () => {
+    setActiveGptIndex((prevIndex) => {
+      const newIndex = prevIndex === 0 ? gptProducts.length - 1 : prevIndex - 1;
+      scrollToGptIndex(newIndex);
+      return newIndex;
+    });
+  };
+
+  const handleNextGpt = () => {
+    setActiveGptIndex((prevIndex) => {
+      const newIndex = prevIndex === gptProducts.length - 1 ? 0 : prevIndex + 1;
+      scrollToGptIndex(newIndex);
+      return newIndex;
+    });
+  };
+
+  const handlePrevProduct = () => {
+    setActiveProductIndex((prevIndex) => {
+      const newIndex = prevIndex === 0 ? visibleProducts.length - 1 : prevIndex - 1;
+      scrollToProductIndex(newIndex);
+      return newIndex;
+    });
+  };
+
+  const handleNextProduct = () => {
+    setActiveProductIndex((prevIndex) => {
+      const newIndex = prevIndex === visibleProducts.length - 1 ? 0 : prevIndex + 1;
+      scrollToProductIndex(newIndex);
+      return newIndex;
+    });
+  };
+
   return (
     <section className="relative overflow-hidden -mt-24 pt-24 pb-48">
       <video
@@ -398,35 +431,45 @@ export default function Products() {
         subheadAs="p"
       />
 
-      {/* Filters */}
-      <div className="mb-6 flex flex-wrap gap-2">
-        {categories.map((category) => (
-          <button
-            key={category}
-            onClick={() => {
-              if (category === 'All') {
-                setSelectedCategories([]);
-                return;
-              }
-              setSelectedCategories((prev) =>
-                prev.includes(category)
-                  ? prev.filter((c) => c !== category)
-                  : [...prev, category]
-              );
-            }}
-            className={`${filterButtonBase} ${
-              category === 'All'
-                ? selectedCategories.length === 0
-                  ? categoryStyles.default.pill
-                  : 'bg-gray-800 text-gray-200 border-gray-700 hover:bg-gray-700'
-                : selectedCategories.includes(category)
-                  ? (categoryStyles[category]?.pill || categoryStyles.default.pill)
-                  : 'bg-white/10 text-white hover:bg-white/20'
-            }`}
-          >
-            {category}
-          </button>
-        ))}
+      {/* Filters and Navigation for Products Carousel */}
+      <div className="mb-6 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 px-4 md:px-0">
+        <div className="flex flex-wrap gap-3">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => {
+                if (category === 'All') {
+                  setSelectedCategories([]);
+                  return;
+                }
+                setSelectedCategories((prev) =>
+                  prev.includes(category)
+                    ? prev.filter((c) => c !== category)
+                    : [...prev, category]
+                );
+              }}
+              className={`${filterButtonBase} ${
+                category === 'All'
+                  ? selectedCategories.length === 0
+                    ? categoryStyles.default.pill
+                    : 'bg-gray-800 text-gray-200 border-gray-700 hover:bg-gray-700'
+                  : selectedCategories.includes(category)
+                    ? (categoryStyles[category]?.pill || categoryStyles.default.pill)
+                    : 'bg-white/10 text-white hover:bg-white/20'
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+
+        <CarouselNavigationButtons
+          onPrev={handlePrevProduct}
+          onNext={handleNextProduct}
+          isVisible={visibleProducts.length > 0}
+          ariaLabelPrev="Previous product"
+          ariaLabelNext="Next product"
+        />
       </div>
 
       {/* Horizontal carousel */}
@@ -466,6 +509,16 @@ export default function Products() {
         <p className="brand-section-subhead text-brand-lavender text-sm text-center">
           [Note: Requires ChatGPT account]
         </p>
+
+        <div className="flex justify-center sm:justify-end mb-4">
+          <CarouselNavigationButtons
+            onPrev={handlePrevGpt}
+            onNext={handleNextGpt}
+            isVisible={gptProducts.length > 0}
+            ariaLabelPrev="Previous GPT card"
+            ariaLabelNext="Next GPT card"
+          />
+        </div>
         <div
           className="overflow-x-auto pb-4 pt-2 products-scroll scrollbar-lavender dot-scroll"
           ref={gptScrollRef}

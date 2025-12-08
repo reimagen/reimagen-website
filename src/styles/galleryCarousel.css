@@ -118,12 +118,18 @@
 
 @media (max-width: 640px) {
   .gallery-swiper .swiper-slide {
-    width: 280px;
-    height: 420px;
+    /* Make slide width responsive to viewport, leaving 20px on each side for spacing/peeking */
+    width: calc(100vw - 40px) !important;
+    height: 420px; /* Default height for portrait on mobile */
   }
 
   .gallery-swiper .gallery-swiper-slide--landscape {
-    width: min(calc(100vw - 4rem), 400px) !important;
-    height: 260px;
+    /* Height based on its own width to maintain aspect ratio */
+    height: calc((100vw - 40px) * 9 / 16) !important; /* Assuming 16:9 aspect ratio */
+  }
+
+  .gallery-swiper .gallery-swiper-slide--portrait {
+    /* Height based on its own width to maintain aspect ratio */
+    height: calc((100vw - 40px) * 4 / 3) !important; /* Assuming 3:4 aspect ratio */
   }
 }

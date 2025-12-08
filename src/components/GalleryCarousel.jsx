@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import '../styles/galleryCarousel.css';
 
 const SWIPER_SCRIPT_ID = 'swiper-bundle-script';
@@ -41,9 +41,16 @@ const ensureScript = () => {
 };
 const ensureSwiperAssets = () => Promise.all([ensureStylesheet(), ensureScript()]);
 
-export default function GalleryCarousel({ items = [] }) {
+const GalleryCarousel = forwardRef(function GalleryCarousel({ items = [] }, ref) {
   const swiperRef = useRef(null);
   const swiperInstanceRef = useRef(null);
+
+  // Expose the swiper instance to the parent component via the forwarded ref
+  useEffect(() => {
+    if (ref) {
+      ref.current = swiperInstanceRef.current;
+    }
+  }, [ref, swiperInstanceRef.current]);
   const [orientations, setOrientations] = useState({});
   const slidesKey = useMemo(() => items.map((item) => item.src).join('|'), [items]);
   const setOrientationForSource = useCallback((src, width, height) => {
@@ -137,7 +144,8 @@ export default function GalleryCarousel({ items = [] }) {
                     playsInline
                     loop
                     autoPlay
-                    preload="metadata"
+                    preload="auto" // Set to auto for immediate loading
+                    poster={item.poster || ''}
                     onLoadedMetadata={(event) => {
                       const video = event.currentTarget;
                       setOrientationForSource(item.src, video.videoWidth, video.videoHeight);
@@ -167,4 +175,6 @@ export default function GalleryCarousel({ items = [] }) {
       </div>
     </div>
   );
-}
+});
+
+export default GalleryCarousel;

@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import GalleryCarousel from "../components/GalleryCarousel";
 import HeroIntro from '../components/toolkit/HeroIntro';
+import CarouselNavigationButtons from '../components/CarouselNavigationButtons';
 import galaxyPoster from '../assets/galaxy.jpg';
 
 // Models used / planned for the gallery
@@ -22,6 +23,7 @@ const galleryItems = [
     alt: "Creation of Adam but a Robot instead of a man",
     caption: "Creation of Adam",
     model: "Minimax Hailuo 2",
+    poster: "/src/assets/creation-of-robot.jpg",
   },
   {
     order: 2,
@@ -30,6 +32,7 @@ const galleryItems = [
     alt: "Floating by Futuristic Structures in Space",
     caption: "Into the Metaverse",
     model: "Sora",
+    poster: "src/assets/dreamscape.jpeg",
   },
   {
     order: 3,
@@ -38,6 +41,7 @@ const galleryItems = [
     alt: "A GenZ Girl Holding Cell Phone in Rococo Style",
     caption: "Rococo Goes 2025",
     model: "Kling 2.5",
+    poster: "src/assets/rococo.jpeg",
   },
   {
     order: 4,
@@ -46,6 +50,7 @@ const galleryItems = [
     alt: "Northern Lights Over Monument Valley",
     caption: "Auroras in Monument Valley",
     model: "Sora",
+    poster: "/src/assets/monument-valley-aurora.jpg",
   },
   {
     order: 5,
@@ -54,6 +59,7 @@ const galleryItems = [
     alt: "Cloud Morphs Into a Dog",
     caption: "Watching the Clouds Go By",
     model: "Sora",
+    poster: "src/assets/clouds-dog.jpg",
   },
   {
     order: 6,
@@ -62,6 +68,7 @@ const galleryItems = [
     alt: "An All-Star Robot Selfie of Movie Characters",
     caption: "That Oscars Selfie, Robo Version",
     model: "Seedance 1.0",
+    poster: "/src/assets/robo-selfie.jpg",
   },
   {
     order: 7,
@@ -70,6 +77,7 @@ const galleryItems = [
     alt: "A Candy Version of St. Basil's Cathedral in Moscow",
     caption: "St. Basil's in Candyland",
     model: "Sora",
+    poster: "src/assets/candy-cathedral.jpg"
   },
   {
     order: 8,
@@ -78,6 +86,7 @@ const galleryItems = [
     alt: "Drone Flying Through Auroras",
     caption: "Night Flight Through the Auroras",
     model: "Sora",
+    poster: "/src/assets/drone-aurora.jpg",
   },
   {
     order: 9,
@@ -86,6 +95,7 @@ const galleryItems = [
     alt: "Realistic Version of Starry Night Painting",
     caption: "Starry Night in Motion",
     model: "Sora",
+    poster: "src/assets/starry-night.jpg",
   },
   {
     order: 10,
@@ -94,6 +104,7 @@ const galleryItems = [
     alt: "The Sagrada Familia as a Sandcastle",
     caption: "Sa(nd)grada Familia",
     model: "Seedance 1.0",
+    poster: "src/assets/sandgrada.jpg",
   },
   {
     order: 11,
@@ -102,6 +113,7 @@ const galleryItems = [
     alt: "Pinky and the Brain style characters in an AI-generated scene",
     caption: "Same Thing We Do Every Night",
     model: "MiniMax Hailuo 02",
+    poster: "src/assets/pinky-brain.png",
   },
   {
     order: 12,
@@ -110,12 +122,14 @@ const galleryItems = [
     alt: "A Black and a White curled up in the shape of a yin-yang sign",
     caption: "Black Cat Energy",
     model: "Sora 2",
+    poster: "src/assets/yin-yang-cats.jpg",
   },
 ];
 
 
 export default function Gallery() {
   const [isGridVisible, setIsGridVisible] = useState(false);
+  const carouselRef = useRef(null); // Ref for GalleryCarousel
   useEffect(() => {
     const timeout = setTimeout(() => setIsGridVisible(true), 150);
     return () => clearTimeout(timeout);
@@ -131,6 +145,18 @@ export default function Gallery() {
       : selectedModel === "Others"
         ? orderedItems.filter((item) => !MODELS.some((base) => matchesModel(item.model, base)))
         : orderedItems.filter((item) => matchesModel(item.model, selectedModel));
+
+  const handlePrev = () => {
+    if (carouselRef.current && carouselRef.current.slidePrev) {
+      carouselRef.current.slidePrev();
+    }
+  };
+
+  const handleNext = () => {
+    if (carouselRef.current && carouselRef.current.slideNext) {
+      carouselRef.current.slideNext();
+    }
+  };
 
   return (
     <section className="relative -mt-24 pt-24 pb-24 overflow-hidden">
@@ -156,30 +182,40 @@ export default function Gallery() {
           subheadAs="p"
         />
 
-      {/* Model Filters */}
-      <div className="mb-6 flex flex-wrap gap-2">
-        <div className="flex flex-wrap gap-3">
-          {FILTER_OPTIONS.map((model) => (
-            <button
-              key={model}
-              onClick={() => setSelectedModel(model)}
-            className={`${filterButtonBase} ${
-              selectedModel === model
-                ? model === 'All'
-                  ? 'bg-gray-200 text-black'
-                    : modelStyles[model] || 'bg-white/20 text-white'
-                  : 'bg-white/10 text-white hover:bg-white/20'
-              }`}
-            >
-              {model}
-            </button>
-          ))}
+        <div className="mb-6 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 px-4 md:px-0">
+          {/* Model Filters */}
+          <div className="flex flex-wrap gap-3">
+            {FILTER_OPTIONS.map((model) => (
+              <button
+                key={model}
+                onClick={() => setSelectedModel(model)}
+              className={`${filterButtonBase} ${
+                selectedModel === model
+                  ? model === 'All'
+                    ? 'bg-gray-200 text-black'
+                      : modelStyles[model] || 'bg-white/20 text-white'
+                    : 'bg-white/10 text-white hover:bg-white/20'
+                }`}
+              >
+                {model}
+              </button>
+            ))}
+          </div>
+
+        <div className="flex justify-center sm:justify-end">
+          <CarouselNavigationButtons
+            onPrev={handlePrev}
+            onNext={handleNext}
+            isVisible={filteredItems.length > 0}
+            ariaLabelPrev="Previous gallery item"
+            ariaLabelNext="Next gallery item"
+          />
         </div>
-      </div>
+        </div>
 
 
       <div className={`gallery-stack-animate ${isGridVisible ? 'is-visible' : ''}`}>
-        <GalleryCarousel items={filteredItems} />
+        <GalleryCarousel items={filteredItems} ref={carouselRef} />
       </div>
       </div>
     </section>
