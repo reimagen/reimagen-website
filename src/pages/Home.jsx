@@ -28,9 +28,8 @@ export default function Home() {
         <div className="absolute inset-0">
           <div className="flex min-h-screen items-center justify-center px-4">
             <div
-              className={`bg-black/60 p-8 rounded-2xl text-center max-w-3xl w-full space-y-4 hero-flip-card ${
-                heroVisible ? 'is-visible' : ''
-              }`}
+              className={`bg-black/60 p-8 rounded-2xl text-center max-w-3xl w-full space-y-4 hero-flip-card ${heroVisible ? 'is-visible' : ''
+                }`}
             >
               <h1 className="text-4xl md:text-5xl font-bold">Let Wonder Lead the Way</h1>
               <p className="brand-hero-chip text-brand-lavender">

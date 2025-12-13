@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import fitnessRecap from '../assets/fitness-recap.png';
+import macrosTrackerPoster from '../assets/macros-tracker.png';
+import calibratePoster from '../assets/calibrate.jpg';
 import creationRobotPoster from '../assets/creation-of-robot.jpg';
 import HeroIntro from '../components/toolkit/HeroIntro';
 import CarouselNavigationButtons from '../components/CarouselNavigationButtons';
@@ -40,9 +42,8 @@ function ProductCard({ product, index, categoryStyles, isDesktop }) {
   return (
     <div
       ref={cardRef}
-      className={`brand-card min-w-[260px] max-w-xs text-white snap-center flex-shrink-0 ${
-        isDesktop ? 'slide-in-right' : 'card-enter'
-      } ${isVisible ? 'is-visible' : ''}`}
+      className={`brand-card min-w-[260px] max-w-xs text-white snap-center flex-shrink-0 ${isDesktop ? 'slide-in-right' : 'card-enter'
+        } ${isVisible ? 'is-visible' : ''}`}
       data-product-card
       style={{
         transitionDelay: isDesktop && isVisible ? `${index * 80}ms` : '0ms',
@@ -53,9 +54,8 @@ function ProductCard({ product, index, categoryStyles, isDesktop }) {
           {product.title}
         </h4>
         <p
-          className={`text-xs uppercase tracking-wide mb-2 ${
-            categoryStyles[product.category]?.text || 'text-gray-400'
-          }`}
+          className={`text-xs uppercase tracking-wide mb-2 ${categoryStyles[product.category]?.text || 'text-gray-400'
+            }`}
         >
           {product.category === 'Apps'
             ? 'App'
@@ -77,7 +77,7 @@ function ProductCard({ product, index, categoryStyles, isDesktop }) {
           </p>
         )}
         <div className="mt-auto flex flex-col gap-3">
-          {product.category === 'Apps' && product.image && (
+          {product.image && (
             <img
               src={product.image}
               alt={product.title}
@@ -86,22 +86,14 @@ function ProductCard({ product, index, categoryStyles, isDesktop }) {
           )}
           {product.title === 'Calibrate: Confidently Automate Your Workflows' && (
             <>
-            <a
-              href="https://youtu.be/RDJ4sWbqu6g?si=Sn0qPdJeO_2BRy1L"
-              className={`brand-cta-sm ${linkClass}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Watch Overview →
-            </a>
-            <a
-              href="https://www.jinglemaker.ai/mikkcb3gsx251a6bseh"
-              className={`brand-cta-sm ${linkClass}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Rap Jingle →
-            </a>
+              <a
+                href="https://youtu.be/RDJ4sWbqu6g?si=Sn0qPdJeO_2BRy1L"
+                className={`brand-cta-sm ${linkClass}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Watch Overview →
+              </a>
             </>
           )}
           {((product.category === 'Agents' && product.title !== 'Calibrate: Confidently Automate Your Workflows') || product.comingSoon) ? (
@@ -115,13 +107,11 @@ function ProductCard({ product, index, categoryStyles, isDesktop }) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              {product.title === 'FitnessAI'
-                ? 'Sign Up →'
-                : product.title === 'Calibrate: Confidently Automate Your Workflows'
+              {product.title === 'Calibrate: Confidently Automate Your Workflows'
+                ? 'Open Repo →'
+                : product.category === 'Other'
                   ? 'Open Repo →'
-                  : product.category === 'Other'
-                    ? 'Open Repo →'
-                    : 'Try Product →'}
+                  : 'Try Product →'}
             </a>
           )}
         </div>
@@ -153,30 +143,31 @@ export default function Products() {
         link: "https://studio--fitnessai-tsi8w.us-central1.hosted.app/signin",
         image: fitnessRecap,
         tools: ["Gemini", "Genkit", "Firebase Studio"],
-        stack: ["Next.js (React) frontend", "TypeScript", "Firebase Auth + Firestore"],
+        stack: ["Next.js (React)", "TypeScript", "Firebase Auth + Firestore"],
       },
       {
-        title: "Macros Voice Tracker",
-        description: "WIP: Chat with the agent and she'll calculate your macros, log your meals, and give you live advice on how to hit your macro goals.",
-        link: "#",
-        comingSoon: true,
-        tools: ["Google AI Studio", "Google Live Voice API"],
-        stack: ["Next.js (React)", "TypeScript", "Firebase Functions"],
+        title: "Macros Tracker",
+        description: "Chat with your AI macros coach and have it calculate your macros, log your meals, and give you live advice on how to hit your macro goals. View daily, weekly, and monthly rollups to stay on track. Next phase: voice chat integration.",
+        link: "https://macros-coach.vercel.app/",
+        image: macrosTrackerPoster,
+        tools: ["Google Generative AI", "Cursor", "Antigravity", "Codex", "Gemini"],
+        stack: ["Next.js (React)", "TypeScript", "Firebase Auth + Firestore", "Vercel"],
       },
     ],
     agents: [
       {
         title: "Calibrate: Confidently Automate Your Workflows",
-        description: "Upload your workflow, then let AI analyze and score its automation compatibility. Create your agent org chart, A2A cards, and tool registries. This was a team submission for the Google/Kaggle Agents Intensive Capstone plus a Rap Jingle from ElevenLabs.",
+        description: "Upload your workflow and let AI analyze its automation compatibility. Create your agent org chart, A2A cards, and tool registries. This was a team submission for the Google x Kaggle Agents Intensive Program.",
         link: "https://github.com/reimagen/agentarchitecture",
-        tools: ["Codex", "Claude", "Cursor", "Google ADK", "Gemini", "NotebookLM", "ElevenLabs"],
+        tools: ["Codex", "Claude", "Cursor", "Google ADK", "Gemini", "NotebookLM"],
         stack: ["Next.js (React)", "Python services (FastAPI)", "Firebase Auth + Firestore"],
+        image: calibratePoster,
       },
     ],
     other: [
       {
         title: "reimagen Website",
-        description: "Rome wasn't built in a week, but this site sure was (with generous help from Codex). Video assets were generated using OpenArt and Sora, and it was fun to battle-test the models from the international labs: Kling, WAN, Seedance, Minimax Hailuo, PixVerse, Vidu, etc.",
+        description: "Rome wasn't built in a week, but this website sure was (with generous help from Codex). Video assets were generated using OpenArt and Sora, and it was fun to battle-test the models from the international labs: Kling, WAN, Seedance, Minimax Hailuo, PixVerse, Vidu, etc.",
         link: "https://github.com/reimagen/reimagen-website",
         tools: ["Cursor", "Codex", "Antigravity", "Sora", "OpenArt"],
         stack: ["Vite + React", "Tailwind", "Vercel"],
@@ -421,149 +412,146 @@ export default function Products() {
       <div className="fixed inset-0 bg-black/70" aria-hidden="true" />
 
       <div className="relative z-10 flex flex-col px-4 py-16 md:px-10 lg:px-16">
-      <HeroIntro
-        title="Products"
-        subhead="A roundup of Apps, Agents, and Custom GPTs"
-        titleClass="text-3xl mb-1 tracking-[0.15em] uppercase text-center"
-        subheadClass="brand-section-subhead text-brand-lavender text-sm"
-        wrapperClass="mb-8 text-center flex flex-col items-center space-y-2"
-        titleAs="h2"
-        subheadAs="p"
-      />
+        <HeroIntro
+          title="Products"
+          subhead="A roundup of Apps, Agents, and Custom GPTs"
+          titleClass="text-3xl mb-1 tracking-[0.15em] uppercase text-center"
+          subheadClass="brand-section-subhead text-brand-lavender text-sm"
+          wrapperClass="mb-8 text-center flex flex-col items-center space-y-2"
+          titleAs="h2"
+          subheadAs="p"
+        />
 
-      {/* Filters and Navigation for Products Carousel */}
-      <div className="mb-6 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 px-4 md:px-0">
-        <div className="flex flex-wrap gap-3">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => {
-                if (category === 'All') {
-                  setSelectedCategories([]);
-                  return;
-                }
-                setSelectedCategories((prev) =>
-                  prev.includes(category)
-                    ? prev.filter((c) => c !== category)
-                    : [...prev, category]
-                );
-              }}
-              className={`${filterButtonBase} ${
-                category === 'All'
+        {/* Filters and Navigation for Products Carousel */}
+        <div className="mb-6 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 px-4 md:px-0">
+          <div className="flex flex-wrap gap-3">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => {
+                  if (category === 'All') {
+                    setSelectedCategories([]);
+                    return;
+                  }
+                  setSelectedCategories((prev) =>
+                    prev.includes(category)
+                      ? prev.filter((c) => c !== category)
+                      : [...prev, category]
+                  );
+                }}
+                className={`${filterButtonBase} ${category === 'All'
                   ? selectedCategories.length === 0
                     ? categoryStyles.default.pill
                     : 'bg-gray-800 text-gray-200 border-gray-700 hover:bg-gray-700'
                   : selectedCategories.includes(category)
                     ? (categoryStyles[category]?.pill || categoryStyles.default.pill)
                     : 'bg-white/10 text-white hover:bg-white/20'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
+                  }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
 
-        <CarouselNavigationButtons
-          onPrev={handlePrevProduct}
-          onNext={handleNextProduct}
-          isVisible={visibleProducts.length > 0}
-          ariaLabelPrev="Previous product"
-          ariaLabelNext="Next product"
-        />
-      </div>
-
-      {/* Horizontal carousel */}
-      <div
-        className="overflow-x-auto pb-6 products-scroll scrollbar-lavender products-scroll-compact dot-scroll"
-        ref={productScrollRef}
-      >
-        <div className="flex gap-4 snap-x snap-mandatory">
-          {visibleProducts.map((product, index) => (
-            <ProductCard
-              key={`${product.title}-${index}`}
-              product={product}
-              index={index}
-              categoryStyles={categoryStyles}
-              isDesktop={isDesktop}
-            />
-          ))}
-        </div>
-      </div>
-      {visibleProducts.length > 1 && (
-        <div className="flex justify-center gap-2 mt-4">
-          {visibleProducts.map((_, index) => (
-            <button
-              key={`product-dot-${index}`}
-              type="button"
-              className={`h-2 rounded-full transition-all duration-300 ${
-                index === activeProductIndex ? 'w-8 bg-brand-lavender' : 'w-2 bg-white/30'
-              }`}
-              aria-label={`Go to product card ${index + 1}`}
-              onClick={() => scrollToProductIndex(index)}
-            />
-          ))}
-        </div>
-      )}
-      <section className="space-y-3">
-        <h3 className="text-3xl mt-12 mb-1 tracking-[0.15em] uppercase text-center">Custom GPTs</h3>
-        <p className="brand-section-subhead text-brand-lavender text-sm text-center">
-          [Note: Requires ChatGPT account]
-        </p>
-
-        <div className="flex justify-center sm:justify-end mb-4">
           <CarouselNavigationButtons
-            onPrev={handlePrevGpt}
-            onNext={handleNextGpt}
-            isVisible={gptProducts.length > 0}
-            ariaLabelPrev="Previous GPT card"
-            ariaLabelNext="Next GPT card"
+            onPrev={handlePrevProduct}
+            onNext={handleNextProduct}
+            isVisible={visibleProducts.length > 0}
+            ariaLabelPrev="Previous product"
+            ariaLabelNext="Next product"
           />
         </div>
+
+        {/* Horizontal carousel */}
         <div
-          className="overflow-x-auto pb-4 pt-2 products-scroll scrollbar-lavender dot-scroll"
-          ref={gptScrollRef}
+          className="overflow-x-auto pb-6 products-scroll scrollbar-lavender products-scroll-compact dot-scroll"
+          ref={productScrollRef}
         >
           <div className="flex gap-4 snap-x snap-mandatory">
-            {gptProducts.map((product, index) => (
-              <div
-                key={`gpt-${product.title}-${index}`}
-                className="brand-card min-w-[260px] max-w-xs text-white snap-center flex-shrink-0"
-                data-gpt-card
-              >
-                <div className="p-4 flex flex-col flex-grow">
-                  <h4 className="text-lg font-semibold mb-2 text-brand-lavender">{product.title}</h4>
-                  <p className="text-sm text-gray-300 mb-4 flex-grow">
-                    {product.description}
-                  </p>
-                  <a
-                    href={product.link}
-                    className="brand-cta-sm bg-brand-lavender hover:bg-brand-lavender-dark text-black"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Start Chat →
-                  </a>
-                </div>
-              </div>
+            {visibleProducts.map((product, index) => (
+              <ProductCard
+                key={`${product.title}-${index}`}
+                product={product}
+                index={index}
+                categoryStyles={categoryStyles}
+                isDesktop={isDesktop}
+              />
             ))}
           </div>
         </div>
-        <div className="flex justify-center gap-2 mt-4">
-          {gptProducts.map((_, index) => (
-            <button
-              key={`gpt-dot-${index}`}
-              type="button"
-              className={`h-2 rounded-full transition-all duration-300 ${
-                index === activeGptIndex ? 'w-8 bg-brand-lavender' : 'w-2 bg-white/30'
-              }`}
-              aria-label={`Go to GPT card ${index + 1}`}
-              onClick={() => scrollToGptIndex(index)}
+        {visibleProducts.length > 1 && (
+          <div className="flex justify-center gap-2 mt-4">
+            {visibleProducts.map((_, index) => (
+              <button
+                key={`product-dot-${index}`}
+                type="button"
+                className={`h-2 rounded-full transition-all duration-300 ${index === activeProductIndex ? 'w-8 bg-brand-lavender' : 'w-2 bg-white/30'
+                  }`}
+                aria-label={`Go to product card ${index + 1}`}
+                onClick={() => scrollToProductIndex(index)}
+              />
+            ))}
+          </div>
+        )}
+        <section className="space-y-3">
+          <h3 className="text-3xl mt-12 mb-1 tracking-[0.15em] uppercase text-center">Custom GPTs</h3>
+          <p className="brand-section-subhead text-brand-lavender text-sm text-center">
+            [ Requires ChatGPT Account ]
+          </p>
+
+          <div className="flex justify-center sm:justify-end mb-4">
+            <CarouselNavigationButtons
+              onPrev={handlePrevGpt}
+              onNext={handleNextGpt}
+              isVisible={gptProducts.length > 0}
+              ariaLabelPrev="Previous GPT card"
+              ariaLabelNext="Next GPT card"
             />
-          ))}
-        </div>
-      </section>
-      <div className="h-16" aria-hidden="true" />
-    </div>
+          </div>
+          <div
+            className="overflow-x-auto pb-4 pt-2 products-scroll scrollbar-lavender dot-scroll"
+            ref={gptScrollRef}
+          >
+            <div className="flex gap-4 snap-x snap-mandatory">
+              {gptProducts.map((product, index) => (
+                <div
+                  key={`gpt-${product.title}-${index}`}
+                  className="brand-card min-w-[260px] max-w-xs text-white snap-center flex-shrink-0"
+                  data-gpt-card
+                >
+                  <div className="p-4 flex flex-col flex-grow">
+                    <h4 className="text-lg font-semibold mb-2 text-brand-lavender">{product.title}</h4>
+                    <p className="text-sm text-gray-300 mb-4 flex-grow">
+                      {product.description}
+                    </p>
+                    <a
+                      href={product.link}
+                      className="brand-cta-sm bg-brand-lavender hover:bg-brand-lavender-dark text-black"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Start Chat →
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="flex justify-center gap-2 mt-4">
+            {gptProducts.map((_, index) => (
+              <button
+                key={`gpt-dot-${index}`}
+                type="button"
+                className={`h-2 rounded-full transition-all duration-300 ${index === activeGptIndex ? 'w-8 bg-brand-lavender' : 'w-2 bg-white/30'
+                  }`}
+                aria-label={`Go to GPT card ${index + 1}`}
+                onClick={() => scrollToGptIndex(index)}
+              />
+            ))}
+          </div>
+        </section>
+        <div className="h-16" aria-hidden="true" />
+      </div>
     </section>
   );
 }
