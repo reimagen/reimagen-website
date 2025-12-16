@@ -50,7 +50,7 @@ export default function BuilderSection({
           to="/contact"
           colorClass="bg-brand-peach hover:bg-brand-peach-dark text-black"
         >
-          Talk shop with us →
+          Talk shop →
         </ToolkitCTA>
       </div>
     </ToolkitSection>

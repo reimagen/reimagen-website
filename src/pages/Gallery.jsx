@@ -174,7 +174,7 @@ export default function Gallery() {
       <div className="relative z-10 px-4 py-16 md:px-10 lg:px-16">
         <HeroIntro
           title="Gallery"
-          subhead="Swipe to explore a curated selection of GenAI media"
+          subhead="Swipe to explore a curated selection of GenAI media, and check us out on socials."
           titleClass="text-3xl mb-1 tracking-[0.15em] uppercase text-center"
           subheadClass="brand-section-subhead text-brand-lavender text-center"
           wrapperClass="mb-8 text-center flex flex-col items-center space-y-2"

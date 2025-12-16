@@ -180,10 +180,10 @@ export const vibeQuestions = [
 ];
 
 export const vibeCTACopy =
-  "If you're feeling overwhelmed with all these tools, you're not alone. New products and models drop every day, and this vibe-coder starter pack barely scratches the surface. If you're considering a tool, chances are we've already stress-tested it and can give you the TLDR.";
+  "If you're feeling overwhelmed with all these tools, you're not alone (Bolt? Bubble? Base44? Those are just the B's). New products and models drop every day, and this vibe-coder starter pack barely scratches the surface. If you're wondering which tool is right for you, chances are we've already stress-tested it and can give you the TLDR.";
 
 export const explorerCTACopy =
-  "If your org needs an AI boost, we've got you covered. There are whole universes for voice, creative, motion graphics, and niche workflows we didn't cover here. We'll evaluate your org's needs, flag industry-specialized tools, and build your AI-transformation roadmap.";
+  "If you need an AI jumpstart, we've got you covered. There are whole universes for voice, creative, motion graphics, and niche workflows we didn't cover here. We'll evaluate your org's needs, flag industry-specialized tools, and build your AI-transformation roadmap.";
 
 export const explorerUseCases = [
   {
@@ -200,12 +200,6 @@ export const explorerUseCases = [
         description: "Google's generalist version of ChatGPT. Most generous free tier.",
         link: 'https://gemini.google.com/',
       },
-      {
-        name: 'Claude',
-        description:
-          'Pro-level performance for strategy docs and nuance-heavy writing. Need a report? Use Claude.',
-        link: 'https://claude.ai/',
-      },
     ],
   },
   {
@@ -218,32 +212,32 @@ export const explorerUseCases = [
         link: 'https://labs.google.com/pomelli/about/',
       },
       {
-        name: 'Jingle Maker (ElevenLabs)',
+        name: 'Claude',
         description:
-          'Hilarious and free. Drop in your URL and get a stylized commercial jingle. Share your results so we can laugh together.',
-        link: 'https://www.jinglemaker.ai/',
+          'Pro-level performance for strategy docs and nuance-heavy writing. Need a report? Use Claude.',
+        link: 'https://claude.ai/',
       },
     ],
   },
   {
-    category: 'Learning',
+    category: 'TLDR',
     items: [
       {
-        name: 'NotebookLM',
+        name: 'NotebookLM (Google)',
         description:
-          'Chat with your content. Drop in up to 50 sources (websites, docs, PDFs, videos) and get instant briefs, presentations, infographics, even a podcast overview.',
+          'Your AI Trapper Keeper. Drop in up to 50 sources (websites, docs, PDFs, videos) and get instant briefs, presentations, infographics, even a podcast overview.',
         link: 'https://notebooklm.google.com/',
       },
       {
         name: 'Perplexity',
         description:
-          'Deep researcher that verifies and cites its sources. Ask for market scans, competitor comparisons, or ideal customer profiles.',
+          'Deep research heavy-lifting that verifies and cites its sources. Ask for market scans, competitor comparisons, or ideal customer profiles.',
         link: 'https://www.perplexity.ai/',
       },
       {
         name: 'Gemini Live',
         description:
-          "Need tech support? Instead of digging through help manuals, share your screen and ask Gemini for help.",
+          "Need tech support? Instead of digging through help manuals, share your screen, turn on the mic, and ask Gemini for help.",
         link: 'https://aistudio.google.com/live',
       },
     ],

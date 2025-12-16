@@ -194,10 +194,10 @@ export default function About() {
             >
               <h2 className="brand-section-kicker text-brand-lavender text-md">Who we are</h2>
               <p className="text-gray-300 max-w-2xl">
-                We're full-stack developers turned AI builders focused on creating experiences
-                that feel intuitive and personal. We live in the space between the technical and the magical,
-                thinking about hyper-personalization, new forms of communication, and how to make interfaces that feel alive. 
-                Chat assistants powered the first big wave of consumer AI, and we're betting voice is next.
+                We're AI builders and creators focused on making experiences that feel intuitive and personal. 
+                We live in the space between the technical and the magical, rethinking what's possible with hyper-personalization, 
+                new forms of communication, and interfaces that feel alive. Chat powered the first wave of
+                consumer AI mass adoption, and we're betting voice is next.
               </p>
             </div>
 
@@ -210,9 +210,9 @@ export default function About() {
               >
                 <h2 className="brand-section-kicker text-brand-lavender text-md">What we do</h2>
                 <p className="text-gray-300">
-                  We build LLM-powered apps, generate AI media, and automate workflows, 
-                  all grounded with context engineering. We rethink what's possible with product design, 
-                  interaction patterns, and frontier AI capabilities.
+                  We're experts at generating AI content, automating workflows, and building LLM-powered tools, 
+                  all grounded with context engineering. We reimagine what's possible with the each wave of 
+                  frontier AI capabilities.
                 </p>
               </div>
 
@@ -224,9 +224,9 @@ export default function About() {
               >
                 <h2 className="brand-section-kicker text-brand-lavender text-md">How we work</h2>
                 <p className="text-gray-300">
-                  AI helps us operate 10X-100X faster by taking time-drains, human error, 
-                  and orchestration-heavy workflows off our plate. Human judgment remains critical, 
-                  it’s what guides strategy, quality, and intent.
+                  AI helps us operate at 10X-100X by taking time-drains, human error, and deterministic 
+                  workflows off our plate. "Pass-the-butter" tasks get shipped off, but human judgment remains critical. 
+                  It’s what guides strategy, quality, and intent. 
                 </p>
               </div>
             </div>

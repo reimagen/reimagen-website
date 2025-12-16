@@ -62,7 +62,7 @@ export default function VibeSection({ sectionKicker, vibeStack, vibeTips, vibeQu
           to="/contact"
           colorClass="bg-brand-pink hover:bg-brand-pink-dark text-black"
         >
-          Get a Consult →
+          Get Help →
         </ToolkitCTA>
       </div>
     </ToolkitSection>
