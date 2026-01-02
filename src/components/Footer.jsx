@@ -174,7 +174,7 @@ export default function Footer() {
         )}
 
       </div>
-  <p className="mt-4 text-sm text-brand-lavender">© 2025 reimagen, Inc. All rights reserved.</p>
+  <p className="mt-4 text-sm text-brand-lavender">© 2026 Reimagen. All rights reserved.</p>
 
     </footer>
   );
