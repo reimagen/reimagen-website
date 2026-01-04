@@ -1,4 +1,7 @@
+import { useState } from 'react';
+
 export default function Footer() {
+  const [isMetaHovered, setIsMetaHovered] = useState(false);
   const socialColors = {
     github: 'hover:text-github',
     discord: 'hover:text-discord',
@@ -8,6 +11,7 @@ export default function Footer() {
     tiktok: 'hover:text-tiktok',
     linkedin: 'hover:text-linkedin',
     sora: 'hover:text-sora',
+    meta: 'hover:text-meta-blue',
   };
   const showLinkedIn = false;
 
@@ -67,6 +71,96 @@ export default function Footer() {
               fillRule="evenodd"
             />
           </svg>
+        </a>
+        
+        {/* Meta AI */}
+        <a
+          href="https://meta.ai/@reimagen"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Meta AI"
+          onMouseEnter={() => setIsMetaHovered(true)}
+          onMouseLeave={() => setIsMetaHovered(false)}
+        >
+          {isMetaHovered ? (
+            <svg
+              height="1em"
+              style={{ flex: 'none', lineHeight: 1 }}
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+              className={`brand-social-icon ${socialColors.meta}`}
+            >
+              <title>MetaAI</title>
+              <g clipPath="url(#lobe-icons-meta-ai-fill-0)" filter="url(#lobe-icons-meta-ai-fill-1)">
+                <path
+                  clipRule="evenodd"
+                  d="M12 0c6.627 0 12 5.373 12 12s-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0zm0 3.627a8.373 8.373 0 100 16.746 8.373 8.373 0 000-16.746z"
+                  fill="url(#lobe-icons-meta-ai-fill-2)"
+                  fillRule="evenodd"
+                ></path>
+              </g>
+              <defs>
+                <linearGradient
+                  gradientUnits="userSpaceOnUse"
+                  id="lobe-icons-meta-ai-fill-2"
+                  x1="24"
+                  x2="0"
+                  y1="0"
+                  y2="24"
+                >
+                  <stop offset=".13" stopColor="#FF97E3"></stop>
+                  <stop offset=".18" stopColor="#D14FE1"></stop>
+                  <stop offset=".338" stopColor="#0050E2"></stop>
+                  <stop offset=".666" stopColor="#0050E2"></stop>
+                  <stop offset=".809" stopColor="#00DDF4"></stop>
+                  <stop offset=".858" stopColor="#23F8CC"></stop>
+                </linearGradient>
+                <clipPath id="lobe-icons-meta-ai-fill-0">
+                  <path d="M0 0h24v24H0z" fill="#fff"></path>
+                </clipPath>
+                <filter
+                  colorInterpolationFilters="sRGB"
+                  filterUnits="userSpaceOnUse"
+                  height="24"
+                  id="lobe-icons-meta-ai-fill-1"
+                  width="24"
+                  x="0"
+                  y="0"
+                >
+                  <feFlood floodOpacity="0" result="BackgroundImageFix"></feFlood>
+                  <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
+                  <feColorMatrix
+                    in="SourceAlpha"
+                    result="hardAlpha"
+                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  ></feColorMatrix>
+                  <feOffset></feOffset>
+                  <feGaussianBlur stdDeviation=".75"></feGaussianBlur>
+                  <feComposite in2="hardAlpha" k2="-1" k3="1" operator="arithmetic"></feComposite>
+                  <feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0"></feColorMatrix>
+                  <feBlend in2="shape" result="effect1_innerShadow_674_237"></feBlend>
+                </filter>
+              </defs>
+            </svg>
+          ) : (
+            <svg
+              fill="currentColor"
+              fillRule="evenodd"
+              height="1em"
+              style={{ flex: 'none', lineHeight: 1 }}
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+              className={`brand-social-icon text-white ${socialColors.meta}`}
+            >
+              <title>MetaAI</title>
+              <path
+                clipRule="evenodd"
+                d="M12 0c6.627 0 12 5.373 12 12s-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0zm0 3.627a8.373 8.373 0 100 16.746 8.373 8.373 0 000-16.746z"
+              ></path>
+            </svg>
+          )}
         </a>
 
         {/* YouTube */}
@@ -135,7 +229,6 @@ export default function Footer() {
             <path d="M20.317 4.369a19.791 19.791 0 00-4.885-1.515.07.07 0 00-.073.035c-.21.375-.444.864-.608 1.248a18.116 18.116 0 00-5.434 0 12.51 12.51 0 00-.617-1.248.076.076 0 00-.073-.035 19.736 19.736 0 00-4.885 1.515.067.067 0 00-.03.027C2.356 9.057 1.65 13.578 2.06 18.057a.086.086 0 00.03.06 19.978 19.978 0 005.993 3.036.07.07 0 00.076-.024c.461-.63.873-1.295 1.226-1.99a.07.07 0 00-.038-.099 13.091 13.091 0 01-1.872-.888.07.07 0 01-.007-.117c.126-.094.252-.191.37-.29a.07.07 0 01.073-.01c3.927 1.792 8.18 1.792 12.061 0a.07.07 0 01.073.009c.12.099.244.196.37.29a.07.07 0 01-.006.117 12.665 12.665 0 01-1.872.888.07.07 0 00-.038.1c.36.693.772 1.358 1.225 1.99a.07.07 0 00.076.024 19.934 19.934 0 005.994-3.036.07.07 0 00.03-.06c.5-5.177-.84-9.655-3.549-13.661a.062.062 0 00-.031-.026zM8.02 15.331c-1.183 0-2.153-1.085-2.153-2.419 0-1.333.955-2.418 2.153-2.418 1.206 0 2.167 1.094 2.153 2.418 0 1.334-.955 2.419-2.153 2.419zm7.974 0c-1.183 0-2.153-1.085-2.153-2.419 0-1.333.955-2.418 2.153-2.418 1.206 0 2.167 1.094 2.153 2.418 0 1.334-.947 2.419-2.153 2.419z" />
         </svg>
         </a>
-
 
         {/* Twitter */}
         <a

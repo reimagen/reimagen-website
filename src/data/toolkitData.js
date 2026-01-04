@@ -10,12 +10,12 @@ export const builderCategories = [
       {
         name: 'Antigravity',
         description:
-          "Google gave us everything that Cursor Agents didn't, for free. May the odds be with you on beating the server load.",
+          "Google made Cursor Agents free, but, may the odds be with you on beating that server load.",
         link: 'https://antigravity.google/',
       },
       {
         name: 'Windsurf',
-        description: 'Overall great IDE, but sold to Codeium and key talent left so TBD future.',
+        description: 'Fine as an IDE, but Codeium exit drama = unknown future.',
         link: 'https://windsurf.ai/',
       },
     ],
@@ -25,7 +25,7 @@ export const builderCategories = [
     items: [
       {
         name: 'Claude Code',
-        description: 'Claude continues to deliver the strongest performance across context management, reasoning quality, and task execution.',
+        description: 'Claude continues to deliver the strongest performance across context management, reasoning quality, and task execution. Worth the $.',
         link: 'https://www.claude.com/product/claude-code',
         note: 'Paid subscription required',
       },
@@ -72,11 +72,11 @@ export const builderRunnersUp = [
   },
   {
     name: 'ElevenLabs',
-    note: 'Beautiful output but astoundingly expensive, useful for evergreen assets but not cost efficient for chat interaction.',
+    note: 'Beautiful output but astoundingly expensive, useful for high-mileage evergreen assets but not cost efficient for chat interaction.',
   },
   {
     name: 'Gemini Live API',
-    note: 'Not nearly human-passable yet, but priced acceptably.',
+    note: 'Speech is not human-passable yet, but priced acceptably.',
   }
 ];
 
@@ -203,19 +203,25 @@ export const explorerUseCases = [
     ],
   },
   {
-    category: 'Marketing',
+    category: 'Create',
     items: [
-      {
-        name: 'Pomelli (Google Labs)',
-        description:
-          'Stunningly simple. Drop in your URL and it will create your brand DNA. Spin up social media-ready assets in seconds.',
-        link: 'https://labs.google.com/pomelli/about/',
-      },
       {
         name: 'Claude',
         description:
           'Pro-level performance for strategy docs and nuance-heavy writing. Need a report? Use Claude.',
         link: 'https://claude.ai/',
+      },
+      {
+        name: 'Meta AI',
+        description:
+          'Generous free access to powerful models for creating high quality video and images.',
+        link: 'https://www.meta.ai/',
+      },
+      {
+        name: 'Pomelli (Google Labs)',
+        description:
+          'Stunningly simple. Drop in your URL and it will create your brand DNA. Spin up social media-ready assets in seconds.',
+        link: 'https://labs.google.com/pomelli/about/',
       },
     ],
   },
@@ -225,7 +231,7 @@ export const explorerUseCases = [
       {
         name: 'NotebookLM (Google)',
         description:
-          'Your AI Trapper Keeper. Drop in up to 50 sources (websites, docs, PDFs, videos) and get instant briefs, presentations, infographics, even a podcast overview.',
+          'Your AI Trapper Keeper. Drop in your sources (websites, docs, PDFs, videos) and get instant briefs, presentations, infographics, even a podcast overview.',
         link: 'https://notebooklm.google.com/',
       },
       {
@@ -237,7 +243,7 @@ export const explorerUseCases = [
       {
         name: 'Gemini Live',
         description:
-          "Need tech support? Instead of digging through help manuals, share your screen, turn on the mic, and ask Gemini for help.",
+          "Short on tech support? Instead of digging through help manuals, share your screen, turn on the mic, and ask Gemini for help.",
         link: 'https://aistudio.google.com/live',
       },
     ],
