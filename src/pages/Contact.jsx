@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "../styles/contactFlip.css";
-import monumentPoster from "../assets/monument-valley-aurora.jpg";
+import surferPoster from "../assets/surfer.jpeg";
 import HeroIntro from '../components/toolkit/HeroIntro';
 
 export default function Contact() {
@@ -104,12 +104,12 @@ const handleSubmit = async (e) => {
   return (
     <section className="relative -mt-24 pt-24 pb-6 overflow-hidden">
       <video
-        src="/videos/monument-valley-aurora.mp4"
+        src="/videos/cosmic-surfer-kling2.5.mp4"
         autoPlay
         loop
         muted
         playsInline
-        poster={monumentPoster}
+        poster={surferPoster}
         className="fixed inset-0 w-full h-full object-cover brightness-80"
       />
       <div className="fixed inset-0 bg-black/70" aria-hidden="true" />

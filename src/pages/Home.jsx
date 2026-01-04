@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import surferPoster from '../assets/surfer.jpeg';
+import monumentPoster from '../assets/monument-valley-aurora.jpg';
 
 
 export default function Home() {
@@ -15,12 +15,12 @@ export default function Home() {
       {/* Hero */}
       <div className="relative w-full min-h-[calc(100vh+5rem)]">
         <video
-          src="/videos/cosmic-surfer-kling2.5.mp4"
+          src="/videos/monument-valley-aurora.mp4"
           autoPlay
           loop
           muted
           playsInline
-          poster={surferPoster}
+          poster={monumentPoster}
           className="block w-full h-full min-h-[calc(100vh+5rem)] object-cover brightness-50"
         />
 
