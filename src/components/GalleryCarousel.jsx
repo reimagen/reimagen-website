@@ -165,7 +165,7 @@ const GalleryCarousel = forwardRef(function GalleryCarousel({ items = [] }, ref)
               </div>
               <div className="gallery-swiper-info">
                 <span className="gallery-swiper-pill" title="Model">
-                  Model: {item.model || 'Custom'}
+                  {item.model || 'Custom'}
                 </span>
               </div>
             </div>

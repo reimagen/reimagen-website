@@ -64,7 +64,7 @@ export default function GalleryCard({ item = {} }) {
       <div className="p-4 space-y-1">
         {caption && <p className="text-white text-sm">{caption}</p>}
         <p className="brand-section-subhead text-brand-lavender text-xs">
-          Model: <span className="font-medium text-white">{model}</span>
+          <span className="font-medium text-white">{model}</span>
         </p>
       </div>
     </div>

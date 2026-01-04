@@ -28,11 +28,11 @@ const galleryItems = [
   {
     order: 2,
     format: "Video",
-    src: "/videos/floating-dream.mp4",
-    alt: "Floating by Futuristic Structures in Space",
-    caption: "Into the Metaverse",
-    model: "Sora",
-    poster: "src/assets/dreamscape.jpeg",
+    src: "/videos/rain-window-moody.mp4",
+    alt: "A Young Woman Looking Out a Window in the Rain",
+    caption: "Rainy Day Dreams",
+    model: "Meta AI Vibes",
+    poster: "/src/assets/rain-window-moody.jpeg",
   },
   {
     order: 3,
@@ -46,11 +46,11 @@ const galleryItems = [
   {
     order: 4,
     format: "Video",
-    src: "/videos/monument-valley-aurora.mp4",
-    alt: "Northern Lights Over Monument Valley",
-    caption: "Auroras in Monument Valley",
-    model: "Sora",
-    poster: "/src/assets/monument-valley-aurora.jpg",
+    src: "/videos/impossible-run.mp4",
+    alt: "Woman Running in Impossible Places",
+    caption: "Redefine Impossible",
+    model: "Sora 2",
+    poster: "src/assets/impossible-run.jpg",
   },
   {
     order: 5,
@@ -64,14 +64,23 @@ const galleryItems = [
   {
     order: 6,
     format: "Video",
-    src: "/videos/robo-selfie-video.mp4", 
-    alt: "An All-Star Robot Selfie of Movie Characters",
-    caption: "That Oscars Selfie, Robo Version",
-    model: "Seedance 1.0",
-    poster: "/src/assets/robo-selfie.jpg",
+    src: "/videos/monument-valley-aurora.mp4",
+    alt: "Northern Lights Over Monument Valley",
+    caption: "Auroras in Monument Valley",
+    model: "Sora",
+    poster: "/src/assets/monument-valley-aurora.jpg",
   },
   {
     order: 7,
+    format: "Video",
+    src: "/videos/flower-field-walking.mp4",
+    alt: "A Woman Walking Through a Field of Dahlias at Golden Hour",
+    caption: "Dahlia Dreams",
+    model: "Meta AI Vibes",
+    poster: "src/assets/flower-field-walking.jpeg",
+  },
+  {
+    order: 8,
     format: "Video",
     src: "/videos/candy-basil.mp4",
     alt: "A Candy Version of St. Basil's Cathedral in Moscow",
@@ -79,26 +88,9 @@ const galleryItems = [
     model: "Sora",
     poster: "src/assets/candy-cathedral.jpg"
   },
-  {
-    order: 8,
-    format: "Video",
-    src: "/videos/aurora-drone.mp4",
-    alt: "Drone Flying Through Auroras",
-    caption: "Night Flight Through the Auroras",
-    model: "Sora",
-    poster: "/src/assets/drone-aurora.jpg",
-  },
+
   {
     order: 9,
-    format: "Video",
-    src: "/videos/starry-night.mp4",
-    alt: "Realistic Version of Starry Night Painting",
-    caption: "Starry Night in Motion",
-    model: "Sora",
-    poster: "src/assets/starry-night.jpg",
-  },
-  {
-    order: 10,
     format: "Video",
     src: "/videos/sandgrada-seedance1.0.mp4", 
     alt: "The Sagrada Familia as a Sandcastle",
@@ -107,22 +99,22 @@ const galleryItems = [
     poster: "src/assets/sandgrada.jpg",
   },
   {
-    order: 11,
-    format: "Video",
-    src: "/videos/pinky-brain.mp4",
-    alt: "Pinky and the Brain style characters in an AI-generated scene",
-    caption: "Same Thing We Do Every Night",
-    model: "MiniMax Hailuo 02",
-    poster: "src/assets/pinky-brain.png",
-  },
-  {
-    order: 12,
+    order: 10,
     format: "Video",
     src: "/videos/yin-yang-cats.mp4",
     alt: "A Black and a White curled up in the shape of a yin-yang sign",
     caption: "Black Cat Energy",
     model: "Sora 2",
     poster: "src/assets/yin-yang-cats.jpg",
+  },
+  {
+    order: 11,
+    format: "Video",
+    src: "/videos/floating-dream.mp4",
+    alt: "Floating by Futuristic Structures in Space",
+    caption: "Into the Metaverse",
+    model: "Sora",
+    poster: "src/assets/dreamscape.jpeg",
   },
 ];
 
@@ -174,7 +166,7 @@ export default function Gallery() {
       <div className="relative z-10 px-4 py-16 md:px-10 lg:px-16">
         <HeroIntro
           title="Gallery"
-          subhead="Swipe to explore a curated selection of GenAI media, and check us out on socials."
+          subhead="Swipe below to explore a short selection, head to socials for more."
           titleClass="text-3xl mb-1 tracking-[0.15em] uppercase text-center"
           subheadClass="brand-section-subhead text-brand-lavender text-center"
           wrapperClass="mb-8 text-center flex flex-col items-center space-y-2"
@@ -182,27 +174,29 @@ export default function Gallery() {
           subheadAs="p"
         />
 
-        <div className="mb-6 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 px-4 md:px-0">
+        <div className="mb-6 flex flex-col sm:flex-row sm:items-center gap-4 px-4 md:px-0">
           {/* Model Filters */}
-          <div className="flex flex-wrap gap-3">
-            {FILTER_OPTIONS.map((model) => (
-              <button
-                key={model}
-                onClick={() => setSelectedModel(model)}
-              className={`${filterButtonBase} ${
-                selectedModel === model
-                  ? model === 'All'
-                    ? 'bg-gray-200 text-black'
-                      : modelStyles[model] || 'bg-white/20 text-white'
-                    : 'bg-white/10 text-white hover:bg-white/20'
-                }`}
-              >
-                {model}
-              </button>
-            ))}
+          <div className="hidden">
+            <div className="flex flex-wrap gap-3">
+                {FILTER_OPTIONS.map((model) => (
+                <button
+                    key={model}
+                    onClick={() => setSelectedModel(model)}
+                className={`${filterButtonBase} ${
+                    selectedModel === model
+                    ? model === 'All'
+                        ? 'bg-gray-200 text-black'
+                        : modelStyles[model] || 'bg-white/20 text-white'
+                        : 'bg-white/10 text-white hover:bg-white/20'
+                    }`}
+                >
+                    {model}
+                </button>
+                ))}
+            </div>
           </div>
 
-        <div className="flex justify-center sm:justify-end">
+        <div className="flex justify-center w-full">
           <CarouselNavigationButtons
             onPrev={handlePrev}
             onNext={handleNext}
