@@ -16,7 +16,7 @@ export default function VibeSection({ sectionKicker, vibeStack, vibeTips, vibeQu
         sectionKicker={`${sectionKicker} text-brand-pink`}
         kickerText="Vibe coders"
         title="Tools for expressive builds and playful shipping"
-        description="When you want to sketch interactives, explore UIs, and get in flow. These tools keep code optional."
+        description="When you want to create prototypes, explore UIs, and get in flow. These tools keep code optional."
         kickerSizeClass="text-2xl"
       />
 

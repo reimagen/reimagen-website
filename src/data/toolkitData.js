@@ -140,7 +140,7 @@ export const explorerTips = [
   },
   {
     title: "Context matters.",
-    detail: 'AI can\'t read your mind. Context engineering is a trendy term, but what really matters is sharing your goals, KPIs, target audience, and constraints upfront. Provide docs, examples, feedback, and tell AI what\'s important.',
+    detail: 'AI can\'t read your mind. Context engineering sounds trendy, but what really matters is sharing your goals, KPIs, target audience, and constraints upfront. Provide docs, examples, feedback, and tell AI what\'s important.',
   },
   {
     title: 'Start a new chat thread to avoid performance degradation over time.',
@@ -156,13 +156,13 @@ export const vibeTips = [
       'Coding agents feel magical, but wandering without a plan can get expensive fast. First chat with AI to create a Product Requirements Document, known as a PRD, then start building. Your wallet (and your project) will thank you.',
   },
   {
-    title: 'Reality check: an app you can ship in minutes is probably AI slop.',
-    detail: 'Every day, another flashy tool drops peddling this promise. Quality comes from intention, not speed. Focus on building a great product and user experience.',
+    title: 'Reality check: if you can ship in minutes, it\'s probably AI slop.',
+    detail: 'Every day, another flashy tool drops peddling this quick promise. Quality comes from intention, not speed. Focus on building a great product and user experience.',
   },
   {
     title: 'Vibe coding ≠ vibe deploying.',
     detail:
-      'Coding is just the first step. You need battle-tested infrastructure, security, and storage for products to reliably hold up in the real world.',
+      'The code is just the first step. You need battle-tested infrastructure, security, and storage for products to reliably hold up in the real world.',
   },
 ];
 
@@ -180,10 +180,10 @@ export const vibeQuestions = [
 ];
 
 export const vibeCTACopy =
-  "If you're feeling overwhelmed with all these tools, you're not alone (Bolt? Bubble? Base44? Those are just the B's). New products and models drop every day, and this vibe-coder starter pack barely scratches the surface. If you're wondering which tool is right for you, chances are we've already stress-tested it and can give you the TLDR.";
+  "If you're feeling overwhelmed with all these tools, you're not alone (Bolt, Bubble, Base44? Those are just the B's). New products and models drop every day, and this vibe-coder starter pack barely scratches the surface. If you're wondering which tool is right for you, chances are we've already stress-tested it and can give you the TLDR. Don't waste time chasing tools.";
 
 export const explorerCTACopy =
-  "If you need an AI jumpstart, we've got you covered. There are whole universes for voice, creative, motion graphics, and niche workflows we didn't cover here. We'll evaluate your org's needs, flag industry-specialized tools, and build your AI-transformation roadmap.";
+  "Skills first, then tools. We'll teach you AI best practices, flag industry-specialized tools, and build your AI-transformation roadmap. There are whole universes for voice, creative, motion graphics, and niche workflows we didn't cover here.";
 
 export const explorerUseCases = [
   {
@@ -192,12 +192,12 @@ export const explorerUseCases = [
       {
         name: 'ChatGPT',
         description:
-          'Beginner-friendly handholding for brainstorms, planning, and drafting copy. Best for creativity, but watch out for glazing.',
+          'Newbie-friendly handholding for brainstorms, planning, and drafting copy. Best for creativity, but watch out for the glazing. Daily limits on free accounts.',
         link: 'https://chat.openai.com/',
       },
       {
         name: 'Gemini',
-        description: "Google's AI swiss army knife. Most generous free tier, paid upgrades needed to get the best tools.",
+        description: "Google's AI swiss army knife assistant. Most generous free tier, but paid upgrades are needed to get the best tools especially on visual asset creation.",
         link: 'https://gemini.google.com/',
       },
     ],
@@ -212,16 +212,16 @@ export const explorerUseCases = [
         link: 'https://claude.ai/',
       },
       {
-        name: 'Meta AI',
-        description:
-          'Generous free access to powerful models for creating high quality video and images.',
-        link: 'https://www.meta.ai/',
-      },
-      {
         name: 'Pomelli (Google Labs)',
         description:
           'Stunningly simple. Drop in your URL and it will create your brand DNA. Spin up social media-ready assets in seconds.',
         link: 'https://labs.google.com/pomelli/about/',
+      },
+      {
+        name: 'Meta AI',
+        description:
+          'Generous free access to powerful models for creating high quality video and images. Use this as your playground.',
+        link: 'https://www.meta.ai/',
       },
     ],
   },

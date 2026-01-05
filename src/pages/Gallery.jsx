@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import GalleryCarousel from "../components/GalleryCarousel";
 import HeroIntro from '../components/toolkit/HeroIntro';
 import CarouselNavigationButtons from '../components/CarouselNavigationButtons';
@@ -211,6 +212,11 @@ export default function Gallery() {
 
       <div className={`gallery-stack-animate ${isGridVisible ? 'is-visible' : ''}`}>
         <GalleryCarousel items={filteredItems} ref={carouselRef} />
+      </div>
+      <div className="flex justify-center mt-8">
+        <Link to="/contact" className="brand-cta text-sm bg-brand-lavender hover:bg-brand-lavender-dark text-black px-6 py-3 rounded-full">
+          COMMISSION CONTENT →
+        </Link>
       </div>
       </div>
     </section>

@@ -167,7 +167,7 @@ export default function Products() {
     other: [
       {
         title: "reimagen Website",
-        description: "Rome wasn't built in a week, but this website sure was. Video assets were generated using Sora and OpenArt to battle-test the models from the international labs: Kling, WAN, Seedance, Minimax Hailuo, PixVerse, Vidu, etc.",
+        description: "Rome wasn't built in a week, but this website was. Two days for the site, the rest for generating visuals. Video assets were created with Sora and OpenArt to battle-test the models from the big international labs: Kling, WAN, Seedance, Minimax Hailuo, PixVerse, Vidu, etc. TLDR: Do not sleep on these, especially if you need content on a budget.",
         link: "https://github.com/reimagen/reimagen-website",
         tools: ["Cursor", "Codex", "Antigravity", "Sora", "OpenArt"],
         stack: ["Vite + React", "Tailwind", "Vercel"],
@@ -176,12 +176,12 @@ export default function Products() {
     gpts: [
       {
         title: "YC Office Hours",
-        description: "YC partner board simulation giving direct, high-leverage startup feedback from Garry, Jessica, Michael, Dalton, Paul, Daniel, and Aaron.",
+        description: "YC partner board simulation giving you direct, high-leverage advice and feedback from Garry, Jessica, Michael, Dalton, Paul, Daniel, and Aaron.",
         link: "https://chatgpt.com/g/g-69050a13e2f081919fa4a1465e0cc273-yc-partners-office-hours",
       },
       {
         title: "a16z Office Hours",
-        description: "A16Z-style advisor giving direct partner takes and consensus startup feedback from Marc, Ben, Angela, Chris, Katherine, Connie, and Martin.",
+        description: "A16Z-style advisory board simulation giving you direct partner takes and feedback from Marc, Ben, Angela, Chris, Katherine, Connie, and Martin.",
         link: "https://chatgpt.com/g/g-6905072329f8819188ce714b9880984d-a16z-partners-office-hours",
       },
       {
@@ -210,7 +210,7 @@ export default function Products() {
   const [activeProductIndex, setActiveProductIndex] = useState(0);
   const [activeGptIndex, setActiveGptIndex] = useState(0);
 
-  const categories = ['All', 'Apps', 'Agents', 'Other'];
+  const categories = ['All', 'Apps', 'Agents'];
   const filterButtonBase = 'brand-cta text-xs tracking-[0.2em] uppercase';
 
   const categoryStyles = {
@@ -404,7 +404,7 @@ export default function Products() {
       <div className="relative z-10 flex flex-col px-4 py-16 md:px-10 lg:px-16">
         <HeroIntro
           title="Products"
-          subhead="A roundup of Apps, Agents, and Custom GPTs"
+          subhead="A roundup of Public Apps, Agents, and Custom GPTs"
           titleClass="text-3xl mb-1 tracking-[0.15em] uppercase text-center"
           subheadClass="brand-section-subhead text-brand-lavender text-sm"
           wrapperClass="mb-8 text-center flex flex-col items-center space-y-2"
@@ -413,7 +413,7 @@ export default function Products() {
         />
 
         {/* Filters and Navigation for Products Carousel */}
-        <div className="mb-6 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 px-4 md:px-0">
+        <div className="mb-6 flex flex-col items-center sm:flex-row sm:justify-between sm:items-center gap-4 px-4 md:px-0">
           <div className="flex flex-wrap gap-3">
             {categories.map((category) => (
               <button
@@ -483,13 +483,18 @@ export default function Products() {
             ))}
           </div>
         )}
-        <section className="space-y-3">
+        <div className="flex justify-center mt-8">
+          <Link to="/contact" className="brand-cta text-sm bg-brand-lavender hover:bg-brand-lavender-dark text-black px-6 py-3 rounded-full">
+            Get Dev Help →
+          </Link>
+        </div>
+        <section className="mb-8">
           <h3 className="text-3xl mt-12 mb-1 tracking-[0.15em] uppercase text-center">Custom GPTs</h3>
-          <p className="brand-section-subhead text-brand-lavender text-sm text-center">
+          <p className="brand-section-subhead text-brand-lavender text-sm text-center mt-4">
             [ Requires ChatGPT Account ]
           </p>
 
-          <div className="flex justify-center sm:justify-end mb-4">
+          <div className="flex justify-center sm:justify-end mt-6">
             <CarouselNavigationButtons
               onPrev={handlePrevGpt}
               onNext={handleNextGpt}
@@ -499,7 +504,7 @@ export default function Products() {
             />
           </div>
           <div
-            className="overflow-x-auto pb-4 pt-2 products-scroll scrollbar-lavender dot-scroll"
+            className="overflow-x-auto pb-4 pt-2 products-scroll scrollbar-lavender dot-scroll mt-8"
             ref={gptScrollRef}
           >
             <div className="flex gap-4 snap-x snap-mandatory">
@@ -527,7 +532,7 @@ export default function Products() {
               ))}
             </div>
           </div>
-          <div className="flex justify-center gap-2 mt-4">
+          <div className="flex justify-center gap-2 mt-6">
             {gptProducts.map((_, index) => (
               <button
                 key={`gpt-dot-${index}`}
@@ -538,6 +543,11 @@ export default function Products() {
                 onClick={() => scrollToGptIndex(index)}
               />
             ))}
+          </div>
+          <div className="flex justify-center mt-8">
+            <Link to="/contact" className="brand-cta text-sm bg-brand-lavender hover:bg-brand-lavender-dark text-black px-6 py-3 rounded-full">
+              Build me a GPT →
+            </Link>
           </div>
         </section>
         <div className="h-16" aria-hidden="true" />
