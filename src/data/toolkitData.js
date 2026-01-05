@@ -187,17 +187,17 @@ export const explorerCTACopy =
 
 export const explorerUseCases = [
   {
-    category: 'Chat',
+    category: 'GENERALIST',
     items: [
       {
         name: 'ChatGPT',
         description:
-          'Generalist teammate for brainstorms, planning, and drafting copy. Most useful for casual, conversational tone.',
+          'Beginner-friendly handholding for brainstorms, planning, and drafting copy. Best for creativity, but watch out for glazing.',
         link: 'https://chat.openai.com/',
       },
       {
         name: 'Gemini',
-        description: "Google's generalist version of ChatGPT. Most generous free tier.",
+        description: "Google's AI swiss army knife. Most generous free tier, paid upgrades needed to get the best tools.",
         link: 'https://gemini.google.com/',
       },
     ],

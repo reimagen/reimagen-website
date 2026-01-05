@@ -196,8 +196,7 @@ export default function About() {
               <p className="text-gray-300 max-w-2xl">
                 We're AI builders and creators focused on making experiences that feel intuitive and personal. 
                 We live in the space between the technical and the magical, rethinking what's possible with hyper-personalization, 
-                new forms of communication, and interfaces that feel alive. Chat powered the first wave of
-                consumer AI mass adoption, and we're betting voice is next.
+                new forms of communication, and interfaces that feel alive.
               </p>
             </div>
 
@@ -210,9 +209,8 @@ export default function About() {
               >
                 <h2 className="brand-section-kicker text-brand-lavender text-md">What we do</h2>
                 <p className="text-gray-300">
-                  We're experts at generating AI content, automating workflows, and building LLM-powered tools, 
-                  all grounded with context engineering. We reimagine what's possible with the each wave of 
-                  frontier AI capabilities.
+                  Tools don't replace taste, and instinct comes from experience. We use the power of AI to generate content, 
+                  evolve workflows, and build LLM-powered tools, all grounded with context engineering.
                 </p>
               </div>
 
@@ -224,7 +222,7 @@ export default function About() {
               >
                 <h2 className="brand-section-kicker text-brand-lavender text-md">How we work</h2>
                 <p className="text-gray-300">
-                  AI helps us operate at 10X-100X by taking time-drains, human error, and deterministic 
+                  AI pushes operations 10X-100X by taking time-drains, human error, and deterministic 
                   workflows off our plate. "Pass-the-butter" tasks get shipped off, but human judgment remains critical. 
                   It’s what guides strategy, quality, and intent. 
                 </p>

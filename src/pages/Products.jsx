@@ -167,7 +167,7 @@ export default function Products() {
     other: [
       {
         title: "reimagen Website",
-        description: "Rome wasn't built in a week, but this website sure was (with generous help from Codex). Video assets were generated using OpenArt and Sora, and it was fun to battle-test the models from the international labs: Kling, WAN, Seedance, Minimax Hailuo, PixVerse, Vidu, etc.",
+        description: "Rome wasn't built in a week, but this website sure was. Video assets were generated using Sora and OpenArt to battle-test the models from the international labs: Kling, WAN, Seedance, Minimax Hailuo, PixVerse, Vidu, etc.",
         link: "https://github.com/reimagen/reimagen-website",
         tools: ["Cursor", "Codex", "Antigravity", "Sora", "OpenArt"],
         stack: ["Vite + React", "Tailwind", "Vercel"],
@@ -193,16 +193,6 @@ export default function Products() {
         title: "FitnessAI Companion GPT",
         description: "Pairs with FitnessAI. Upload InBody Scan pictures and dive into your stats. Learn about techniques, proper form, recovery, and nutrition.",
         link: "https://chatgpt.com/g/g-68b5eaa588208191b9482111e885291e-fitnessai-companion-coach",
-      },
-      {
-        title: "Instant Book Club",
-        description: "Chat with the author, critics from the NYT Book Review, and diverse voices across generations, ethnicity, and gender. Discuss key takeaways, current-world parallels, plot holes, etc.",
-        link: "https://chatgpt.com/g/g-68167d995f648191a78e68b930ee6d0f-book-club",
-      },
-      {
-        title: "Photographer's Travel Planner",
-        description: "Discover the best photography spots and timing. Figure out if you really need to be up at 4am to snap that sunrise, and get a perfect setup.",
-        link: "https://chatgpt.com/g/g-67f7f3490ffc8191954b00ee1712581e-travel-planner-for-photography",
       },
     ],
   };
