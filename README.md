@@ -38,6 +38,13 @@ This generates an optimized production bundle in `dist/`.
 
 The site builds as a static bundle via Vite. Hosting targets Netlify, Vercel, or any static host that can serve the `dist/` directory. Configure environment variables (if any) through your hosting provider’s dashboard.
 
+## SEO / crawl
+
+- `public/robots.txt` allows all and points to the sitemap.
+- `public/llms.txt` allows all (AI crawlers) and points to the sitemap.
+- `public/sitemap.xml` generated for https://www.reimagen.ai (update `scripts/generate-sitemap.cjs` if routes change).
+- Pages use `useDocumentHead` for title, description, and OG/Twitter tags. Set `ogImage` per page in the call.
+
 ## Notes
 
 Bootstrapped with the React + Vite template. Refer to the Vite docs for advanced configuration: https://vitejs.dev/guide/
