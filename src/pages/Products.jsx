@@ -145,7 +145,7 @@ export default function Products() {
     applications: [
       {
         title: "FitnessAI",
-        description: "Set your goals and log workouts. Let AI analyze your progress and generate workout plans. In-depth charts for progressive overload, imbalance detection, and calorie burn. It's like having Tableau for your workout data.",
+        description: "Set your goals and log workouts. Let AI analyze your progress and generate workout plans. In-depth charts for progressive overload, imbalance detection, and calorie burn. It's like having AI Tableau for your workout data.",
         link: "https://studio--fitnessai-tsi8w.us-central1.hosted.app/signin",
         image: fitnessRecap,
         tools: ["Gemini", "Genkit", "Firebase Studio"],
@@ -165,7 +165,7 @@ export default function Products() {
         title: "Content Lab Prototype",
         description: "In development. Preview access to Gemini 3 API via DeepMind hackathon. The Problem: prompt engineering does not come naturally to most people. The Solution: multi-modal unlocks visually-driven interfaces so people don't have to become masters of languge. Prototype available Feb 9.",
         link: "/contact",
-        tools: ["Claude", "Gemini", "Cursor"],
+        tools: ["Gemini", "Antigravity", "Cursor", "Claude", "Codex"],
         stack: ["Next.js", "Python"],
         comingSoon: true,
       },
