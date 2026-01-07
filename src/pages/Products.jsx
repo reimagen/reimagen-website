@@ -173,7 +173,7 @@ export default function Products() {
     other: [
       {
         title: "reimagen Website",
-        description: "This website was created with the assistance of AI IDEs, CLI coding agents, and GenAI video models. Video assets were created with Sora and OpenArt to battle-test the models from the big international labs: Kling, WAN, Seedance, Minimax Hailuo, PixVerse, Vidu, etc. TLDR: Do not sleep on these, especially if you need content on a budget.",
+        description: "This website was created with the assistance of AI IDEs, CLI coding agents, and GenAI video models. Video assets were created with Sora, Meta AI, Veo, and via OpenArt's platform to battle-test the models from the big international labs: Kling, WAN, Seedance, Minimax Hailuo, PixVerse, Vidu, etc. TLDR: Do not sleep on these, especially if you need content on a budget.",
         link: "https://github.com/reimagen/reimagen-website",
         tools: ["Cursor", "Codex", "Antigravity", "Sora", "OpenArt"],
         stack: ["Vite + React", "Tailwind", "Vercel"],

@@ -13,14 +13,14 @@ const FOCUS_VERTICALS = [
   },
   {
     title: "CONSUMER BRANDS",
-    problem: "How much did it cost to produce that flop post? Content needs are limitless, your budget is not.",
+    problem: "How much did it cost to produce that flopped post? Content needs are limitless, your budget is not.",
     solution: "Make your website and brand kit AI-readable, then build a Content Engine to produce volume without burning the whole budget.",
     colorClass: "text-brand-pink",
     barClass: "bg-brand-pink",
   },
   {
     title: "ADVERTISERS",
-    problem: "AI raised the bar on client expectations for variations, delivery speed, and performance.",
+    problem: "AI raised the bar on client expectations for cost, volume, speed, and performance.",
     solution: "Integrate systems that automate production and iteration, so you can double down on what clients pay for: creative vision.",
     colorClass: "text-brand-peach",
     barClass: "bg-brand-peach",
@@ -193,7 +193,7 @@ function Hero({ reduceMotion, heroVisible }) {
             Tool-agnostic AI consulting.
           </h1>
           <p className="text-lg md:text-xl text-white/80">
-            We determine where AI belongs, where it doesn’t, and integrate it into the systems that run the business.         
+            We show you where AI belongs, where it doesn’t, and integrate it into the systems that run the business.         
           </p>
           <p className="brand-hero-chip text-brand-lavender text-base md:text-lg">
             Organizational Strategy • Content engines • Workflow automation • Custom tools
