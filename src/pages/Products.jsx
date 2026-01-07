@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import useDocumentHead from "../hooks/useDocumentHead";
 import { Link } from 'react-router-dom';
 import fitnessRecap from '../assets/fitness-recap.png';
 import macrosTrackerPoster from '../assets/macros-tracker.png';
@@ -121,6 +122,11 @@ function ProductCard({ product, index, categoryStyles, isDesktop }) {
 }
 
 export default function Products() {
+  useDocumentHead({
+    title: "Reimagen Products - AI Applications, Agents & Custom GPTs",
+    description: "Explore AI-powered products and solutions from Reimagen, including custom applications, intelligent agents, and GPTs for various business needs.",
+  });
+
   const [isDesktop, setIsDesktop] = useState(
     typeof window !== 'undefined'
       ? window.matchMedia('(min-width: 768px)').matches
@@ -167,7 +173,7 @@ export default function Products() {
     other: [
       {
         title: "reimagen Website",
-        description: "Rome wasn't built in a week, but this website was. Two days for the site, the rest for generating visuals. Video assets were created with Sora and OpenArt to battle-test the models from the big international labs: Kling, WAN, Seedance, Minimax Hailuo, PixVerse, Vidu, etc. TLDR: Do not sleep on these, especially if you need content on a budget.",
+        description: "This website was created with the assistance of AI IDEs, CLI coding agents, and GenAI video models. Video assets were created with Sora and OpenArt to battle-test the models from the big international labs: Kling, WAN, Seedance, Minimax Hailuo, PixVerse, Vidu, etc. TLDR: Do not sleep on these, especially if you need content on a budget.",
         link: "https://github.com/reimagen/reimagen-website",
         tools: ["Cursor", "Codex", "Antigravity", "Sora", "OpenArt"],
         stack: ["Vite + React", "Tailwind", "Vercel"],

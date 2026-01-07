@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
+import useDocumentHead from "../hooks/useDocumentHead";
 import "../styles/contactFlip.css";
 import surferPoster from "../assets/surfer.jpeg";
 import HeroIntro from '../components/toolkit/HeroIntro';
 
 export default function Contact() {
+  useDocumentHead({
+    title: "Contact Reimagen - Get in Touch for AI Solutions",
+    description: "Reach out to Reimagen for expert AI transformation consulting, generative AI content, workflow automation, and custom app development.",
+  });
+
   const initialFormState = {
     firstName: "",
     lastName: "",

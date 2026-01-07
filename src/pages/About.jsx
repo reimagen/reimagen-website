@@ -1,22 +1,23 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import useDocumentHead from "../hooks/useDocumentHead";
+import useReveal from "../hooks/useReveal";
 import dorothyPosterFrame from "../assets/dorothy-poster-frame.jpeg";
 import galaxyPoster from "../assets/galaxy.jpg";
 
-const REVEAL_OPTIONS = { threshold: 0.4, rootMargin: '0px 0px -25% 0px' };
-
 export default function About() {
-  const headerRef = useRef(null);
-  const whoWeAreRef = useRef(null);
-  const whatWeDoRef = useRef(null);
-  const howWeWorkRef = useRef(null);
+  useDocumentHead({
+    title: "About Reimagen | Tool-agnostic AI Consulting",
+    description: "Reimagen helps teams decide where AI belongs, integrate it into real workflows, and upskill operators. AI strategy, content engines, workflow automation, and custom tools.",
+  });
+
   const [isVideoReady, setIsVideoReady] = useState(false);
   const [isDesktop, setIsDesktop] = useState(
     typeof window !== 'undefined' ? window.matchMedia('(min-width: 768px)').matches : false
   );
-  const [isHeaderVisible, setIsHeaderVisible] = useState(false);
-  const [isWhoVisible, setIsWhoVisible] = useState(false);
-  const [isWhatVisible, setIsWhatVisible] = useState(false);
-  const [isHowVisible, setIsHowVisible] = useState(false);
+  const headerReveal = useReveal({ threshold: 0.25 });
+  const whoReveal = useReveal({ threshold: 0.4, rootMargin: "0px 0px -25% 0px" });
+  const whatReveal = useReveal({ threshold: 0.4, rootMargin: "0px 0px -25% 0px", reduceMotion: isDesktop });
+  const howReveal = useReveal({ threshold: 0.4, rootMargin: "0px 0px -25% 0px", reduceMotion: isDesktop });
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(min-width: 768px)');
@@ -32,100 +33,6 @@ export default function About() {
     return () => clearTimeout(timeout);
   }, [isVideoReady]);
 
-  useEffect(() => {
-    const target = headerRef.current;
-    if (!target) return undefined;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsHeaderVisible(true);
-            observer.disconnect();
-          }
-        });
-      },
-      { threshold: 0.25 }
-    );
-
-    observer.observe(target);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const target = whoWeAreRef.current;
-    if (!target) return undefined;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsWhoVisible(true);
-            observer.disconnect();
-          }
-        });
-      },
-      REVEAL_OPTIONS
-    );
-
-    observer.observe(target);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const target = whatWeDoRef.current;
-    if (isDesktop) {
-      setIsWhatVisible(true);
-      return undefined;
-    }
-    if (!target) return undefined;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsWhatVisible(true);
-            observer.disconnect();
-          }
-        });
-      },
-      REVEAL_OPTIONS
-    );
-
-    observer.observe(target);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const target = howWeWorkRef.current;
-    if (isDesktop) {
-      setIsHowVisible(true);
-      return undefined;
-    }
-    if (!target) return undefined;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsHowVisible(true);
-            observer.disconnect();
-          }
-        });
-      },
-      REVEAL_OPTIONS
-    );
-
-    observer.observe(target);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!isDesktop || !isWhoVisible) return;
-    setIsWhatVisible(true);
-    setIsHowVisible(true);
-  }, [isDesktop, isWhoVisible]);
-
   return (
     <section className="relative overflow-hidden">
       {/* Desktop background */}
@@ -135,8 +42,10 @@ export default function About() {
         loop
         muted
         playsInline
+        preload="auto"
         poster={galaxyPoster}
         className="hidden md:block fixed inset-0 w-full h-full object-cover brightness-[0.62]"
+        aria-hidden="true"
       />
       <div className="hidden md:block fixed inset-0 bg-black/75" aria-hidden="true" />
 
@@ -151,6 +60,7 @@ export default function About() {
         onLoadedData={() => setIsVideoReady(true)}
         poster={dorothyPosterFrame}
         className="md:hidden fixed inset-0 w-full h-full object-cover brightness-90"
+        aria-hidden="true"
       />
       <div className="md:hidden fixed inset-0 bg-black/75" aria-hidden="true" />
 
@@ -173,58 +83,58 @@ export default function About() {
           {/* Right: text content */}
           <div className="space-y-10">
             <header
-              ref={headerRef}
+              ref={headerReveal.ref}
               className={`space-y-4 slide-in-left ${
-                isVideoReady && isHeaderVisible ? "is-visible" : ""
+                isVideoReady && headerReveal.isVisible ? "is-visible" : ""
               }`}
             >
-              <p className="brand-section-kicker text-brand-lavender text-lg">
-                About reImagen
-              </p>
-              <h1 className="text-4xl md:text-5xl font-bold">
-                Let's reimagine everything, together.
+              <h1 className="brand-section-kicker text-brand-lavender text-lg">
+                AI Consulting for strategy, tools, workflows, and content.
               </h1>
+              <p className="text-4xl md:text-5xl font-bold">
+                Let's reimagine everything, together.
+              </p>
             </header>
 
             <div
-              ref={whoWeAreRef}
+              ref={whoReveal.ref}
               className={`space-y-4 slide-in-right ${
-                isVideoReady && isWhoVisible ? "is-visible" : ""
+                isVideoReady && whoReveal.isVisible ? "is-visible" : ""
               }`}
             >
               <h2 className="brand-section-kicker text-brand-lavender text-md">Who we are</h2>
               <p className="text-gray-300 max-w-2xl">
-                We're AI builders and creators, crafting AI-powered experiences that feel intuitive and personal. Tools don't replace taste, 
-                and instinct comes from experience. We push the edge between the technical and the magical, 
-                rethinking what's possible with hyper-personalization, communication, and interfaces that feel alive.
+              AI changes fast. We rigorously evaluate models and tools so you don't have to. 
+              Our work is grounded in experience across tech startups, advertising, and consumer brands. We
+              build practical AI systems for communication, personalization, and operations.  
               </p>
             </div>
 
             <div className="grid gap-8 md:grid-cols-2">
               <div
-                ref={whatWeDoRef}
-                className={`space-y-3 slide-in-left ${
-                  isVideoReady && isWhatVisible ? "is-visible" : ""
+              ref={whatReveal.ref}
+              className={`space-y-3 slide-in-left ${
+                  isVideoReady && whatReveal.isVisible ? "is-visible" : ""
                 }`}
               >
                 <h2 className="brand-section-kicker text-brand-lavender text-md">What we do</h2>
                 <p className="text-gray-300">
-                  Expertise is honed, not generated by an LLM. We combine industry expertise from tech, advertising, and consumer goods with 
-                  the power of AI to create content, evolve workflows, and build custom tools.
+                  We design and implement the playbook for integrating AI into the systems that run the business. 
+                  This includes strategy, content engines, workflow automation, and custom tools. 
+                  Tools don't replace taste, and real expertise is proven through execution. 
                 </p>
               </div>
 
               <div
-                ref={howWeWorkRef}
-                className={`space-y-3 slide-in-right ${
-                  isVideoReady && isHowVisible ? "is-visible" : ""
+              ref={howReveal.ref}
+              className={`space-y-3 slide-in-right ${
+                  isVideoReady && howReveal.isVisible ? "is-visible" : ""
                 }`}
               >
                 <h2 className="brand-section-kicker text-brand-lavender text-md">How we work</h2>
                 <p className="text-gray-300">
-                  AI super-charges operations 10X-100X by taking time-drains, human error, and deterministic 
-                  workflows off our plate. "Pass-the-butter" tasks get shipped off, but human judgment 
-                  guides strategy, quality, and intent. 
+                  You bring the goals. We put the right systems in place. AI handles the repetitive, error-prone work. 
+                  People handle judgment, quality, and intent. We focus on fixing foundations first so operations can scale reliably.
                 </p>
               </div>
             </div>

@@ -1,6 +1,7 @@
 // src/pages/Toolkit.jsx
 import { createPortal } from 'react-dom';
 import { useEffect, useState } from 'react';
+import useDocumentHead from "../hooks/useDocumentHead";
 import ExplorerSection from '../components/toolkit/ExplorerSection';
 import VibeSection from '../components/toolkit/VibeSection';
 import BuilderSection from '../components/toolkit/BuilderSection';
@@ -17,6 +18,11 @@ import {
 import dreamscapePoster from '../assets/dreamscape.jpeg';
 
 export default function Toolkit() {
+  useDocumentHead({
+    title: "AI Toolkit - Reimagen AI Transformation Resources",
+    description: "Explore Reimagen's curated AI toolkit for generative AI content, workflow automation, and app development. Resources for explorers, vibe coders, and builders.",
+  });
+
   const sectionKicker = 'brand-section-kicker';
   const personaCtas = [
     {

@@ -51,7 +51,7 @@ export default function GalleryCard({ item = {} }) {
             controls
             autoPlay
             className="w-full h-full object-cover"
-            preload="metadata"
+            preload="auto"
             muted
             playsInline
             loop

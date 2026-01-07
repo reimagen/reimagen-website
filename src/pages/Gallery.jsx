@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import useDocumentHead from "../hooks/useDocumentHead";
 import { Link } from 'react-router-dom';
 import GalleryCarousel from "../components/GalleryCarousel";
 import HeroIntro from '../components/toolkit/HeroIntro';

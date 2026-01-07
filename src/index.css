@@ -19,6 +19,10 @@ body {
     @apply relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-xl flex flex-col gap-3 p-6 shadow-[0_8px_32px_rgba(0,0,0,0.35)] transition-transform duration-200 ease-out hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,0,0,0.45)];
   }
 
+  .brand-card-home {
+    @apply bg-black/40 border border-white/10 backdrop-blur;
+  }
+
   .brand-card-compact {
     @apply relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-xl flex flex-col gap-2 p-4 min-w-[260px] max-w-sm shadow-[0_8px_32px_rgba(0,0,0,0.35)];
   }

@@ -35,7 +35,7 @@ export default function Navbar() {
 
   return (
     <nav className="fixed inset-x-0 top-4 px-4 md:px-8 z-50">
-      <div className="bg-black/50 backdrop-blur text-white shadow-lg border border-white/15 rounded-2xl px-4 md:px-6 py-3 md:py-4">
+      <div className="bg-black/40 backdrop-blur text-white border border-white/10 rounded-2xl px-4 md:px-6 py-3 md:py-4 shadow-none">
         <div className="flex items-center justify-between">
           <Link to="/">
             <h1 className="text-2xl tracking-[0.12em] text-brand-lavender">reimagen</h1>

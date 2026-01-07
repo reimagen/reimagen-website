@@ -14,7 +14,7 @@ export default function Layout() {
 
       {/* Page content is centered */}
       <main className={`flex-grow w-full ${isHome ? "" : "pt-24"}`}>
-        <div key={location.pathname} className="route-fade">
+        <div key={location.pathname} className={isHome ? "" : "route-fade"}>
           <Outlet />
         </div>
       </main>
