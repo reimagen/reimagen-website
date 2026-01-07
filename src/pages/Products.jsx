@@ -162,6 +162,14 @@ export default function Products() {
     ],
     agents: [
       {
+        title: "Content Lab Prototype",
+        description: "In development. Preview access to Gemini 3 API via DeepMind hackathon. The Problem: prompt engineering does not come naturally to most people. The Solution: multi-modal unlocks visually-driven interfaces so people don't have to become masters of languge. Prototype available Feb 9.",
+        link: "/contact",
+        tools: ["Claude", "Gemini", "Cursor"],
+        stack: ["Next.js", "Python"],
+        comingSoon: true,
+      },
+      {
         title: "Calibrate: Confidently Automate Your Workflows",
         description: "Upload your workflow and let AI analyze its automation compatibility. Create your agent org chart, A2A cards, and tool registries. This was a team submission for the Google x Kaggle Agents Intensive Program.",
         link: "https://github.com/reimagen/agentarchitecture",
