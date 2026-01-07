@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const NAV_LINKS = [
-  { to: "/about", label: "About" },
+  { to: "/toolkit", label: "Toolkit" },
   { to: "/products", label: "Products" },
   { to: "/gallery", label: "Gallery" },
-  { to: "/toolkit", label: "Toolkit" },
+  { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
 ];
 
