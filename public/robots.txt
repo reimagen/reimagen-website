@@ -1,4 +1,5 @@
 User-agent: *
-Allow: /
+Disallow:
 
-Sitemap: https://reimagen.ai/sitemap.xml
+# Update this to your production sitemap URL when available
+Sitemap: https://www.reimagen.ai/sitemap.xml

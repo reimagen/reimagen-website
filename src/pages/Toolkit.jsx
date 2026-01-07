@@ -19,8 +19,9 @@ import dreamscapePoster from '../assets/dreamscape.jpeg';
 
 export default function Toolkit() {
   useDocumentHead({
-    title: "AI Toolkit - Reimagen AI Transformation Resources",
-    description: "Explore Reimagen's curated AI toolkit for generative AI content, workflow automation, and app development. Resources for explorers, vibe coders, and builders.",
+    title: "AI Toolkit | Reimagen’s curated stack",
+    description: "Explore Reimagen's tool-agnostic AI toolkit: top picks for content, workflow automation, and app development across explorers, vibe coders, and builders.",
+    ogImage: "/assets/dreamscape.jpeg",
   });
 
   const sectionKicker = 'brand-section-kicker';

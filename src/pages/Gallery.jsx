@@ -123,6 +123,11 @@ const galleryItems = [
 
 
 export default function Gallery() {
+  useDocumentHead({
+    title: "Gallery | Reimagen AI Video Showcase",
+    description: "Explore Reimagen’s AI-generated video gallery across Sora, Veo, and other models. Swipe through curated clips that highlight strategy, content, and visual quality.",
+    ogImage: "/assets/galaxy.jpg",
+  });
   const [isGridVisible, setIsGridVisible] = useState(false);
   const carouselRef = useRef(null); // Ref for GalleryCarousel
   useEffect(() => {
@@ -173,7 +178,7 @@ export default function Gallery() {
           titleClass="text-3xl mb-1 tracking-[0.15em] uppercase text-center"
           subheadClass="brand-section-subhead text-brand-lavender text-center"
           wrapperClass="mb-8 text-center flex flex-col items-center space-y-2"
-          titleAs="h2"
+          titleAs="h1"
           subheadAs="p"
         />
 

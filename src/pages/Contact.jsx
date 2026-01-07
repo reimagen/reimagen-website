@@ -6,8 +6,10 @@ import HeroIntro from '../components/toolkit/HeroIntro';
 
 export default function Contact() {
   useDocumentHead({
-    title: "Contact Reimagen - Get in Touch for AI Solutions",
-    description: "Reach out to Reimagen for expert AI transformation consulting, generative AI content, workflow automation, and custom app development.",
+    title: "Contact Reimagen | Tool-Agnostic AI Consulting",
+    description:
+      "Contact Reimagen for tool-agnostic AI consulting: strategy, content engines, workflow automation, and custom tools tuned to your business.",
+    ogImage: "/assets/galaxy.jpg",
   });
 
   const initialFormState = {

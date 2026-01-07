@@ -304,6 +304,7 @@ export default function Home() {
     title: "Reimagen | Tool-agnostic AI consulting",
     description:
       "Tool-agnostic AI consulting that shows where AI belongs, integrates it into real workflows, and trains teams to operate it.",
+    ogImage: "/assets/monument-valley-aurora.jpg",
   });
 
   const [reduceMotion, setReduceMotion] = useState(false);
