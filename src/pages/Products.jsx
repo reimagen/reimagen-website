@@ -163,7 +163,7 @@ export default function Products() {
     agents: [
       {
         title: "Content Lab Prototype",
-        description: "In development. Preview access to Gemini 3 API via DeepMind hackathon. The Problem: prompt engineering does not come naturally to most people. The Solution: multi-modal unlocks visually-driven interfaces so people don't have to become masters of languge. Prototype available Feb 9.",
+        description: "In development using preview access to Gemini 3 API via DeepMind. The Problem: prompt engineering does not come naturally to most people. The Solution: multi-modal unlocks visually-driven interfaces so people don't have to become masters of languge. Prototype available Feb 9.",
         link: "/contact",
         tools: ["Gemini", "Antigravity", "Cursor", "Claude", "Codex"],
         stack: ["Next.js", "Python"],
