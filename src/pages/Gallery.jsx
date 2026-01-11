@@ -21,11 +21,11 @@ const galleryItems = [
   {
     order: 1,
     format: "Video",
-    src: "/videos/infinity-lightart.mp4",
-    alt: "A Woman Creates the Infinity Sign as Light Art",
-    caption: "Infinity From Light",
+    src: "/videos/cherry-blossoms.mp4",
+    alt: "A Woman Smiles as Cherry Blossoms Cascade Through the Air",
+    caption: "Spring Blooms",
     model: "Meta AI Vibes",
-    poster: "src/assets/infinity-lightart.jpg",
+    poster: "src/assets/cherry-blossoms.jpg",
   },
   {
     order: 2,
@@ -118,8 +118,16 @@ const galleryItems = [
     model: "Meta AI Vibes",
     poster: "src/assets/wishing-flower.jpg",
   },
+  {
+    order: 12,
+    format: "Video",
+    src: "/videos/nyc-timelapse.mp4",
+    alt: "A Woman Stands Still as New York City Taxis and Pedestrians Buzz Past",
+    caption: "Stillness in New York City",
+    model: "Meta AI Vibes",
+    poster: "src/assets/infinity-lightart.jpg",
+  },
 ];
-
 
 export default function Gallery() {
   useDocumentHead({

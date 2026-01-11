@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useDocumentHead from "../hooks/useDocumentHead";
 import useReveal from "../hooks/useReveal";
-import dorothyPosterFrame from "../assets/dorothy-poster-frame.jpeg";
+import infinityLightartPoster from "../assets/infinity-lightart.jpg";
 import galaxyPoster from "../assets/galaxy.jpg";
 
 export default function About() {
@@ -52,14 +52,14 @@ export default function About() {
 
       {/* Mobile background */}
       <video
-        src="/videos/dorothy-skipping.mp4"
+        src="/videos/infinity-lightart.mp4"
         autoPlay
         loop
         muted
         playsInline
         preload="auto"
         onLoadedData={() => setIsVideoReady(true)}
-        poster={dorothyPosterFrame}
+        poster={infinityLightartPoster}
         className="md:hidden fixed inset-0 w-full h-full object-cover brightness-90"
         aria-hidden="true"
       />
@@ -70,13 +70,13 @@ export default function About() {
           {/* Left: video */}
           <div className="relative w-full overflow-hidden rounded-xl border border-white/10 hidden md:block">
             <video
-              src="/videos/dorothy-skipping.mp4"
+              src="/videos/infinity-lightart.mp4"
               autoPlay
               loop
               muted
               playsInline
               onLoadedData={() => setIsVideoReady(true)}
-              poster={dorothyPosterFrame}
+              poster={infinityLightartPoster}
               className="w-full h-full object-cover"
             />
           </div>
