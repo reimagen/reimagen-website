@@ -38,7 +38,7 @@ export default function About() {
     <section className="relative overflow-hidden">
       {/* Desktop background */}
       <video
-        src="/videos/space-drift-kling2.5.mp4"
+        src="/videos/galaxy.mp4"
         autoPlay
         loop
         muted

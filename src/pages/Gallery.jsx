@@ -160,7 +160,7 @@ export default function Gallery() {
   return (
     <section className="relative -mt-24 pt-24 pb-24 overflow-hidden">
       <video
-        src="/videos/space-drift-kling2.5.mp4"
+        src="/videos/galaxy.mp4"
         autoPlay
         loop
         muted
