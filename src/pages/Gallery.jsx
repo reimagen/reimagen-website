@@ -30,20 +30,20 @@ const galleryItems = [
   {
     order: 2,
     format: "Video",
-    src: "/videos/rain-window-moody.mp4",
-    alt: "A Young Woman Looking Out a Window in the Rain",
-    caption: "Rainy Day Dreams",
+    src: "/videos/nyc-timelapse.mp4",
+    alt: "A Woman Stands Still as New York City Taxis and Pedestrians Buzz Past",
+    caption: "Stillness in New York City",
     model: "Meta AI Vibes",
-    poster: "/src/assets/rain-window-moody.jpeg",
+    poster: "src/assets/infinity-lightart.jpg",
   },
   {
     order: 3,
     format: "Video",
-    src: "/videos/flower-field-walking.mp4",
-    alt: "A Woman Walking Through a Field of Dahlias at Golden Hour",
-    caption: "Dahlia Dreams",
+    src: "/videos/wishing-flower.mp4",
+    alt: "A Young Woman Blows a Wishing Flower and the Particles Float Away",
+    caption: "Imagination is a Wish",
     model: "Meta AI Vibes",
-    poster: "src/assets/flower-field-walking.jpeg",
+    poster: "src/assets/wishing-flower.jpg",
   },
   {
     order: 4,
@@ -94,15 +94,6 @@ const galleryItems = [
   {
     order: 9,
     format: "Video",
-    src: "/videos/candy-basil.mp4",
-    alt: "A Candy Version of St. Basil's Cathedral in Moscow",
-    caption: "St. Basil's in Candyland",
-    model: "Sora",
-    poster: "src/assets/candy-cathedral.jpg"
-  },
-  {
-    order: 10,
-    format: "Video",
     src: "/videos/creation-of-robot.mp4",
     alt: "Creation of Adam but a Robot instead of a man",
     caption: "Creation of Adam",
@@ -110,23 +101,24 @@ const galleryItems = [
     poster: "/src/assets/creation-of-robot.jpg",
   },
   {
+    order: 10,
+    format: "Video",
+    src: "/videos/infinity-lightart.mp4",
+    alt: "A Woman Draws the Infinity Sign with Light",
+    caption: "Infinity Light Art",
+    model: "Meta AI Vibes",
+    poster: "/src/assets/infinity-lightart.jpg",
+  }, 
+  {
     order: 11,
     format: "Video",
-    src: "/videos/wishing-flower.mp4",
-    alt: "A Young Woman Blows a Wishing Flower and the Particles Float Away",
-    caption: "Imagination is a Wish",
+    src: "/videos/rain-window-moody.mp4",
+    alt: "A Young Woman Looking Out a Window in the Rain",
+    caption: "Rainy Day Dreams",
     model: "Meta AI Vibes",
-    poster: "src/assets/wishing-flower.jpg",
+    poster: "/src/assets/rain-window-moody.jpeg",
   },
-  {
-    order: 12,
-    format: "Video",
-    src: "/videos/nyc-timelapse.mp4",
-    alt: "A Woman Stands Still as New York City Taxis and Pedestrians Buzz Past",
-    caption: "Stillness in New York City",
-    model: "Meta AI Vibes",
-    poster: "src/assets/infinity-lightart.jpg",
-  },
+
 ];
 
 export default function Gallery() {
