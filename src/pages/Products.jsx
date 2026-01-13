@@ -199,6 +199,11 @@ export default function Products() {
         link: "https://chatgpt.com/g/g-6905072329f8819188ce714b9880984d-a16z-partners-office-hours",
       },
       {
+        title: "Social Media Copywriter",
+        description: "Writes platform-optimized copy for TikTok, Instagram, Facebook, YouTube, LinkedIn, and X with built-in onboarding and basic compliance checks.",
+        link: "https://chatgpt.com/g/g-6965a2af838081918148a56770ba8f15-social-media-copywriter",
+      },
+      {
         title: "Focus Group Simulator",
         description: "Launching a product or campaign on a budget? Run simulations across key demographics and social platforms.",
         link: "https://chatgpt.com/g/g-681683c622688191b4ef22413c711047-focus-group-simulator",
