@@ -7,9 +7,8 @@ import calibratePoster from '../assets/calibrate.jpg';
 import creationRobotPoster from '../assets/creation-of-robot.jpg';
 import HeroIntro from '../components/toolkit/HeroIntro';
 import CarouselNavigationButtons from '../components/CarouselNavigationButtons';
-import ImageModal from '../components/ImageModal'; // New import
 
-function ProductCard({ product, index, categoryStyles, isDesktop, onImageClick }) { // Modified ProductCard props
+function ProductCard({ product, index, categoryStyles, isDesktop }) {
   const cardRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -83,8 +82,7 @@ function ProductCard({ product, index, categoryStyles, isDesktop, onImageClick }
             <img
               src={product.image}
               alt={product.title}
-              className="w-full h-32 rounded-lg object-cover cursor-pointer" // Added cursor-pointer
-              onClick={() => onImageClick(product.image, product.title)} // Added onClick
+              className="w-full h-32 rounded-lg object-cover"
             />
           )}
           {product.title === 'Calibrate: Confidently Automate Your Workflows' && (
@@ -142,31 +140,6 @@ export default function Products() {
     mediaQuery.addEventListener('change', handleChange);
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
-
-  // New state and functions for modal
-  const [showModal, setShowModal] = useState(false);
-  const [modalImageSrc, setModalImageSrc] = useState('');
-  const [modalImageAlt, setModalImageAlt] = useState('');
-  const [modalYOffset, setModalYOffset] = useState(0); // New state for vertical offset
-
-  const openModal = (src, alt) => {
-    setModalImageSrc(src);
-    setModalImageAlt(alt);
-    setShowModal(true);
-
-    if (productScrollRef.current) {
-      // Get the top position of the product carousel container relative to the viewport
-      const rect = productScrollRef.current.getBoundingClientRect();
-      setModalYOffset(rect.top);
-    }
-  };
-
-  const closeModal = () => {
-    setShowModal(false);
-    setModalImageSrc('');
-    setModalImageAlt('');
-    setModalYOffset(0); // Reset offset on close
-  };
 
   const products = {
     applications: [
@@ -245,14 +218,10 @@ export default function Products() {
   ];
   const gptProducts = products.gpts;
 
-  const [selectedCategories, setSelectedCategories] = useState([]);
   const productScrollRef = useRef(null);
   const gptScrollRef = useRef(null);
   const [activeProductIndex, setActiveProductIndex] = useState(0);
   const [activeGptIndex, setActiveGptIndex] = useState(0);
-
-  const categories = ['All', 'Apps', 'Agents'];
-  const filterButtonBase = 'brand-cta text-xs tracking-[0.2em] uppercase';
 
   const categoryStyles = {
     Apps: {
@@ -276,14 +245,7 @@ export default function Products() {
     }
   };
 
-  const visibleProducts =
-    selectedCategories.length === 0
-      ? allProducts
-      : allProducts.filter((product) => selectedCategories.includes(product.category));
-
-  useEffect(() => {
-    setActiveProductIndex(0);
-  }, [visibleProducts.length, selectedCategories]);
+  const visibleProducts = allProducts;
 
   useEffect(() => {
     const node = productScrollRef.current;
@@ -453,37 +415,8 @@ export default function Products() {
           subheadAs="p"
         />
 
-        {/* Filters and Navigation for Products Carousel */}
-        <div className="mb-6 flex flex-col items-center sm:flex-row sm:justify-between sm:items-center gap-4 px-4 md:px-0">
-          <div className="flex flex-wrap gap-3">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => {
-                  if (category === 'All') {
-                    setSelectedCategories([]);
-                    return;
-                  }
-                  setSelectedCategories((prev) =>
-                    prev.includes(category)
-                      ? prev.filter((c) => c !== category)
-                      : [...prev, category]
-                  );
-                }}
-                className={`${filterButtonBase} ${category === 'All'
-                  ? selectedCategories.length === 0
-                    ? categoryStyles.default.pill
-                    : 'bg-gray-800 text-gray-200 border-gray-700 hover:bg-gray-700'
-                  : selectedCategories.includes(category)
-                    ? (categoryStyles[category]?.pill || categoryStyles.default.pill)
-                    : 'bg-white/10 text-white hover:bg-white/20'
-                  }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-
+        {/* Navigation for Products Carousel */}
+        <div className="mb-6 flex justify-center px-4 md:px-0">
           <CarouselNavigationButtons
             onPrev={handlePrevProduct}
             onNext={handleNextProduct}
@@ -495,7 +428,7 @@ export default function Products() {
 
         {/* Horizontal carousel */}
         <div
-          className="overflow-x-auto pb-6 products-scroll scrollbar-lavender products-scroll-compact dot-scroll"
+          className="overflow-x-auto pb-6 pt-2 products-scroll scrollbar-lavender products-scroll-compact dot-scroll"
           ref={productScrollRef}
         >
           <div className="flex gap-4 snap-x snap-mandatory">
@@ -506,7 +439,6 @@ export default function Products() {
                 index={index}
                 categoryStyles={categoryStyles}
                 isDesktop={isDesktop}
-                onImageClick={openModal} // Pass openModal
               />
             ))}
           </div>
@@ -536,7 +468,7 @@ export default function Products() {
             [ Requires ChatGPT Account ]
           </p>
 
-          <div className="flex justify-center sm:justify-end mt-6">
+          <div className="flex justify-center mt-6">
             <CarouselNavigationButtons
               onPrev={handlePrevGpt}
               onNext={handleNextGpt}
@@ -594,16 +526,6 @@ export default function Products() {
         </section>
         <div className="h-16" aria-hidden="true" />
       </div>
-      {isDesktop && ( // Conditional rendering for desktop
-        <ImageModal
-          src={modalImageSrc}
-          alt={modalImageAlt}
-          isOpen={showModal}
-          onClose={closeModal}
-          // Only pass modalYOffset on desktop, otherwise ImageModal will default to center
-          {...(isDesktop && { modalYOffset })}
-        />
-      )}
     </section>
   );
 }

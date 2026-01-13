@@ -110,6 +110,18 @@ body {
 .slide-in-right.is-visible {
   opacity: 1;
   transform: translateX(0);
+  transition: opacity 0.6s ease, transform 0.2s ease-out;
+}
+
+.slide-in-right.is-visible:hover,
+.card-enter.is-visible:hover {
+  transform: translateY(-4px);
+}
+
+.card-enter.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.45s ease, transform 0.2s ease-out;
 }
 
 .route-fade {
