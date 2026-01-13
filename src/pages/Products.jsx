@@ -190,27 +190,27 @@ export default function Products() {
     gpts: [
       {
         title: "YC Office Hours",
-        description: "YC partner board simulation giving you direct, high-leverage advice and feedback from Garry, Jessica, Michael, Dalton, Paul, Daniel, and Aaron.",
+        description: "YC partner board simulation giving you direct, high-leverage startup feedback. Challenges assumptions, asks clarifying questions, and adapts feedback by company stage.",
         link: "https://chatgpt.com/g/g-69050a13e2f081919fa4a1465e0cc273-yc-partners-office-hours",
       },
       {
         title: "a16z Office Hours",
-        description: "A16Z-style advisory board simulation giving you direct partner takes and feedback from Marc, Ben, Angela, Chris, Katherine, Connie, and Martin.",
+        description: "A16Z-style advisory board simulation partner-level strategic feedback. Provides differentiated takes across product, market, and defensibility.",
         link: "https://chatgpt.com/g/g-6905072329f8819188ce714b9880984d-a16z-partners-office-hours",
       },
       {
         title: "Social Media Copywriter",
-        description: "Writes platform-optimized copy for TikTok, Instagram, Facebook, YouTube, LinkedIn, and X with built-in onboarding and basic compliance checks.",
+        description: "Writes platform-optimized copy for TikTok, Instagram, Facebook, YouTube, LinkedIn, and X. Adapts tone and structure per platform while enforcing basic compliance and brand safety.",
         link: "https://chatgpt.com/g/g-6965a2af838081918148a56770ba8f15-social-media-copywriter",
       },
       {
         title: "Focus Group Simulator",
-        description: "Launching a product or campaign on a budget? Run simulations across key demographics and social platforms.",
+        description: "Runs simulated user reactions across key demographics and social platforms. Surfaces conflicting viewpoints instead of averaging responses.",
         link: "https://chatgpt.com/g/g-681683c622688191b4ef22413c711047-focus-group-simulator",
       },
       {
         title: "FitnessAI Companion GPT",
-        description: "Pairs with FitnessAI. Upload InBody Scan pictures and dive into your stats. Learn about techniques, proper form, recovery, and nutrition.",
+        description: "AI fitness companion paired with FitnessAI for training and recovery insights. Interprets uploaded InBody data conservatively and avoids medical claims.",
         link: "https://chatgpt.com/g/g-68b5eaa588208191b9482111e885291e-fitnessai-companion-coach",
       },
     ],
