@@ -7,8 +7,9 @@ import calibratePoster from '../assets/calibrate.jpg';
 import creationRobotPoster from '../assets/creation-of-robot.jpg';
 import HeroIntro from '../components/toolkit/HeroIntro';
 import CarouselNavigationButtons from '../components/CarouselNavigationButtons';
+import ImageModal from '../components/ImageModal'; // New import
 
-function ProductCard({ product, index, categoryStyles, isDesktop }) {
+function ProductCard({ product, index, categoryStyles, isDesktop, onImageClick }) { // Modified ProductCard props
   const cardRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -82,7 +83,8 @@ function ProductCard({ product, index, categoryStyles, isDesktop }) {
             <img
               src={product.image}
               alt={product.title}
-              className="w-full h-32 rounded-lg object-cover"
+              className="w-full h-32 rounded-lg object-cover cursor-pointer" // Added cursor-pointer
+              onClick={() => onImageClick(product.image, product.title)} // Added onClick
             />
           )}
           {product.title === 'Calibrate: Confidently Automate Your Workflows' && (
@@ -141,6 +143,31 @@ export default function Products() {
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
+  // New state and functions for modal
+  const [showModal, setShowModal] = useState(false);
+  const [modalImageSrc, setModalImageSrc] = useState('');
+  const [modalImageAlt, setModalImageAlt] = useState('');
+  const [modalYOffset, setModalYOffset] = useState(0); // New state for vertical offset
+
+  const openModal = (src, alt) => {
+    setModalImageSrc(src);
+    setModalImageAlt(alt);
+    setShowModal(true);
+
+    if (productScrollRef.current) {
+      // Get the top position of the product carousel container relative to the viewport
+      const rect = productScrollRef.current.getBoundingClientRect();
+      setModalYOffset(rect.top);
+    }
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    setModalImageSrc('');
+    setModalImageAlt('');
+    setModalYOffset(0); // Reset offset on close
+  };
+
   const products = {
     applications: [
       {
@@ -153,7 +180,7 @@ export default function Products() {
       },
       {
         title: "Macros Tracker",
-        description: "Chat with your AI macros coach and have it calculate your macros, log your meals, and give you live advice on how to hit your macro goals. View daily, weekly, and monthly rollups to stay on track. Next phase: voice chat integration.",
+        description: "Chat with your AI macros coach and have it calculate your macros, log your meals, and give you live advice on how to hit your macro goals. View daily, weekly, and monthly rollups to stay on track.",
         link: "https://macros-coach.vercel.app/",
         image: macrosTrackerPoster,
         tools: ["Google Generative AI", "Cursor", "Antigravity", "Codex", "Gemini"],
@@ -479,6 +506,7 @@ export default function Products() {
                 index={index}
                 categoryStyles={categoryStyles}
                 isDesktop={isDesktop}
+                onImageClick={openModal} // Pass openModal
               />
             ))}
           </div>
@@ -566,6 +594,16 @@ export default function Products() {
         </section>
         <div className="h-16" aria-hidden="true" />
       </div>
+      {isDesktop && ( // Conditional rendering for desktop
+        <ImageModal
+          src={modalImageSrc}
+          alt={modalImageAlt}
+          isOpen={showModal}
+          onClose={closeModal}
+          // Only pass modalYOffset on desktop, otherwise ImageModal will default to center
+          {...(isDesktop && { modalYOffset })}
+        />
+      )}
     </section>
   );
 }
