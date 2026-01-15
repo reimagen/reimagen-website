@@ -153,7 +153,7 @@ export default function Products() {
       },
       {
         title: "Macros Tracker",
-        description: "Chat with your AI macros coach and have it calculate your macros, log your meals, and give you live advice on how to hit your macro goals. View daily, weekly, and monthly rollups to stay on track.",
+        description: "Chat with your AI coach and have it calculate your macros, log your meals, and give you live advice on how to hit your macro goals. View daily, weekly, and monthly rollups to stay on track.",
         link: "https://macros-coach.vercel.app/",
         image: macrosTrackerPoster,
         tools: ["Google Generative AI", "Cursor", "Antigravity", "Codex", "Gemini"],
@@ -163,7 +163,7 @@ export default function Products() {
     agents: [
       {
         title: "Content Lab Prototype",
-        description: "In development using preview access to Gemini 3 API via DeepMind. The Problem: prompt engineering does not come naturally to most people. The Solution: multi-modal unlocks visually-driven interfaces so people don't have to become masters of languge. Prototype available Feb 9.",
+        description: "In development with Gemini 3 preview. The Problem: prompt engineering does not come naturally to most people. The Solution: multi-modal unlocks visually-driven interfaces so people don't have to become masters of languge. Prototype available Feb 9.",
         link: "/contact",
         tools: ["Gemini", "Antigravity", "Cursor", "Claude", "Codex"],
         stack: ["Next.js", "Python"],
@@ -181,7 +181,7 @@ export default function Products() {
     other: [
       {
         title: "reimagen Website",
-        description: "This website was created with the assistance of AI IDEs, CLI coding agents, and GenAI video models. Video assets were created with Sora, Meta AI, Veo, and via OpenArt's platform to battle-test the models from the big international labs: Kling, WAN, Seedance, Minimax Hailuo, PixVerse, Vidu, etc. TLDR: Do not sleep on these, especially if you need content on a budget.",
+        description: "Created with AI IDEs, CLI coding agents, and GenAI video models. Video assets were created with Sora, Meta AI, Veo, and via OpenArt's platform to battle-test the models from the big international labs: Kling, WAN, Seedance, Minimax Hailuo, PixVerse, Vidu, etc. TLDR: Do not sleep on these, especially Kling.",
         link: "https://github.com/reimagen/reimagen-website",
         tools: ["Cursor", "Codex", "Antigravity", "Sora", "OpenArt"],
         stack: ["Vite + React", "Tailwind", "Vercel"],
@@ -199,8 +199,13 @@ export default function Products() {
         link: "https://chatgpt.com/g/g-6905072329f8819188ce714b9880984d-a16z-partners-office-hours",
       },
       {
+        title: "Creative Director: AI Media",
+        description: "A creative partner that turns your ideas and aesthetic intent into structured, model-optimized prompts designed to improve composition, motion, and visual consistency.",
+        link: "https://chatgpt.com/g/g-6965ad33b7788191bbdd8d49bf201c8f-creative-director-for-ai-media",
+      },
+      {
         title: "Social Media Copywriter",
-        description: "Writes platform-optimized copy for TikTok, Instagram, Facebook, YouTube, LinkedIn, and X. Adapts tone and structure per platform while enforcing basic compliance and brand safety.",
+        description: "Writes platform-optimized copy for TikTok, IG, Facebook, YouTube, LinkedIn, and X. Adapts tone and structure per platform while enforcing basic compliance and brand safety.",
         link: "https://chatgpt.com/g/g-6965a2af838081918148a56770ba8f15-social-media-copywriter",
       },
       {
