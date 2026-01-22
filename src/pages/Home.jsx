@@ -325,6 +325,64 @@ export default function Home() {
     return () => cancelAnimationFrame(raf);
   }, []);
 
+  useEffect(() => {
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Reimagen",
+      "description": "Tool-agnostic AI consulting that shows where AI belongs, integrates it into real workflows, and trains teams to operate it.",
+      "url": "https://reimagen.ai",
+      "image": "https://reimagen.ai/logo-blur.png",
+      "areaServed": {
+        "@type": "Country",
+        "name": "US"
+      },
+      "serviceType": [
+        "Organizational Strategy",
+        "Content Engines",
+        "Workflow Automation",
+        "Custom Application Development"
+      ],
+      "hasOfferingType": "Service",
+      "targetAudience": [
+        {
+          "@type": "Audience",
+          "audienceType": "Startups"
+        },
+        {
+          "@type": "Audience",
+          "audienceType": "Consumer Brands"
+        },
+        {
+          "@type": "Audience",
+          "audienceType": "Advertisers"
+        }
+      ],
+      "provider": {
+        "@type": "Organization",
+        "name": "Reimagen"
+      },
+      "knowsAbout": [
+        "Artificial Intelligence",
+        "AI Strategy",
+        "Content Generation",
+        "Workflow Automation",
+        "Custom Tools Development"
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(schema);
+    document.head.appendChild(script);
+
+    return () => {
+      if (script.parentNode) {
+        document.head.removeChild(script);
+      }
+    };
+  }, []);
+
   return (
     <main className="bg-black">
       <Hero reduceMotion={reduceMotion} heroVisible={heroVisible} />

@@ -133,6 +133,60 @@ export default function Gallery() {
     const timeout = setTimeout(() => setIsGridVisible(true), 150);
     return () => clearTimeout(timeout);
   }, []);
+
+  useEffect(() => {
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Gallery | Reimagen AI Video Showcase",
+      "description": "Explore Reimagen's AI-generated video gallery across Sora, Veo, and other models. Swipe through curated clips that highlight strategy, content, and visual quality.",
+      "url": "https://reimagen.ai/gallery",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Reimagen",
+        "url": "https://reimagen.ai"
+      },
+      "mainEntity": {
+        "@type": "ItemList",
+        "name": "AI-Generated Video Gallery",
+        "itemListElement": [
+          {
+            "@type": "VideoObject",
+            "position": 1,
+            "name": "Spring Blooms",
+            "description": "A Woman Smiles as Cherry Blossoms Cascade Through the Air",
+            "thumbnailUrl": "/assets/cherry-blossoms.jpg"
+          },
+          {
+            "@type": "VideoObject",
+            "position": 2,
+            "name": "Stillness in New York City",
+            "description": "A Woman Stands Still as New York City Taxis and Pedestrians Buzz Past",
+            "thumbnailUrl": "/assets/infinity-lightart.jpg"
+          },
+          {
+            "@type": "VideoObject",
+            "position": 3,
+            "name": "Imagination is a Wish",
+            "description": "A Young Woman Blows a Wishing Flower and the Particles Float Away",
+            "thumbnailUrl": "/assets/wishing-flower.jpg"
+          }
+        ]
+      }
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(schema);
+    document.head.appendChild(script);
+
+    return () => {
+      if (script.parentNode) {
+        document.head.removeChild(script);
+      }
+    };
+  }, []);
+
   const [selectedModel, setSelectedModel] = useState("All");
   const orderedItems = [...galleryItems].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
   const matchesModel = (modelName, filter) =>

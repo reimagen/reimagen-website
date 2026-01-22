@@ -133,6 +133,56 @@ export default function Toolkit() {
     }
   };
 
+  useEffect(() => {
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "AI Toolkit | Reimagen's curated stack",
+      "description": "Explore Reimagen's tool-agnostic AI toolkit: top picks for content, workflow automation, and app development across explorers, vibe coders, and builders.",
+      "url": "https://reimagen.ai/toolkit",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Reimagen",
+        "url": "https://reimagen.ai"
+      },
+      "mainEntity": {
+        "@type": "ItemList",
+        "name": "AI Tools by Persona",
+        "itemListElement": [
+          {
+            "@type": "SoftwareApplication",
+            "position": 1,
+            "name": "AI Tools for Explorers",
+            "description": "Tools for those new to AI looking to learn and experiment"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "position": 2,
+            "name": "AI Tools for Vibe Coders",
+            "description": "Low-code and no-code tools for building with AI without traditional programming"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "position": 3,
+            "name": "AI Tools for Builders",
+            "description": "Professional development tools and frameworks for building AI-powered applications"
+          }
+        ]
+      }
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(schema);
+    document.head.appendChild(script);
+
+    return () => {
+      if (script.parentNode) {
+        document.head.removeChild(script);
+      }
+    };
+  }, []);
+
   return (
     <>
     <section className="relative -mt-24 pt-24 pb-24 overflow-visible">
