@@ -141,6 +141,61 @@ export default function Products() {
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
+  useEffect(() => {
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Reimagen Products",
+      "description": "AI-powered products and solutions including applications, agents, and GPTs",
+      "url": "https://reimagen.ai/products",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Reimagen",
+        "url": "https://reimagen.ai"
+      },
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "SoftwareApplication",
+            "position": 1,
+            "name": "FitnessAI",
+            "description": "Set your goals and log workouts. Let AI analyze your progress and generate workout plans. In-depth charts for progressive overload, imbalance detection, and calorie burn.",
+            "applicationCategory": "HealthApplication",
+            "url": "https://studio--fitnessai-tsi8w.us-central1.hosted.app/signin"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "position": 2,
+            "name": "Macros Tracker",
+            "description": "Chat with your AI coach and have it calculate your macros, log your meals, and give you live advice on how to hit your macro goals.",
+            "applicationCategory": "HealthApplication",
+            "url": "https://macros-coach.vercel.app/"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "position": 3,
+            "name": "Calibrate: Confidently Automate Your Workflows",
+            "description": "Upload your workflow and let AI analyze its automation compatibility. Create your agent org chart, A2A cards, and tool registries.",
+            "applicationCategory": "BusinessApplication",
+            "url": "https://github.com/reimagen/agentarchitecture"
+          }
+        ]
+      }
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(schema);
+    document.head.appendChild(script);
+
+    return () => {
+      if (script.parentNode) {
+        document.head.removeChild(script);
+      }
+    };
+  }, []);
+
   const products = {
     applications: [
       {
